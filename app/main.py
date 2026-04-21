@@ -1,224 +1,146 @@
 import uuid
 import threading
 import json
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, status
-from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any
-from datetime import datetime
-from pathlib import Path
-import sys
+from fastapi.responses import JSONResponse  # ← ADD THIS
+from slowapi import Limiter
+from slowapi.errors import RateLimitExceeded  # ← ADD THIS
+from slowapi.util import get_remote_address
+from sqlalchemy.orm import Session
 
-# Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
+from app.core.config import get_settings
+from app.core.logging import logger
+from app.db.session import create_tables, SessionLocal
+from app.db.models import User
+from app.api.routes import auth, analysis
+from app.services.user_service import UserService
+from app.schemas.user import UserCreate
+from app.core.security import SecurityService
 
-from agents.seo_agent import SEOAgent
-from schema.report import SEOReport
+settings = get_settings()
 
 # ═══════════════════════════════════════════════════════════════
-# FastAPI App
+# STARTUP & SHUTDOWN EVENTS
+# ═══════════════════════════════════════════════════════════════
+
+async def startup_event():
+    """Run on app startup."""
+    logger.info("Starting application...#######")
+    
+    # Create database tables
+    create_tables()
+    logger.info("Database tables created...######")
+    
+    # Create dummy user
+    create_dummy_user()
+    logger.info("Dummy user setup complete...######")
+
+
+async def shutdown_event():
+    """Run on app shutdown."""
+    logger.info("Shutting down application...######")
+
+
+def create_dummy_user():
+    """Create dummy user if not exists."""
+    db = SessionLocal()
+    try:
+        # Check if dummy user exists
+        dummy_user = db.query(User).filter(User.email == settings.DUMMY_USER_EMAIL).first()
+        
+        if dummy_user:
+            logger.info(f"Dummy user already exists: {settings.DUMMY_USER_EMAIL}")
+            return
+        
+        # Create dummy user
+        user_create = UserCreate(
+            email=settings.DUMMY_USER_EMAIL,
+            full_name=settings.DUMMY_USER_FULL_NAME,
+            password=settings.DUMMY_USER_PASSWORD
+        )
+        
+        user = UserService.create_user(db, user_create)
+        logger.info(f"Created dummy user: {user.email} (password: {settings.DUMMY_USER_PASSWORD})")
+        
+    except Exception as e:
+        logger.error(f"Failed to create dummy user: {str(e)}")
+    finally:
+        db.close()
+
+
+# ═══════════════════════════════════════════════════════════════
+# LIFESPAN CONTEXT MANAGER
+# ═══════════════════════════════════════════════════════════════
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Manage app startup and shutdown."""
+    # Startup
+    await startup_event()
+    yield
+    # Shutdown
+    await shutdown_event()
+
+
+# ═══════════════════════════════════════════════════════════════
+# CREATE APP
 # ═══════════════════════════════════════════════════════════════
 
 app = FastAPI(
-    title="🔍 Website Analysis API",
-    description="Analyze websites using AI agents",
-    version="1.0.0"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    lifespan=lifespan
 )
 
-# Add CORS middleware
+# ═══════════════════════════════════════════════════════════════
+# MIDDLEWARE
+# ═══════════════════════════════════════════════════════════════
+
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ═══════════════════════════════════════════════════════════════
-# SCHEMAS
-# ═══════════════════════════════════════════════════════════════
-
-class AnalysisRequest(BaseModel):
-    """Request to analyze a website."""
-    url: str = Field(..., description="Website URL to analyze", example="https://example.com")
-
-class JobResponse(BaseModel):
-    """Response when job is submitted."""
-    job_id: str = Field(..., description="Unique job identifier")
-    status: str = Field(..., description="Job status: pending, processing, completed, failed")
-    message: str = Field(..., description="Status message")
-
-class JobStatus(BaseModel):
-    """Status of analysis job."""
-    job_id: str
-    status: str
-    url: Optional[str] = None
-    created_at: str
-    completed_at: Optional[str] = None
-    error: Optional[str] = None
-    result: Optional[Dict[str, Any]] = None
+# Rate Limiting
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
 
 # ═══════════════════════════════════════════════════════════════
-# IN-MEMORY JOB STORAGE
+# ROUTES
 # ═══════════════════════════════════════════════════════════════
 
-jobs: Dict[str, Dict[str, Any]] = {}
+app.include_router(auth.router)
+app.include_router(analysis.router)
 
-# ═══════════════════════════════════════════════════════════════
-# ANALYSIS ENDPOINTS
-# ═══════════════════════════════════════════════════════════════
-
-@app.post(
-    "/api/analyze",
-    response_model=JobResponse,
-    status_code=status.HTTP_202_ACCEPTED,
-    summary="Submit URL for Analysis"
-)
-def submit_analysis(request: AnalysisRequest):
-    """Submit a website URL for analysis. Returns job_id to track progress."""
-    
-    # Validate URL
-    if not request.url.strip():
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="URL cannot be empty"
-        )
-    
-    if not request.url.startswith(("http://", "https://")):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="URL must start with http:// or https://"
-        )
-    
-    # Generate unique job ID
-    job_id = str(uuid.uuid4())
-    
-    # Create job entry
-    jobs[job_id] = {
-        "job_id": job_id,
-        "status": "pending",
-        "url": request.url,
-        "created_at": datetime.now().isoformat(),
-        "completed_at": None,
-        "result": None,
-        "error": None
-    }
-    
-    print(f"\n📝 New job: {job_id}")
-    print(f"   URL: {request.url}")
-    
-    # Start analysis in background thread
-    thread = threading.Thread(
-        target=_run_analysis_background,
-        args=(job_id, request.url),
-        daemon=True
-    )
-    thread.start()
-    
-    return JobResponse(
-        job_id=job_id,
-        status="processing",
-        message=f"Analysis started. Use GET /api/results/{job_id} to check status"
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request, exc):
+    """Handle rate limit exceeded errors."""
+    return JSONResponse(
+        status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+        content={"detail": f"Rate limit exceeded: {exc.detail}"}
     )
 
-@app.get(
-    "/api/results/{job_id}",
-    response_model=JobStatus,
-    summary="Get Analysis Results"
-)
-def get_results(job_id: str):
-    """Get analysis results by job_id. Returns status and results when completed."""
-    
-    if job_id not in jobs:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Job '{job_id}' not found."
-        )
-    
-    job = jobs[job_id]
-    
-    return JobStatus(
-        job_id=job["job_id"],
-        status=job["status"],
-        url=job["url"],
-        created_at=job["created_at"],
-        completed_at=job["completed_at"],
-        error=job["error"],
-        result=job["result"]
-    )
-
-# ═══════════════════════════════════════════════════════════════
-# BACKGROUND TASK
-# ═══════════════════════════════════════════════════════════════
-
-def _run_analysis_background(job_id: str, url: str):
-    """Run SEO analysis in background thread."""
-    try:
-        print(f"🚀 Starting analysis: {url}")
-        jobs[job_id]["status"] = "processing"
-        
-        # Initialize and run agent
-        agent = SEOAgent()
-        report: SEOReport = agent.analyze(url)
-        
-        # Convert report to dict
-        result_dict = {
-            "url": report.url,
-            "overall_score": report.overall_score,
-            "timestamp": report.timestamp.isoformat(),
-            "processing_time_ms": report.processing_time_ms,
-            "strengths": [
-                {"finding": s.finding, "impact": s.impact}
-                for s in report.strengths
-            ],
-            "weaknesses": [
-                {"finding": w.finding, "impact": w.impact, "recommendation": w.recommendation}
-                for w in report.weaknesses
-            ],
-            "missing_elements": [
-                {"element": m.element, "importance": m.importance, "why": m.why}
-                for m in report.missing_elements
-            ],
-            "recommendations": [
-                {"priority": r.priority, "action": r.action, "expected_benefit": r.expected_benefit}
-                for r in report.recommendations
-            ]
+@app.get("/", tags=["Info"])
+def root():
+    """API information."""
+    return {
+        "name": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "status": "running",
+        "endpoints": {
+            "Auth": "/api/auth/register, /api/auth/login, /api/auth/me",
+            "Analysis": "/api/analysis/analyze, /api/analysis/results/{id}, /api/analysis/history"
         }
-        
-        # Update job with results
-        jobs[job_id]["result"] = result_dict
-        jobs[job_id]["status"] = "completed"
-        jobs[job_id]["completed_at"] = datetime.now().isoformat()
-        
-        print(f"✅ Job completed: {job_id}")
-        print(f"   Score: {report.overall_score}/100")
-        
-    except Exception as e:
-        print(f"❌ Job failed: {job_id}")
-        print(f"   Error: {str(e)}")
-        
-        jobs[job_id]["status"] = "failed"
-        jobs[job_id]["error"] = str(e)
-        jobs[job_id]["completed_at"] = datetime.now().isoformat()
+    }
 
-# ═══════════════════════════════════════════════════════════════
-# RUN SERVER
-# ═══════════════════════════════════════════════════════════════
 
-if __name__ == "__main__":
-    import uvicorn
-    
-    print("\n" + "="*60)
-    print("🚀 Website Analysis API")
-    print("="*60)
-    print("📍 Server: http://localhost:8000")
-    print("📚 Swagger UI: http://localhost:8000/docs")
-    print("="*60 + "\n")
-    
-    uvicorn.run(
-        "app.main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+@app.get("/health", tags=["Info"])
+def health():
+    """Health check."""
+    return {"status": "healthy"}
