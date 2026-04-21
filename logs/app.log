@@ -1,0 +1,6 @@
+2026-04-21 15:40:07,929 - app.core.logging - INFO - Shutting down application...######
+2026-04-21 15:40:12,838 - app.core.logging - INFO - Starting application...#######
+2026-04-21 15:40:12,864 - app.core.logging - INFO - Database tables created...######
+2026-04-21 15:40:12,874 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-21 15:40:12,875 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-21 15:40:35,143 - app.core.logging - INFO - Shutting down application...######
