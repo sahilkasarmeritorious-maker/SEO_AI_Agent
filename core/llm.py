@@ -24,7 +24,7 @@ class LLMManager:
             model_name=Config.LLM_MODEL,
             temperature=Config.LLM_TEMPERATURE,
             max_tokens=Config.LLM_MAX_TOKENS,
-            api_key=Config.GROQ_API_KEY,
+            api_key=Config.GEMINI_API_KEY,
             verbose=False
         )
         

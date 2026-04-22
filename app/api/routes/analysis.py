@@ -37,33 +37,41 @@ def get_analysis_results(
     db: Session = Depends(get_db)
 ):
     """Get analysis results."""
-    analysis = AnalysisService.get_analysis_by_id(db, analysis_id)
-    
-    if not analysis:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analysis not found")
-    
-    if analysis.user_id != current_user_id:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized")
-    
-    response_data = {
-        "id": analysis.id,
-        "job_id": analysis.job_id,
-        "url": analysis.url,
-        "status": analysis.status,
-        "overall_score": analysis.overall_score,
-        "created_at": analysis.created_at,
-        "completed_at": analysis.completed_at,
-        "error": analysis.error,
-        "processing_time_ms": analysis.processing_time_ms,
-        "strengths": json.loads(analysis.strengths) if analysis.strengths else None,
-        "weaknesses": json.loads(analysis.weaknesses) if analysis.weaknesses else None,
-        "missing_elements": json.loads(analysis.missing_elements) if analysis.missing_elements else None,
-        "recommendations": json.loads(analysis.recommendations) if analysis.recommendations else None,
-        "json_file_path": analysis.json_file_path,
-        "markdown_file_path": analysis.markdown_file_path,
-    }
-    
-    return response_data
+    try:
+        logger.info(f"User {current_user_id} requesting analysis {analysis_id}")
+        
+        analysis = AnalysisService.get_analysis_by_id(db, analysis_id)
+        
+        if not analysis:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analysis not found")
+        
+        # Convert to int to handle string/int mismatch
+        if int(analysis.user_id) != int(current_user_id):
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized")
+        
+        return {
+            "id": analysis.id,
+            "analysis_id": analysis.analysis_id,
+            "url": analysis.url,
+            "status": analysis.status,
+            "seo_overall_score": analysis.seo_overall_score,
+            "seo_strengths": analysis.seo_strengths,
+            "seo_weaknesses": analysis.seo_weaknesses,
+            "seo_missing_elements": analysis.seo_missing_elements,
+            "seo_recommendations": analysis.seo_recommendations,
+            "ux_overall_score": analysis.ux_overall_score,
+            "ux_strengths": analysis.ux_strengths,
+            "ux_weaknesses": analysis.ux_weaknesses,
+            "ux_missing_elements": analysis.ux_missing_elements,
+            "ux_recommendations": analysis.ux_recommendations,
+            "created_at": analysis.created_at,
+            "completed_at": analysis.completed_at,
+            "processing_time_ms": analysis.processing_time_ms,
+            "error": analysis.error,
+        }
+    except Exception as e:
+        logger.error(f"Error in get_analysis_results: {str(e)}")
+        raise
 
 
 @router.get("/history")

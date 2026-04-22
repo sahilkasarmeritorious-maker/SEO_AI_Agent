@@ -6,6 +6,10 @@ from app.core.security import SecurityService
 
 class UserService:
     @staticmethod
+    def get_user_by_username(db: Session, username: str):
+        return db.query(User).filter(User.username == username).first()
+    
+    @staticmethod
     def get_user_by_email(db: Session, email: str):
         return db.query(User).filter(User.email == email).first()
     
@@ -17,8 +21,8 @@ class UserService:
     def create_user(db: Session, user: UserCreate):
         hashed_password = SecurityService.hash_password(user.password)
         db_user = User(
+            username=user.username,
             email=user.email,
-            full_name=user.full_name,
             hashed_password=hashed_password
         )
         db.add(db_user)
@@ -27,8 +31,8 @@ class UserService:
         return db_user
     
     @staticmethod
-    def authenticate_user(db: Session, email: str, password: str):
-        user = UserService.get_user_by_email(db, email)
+    def authenticate_user(db: Session, username: str, password: str):
+        user = UserService.get_user_by_username(db, username)
         if not user:
             return None
         if not SecurityService.verify_password(password, user.hashed_password):

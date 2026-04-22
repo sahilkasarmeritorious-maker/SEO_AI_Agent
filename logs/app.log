@@ -4,3 +4,321 @@
 2026-04-21 15:40:12,874 - app.core.logging - INFO - Dummy user already exists: demo@example.com
 2026-04-21 15:40:12,875 - app.core.logging - INFO - Dummy user setup complete...######
 2026-04-21 15:40:35,143 - app.core.logging - INFO - Shutting down application...######
+2026-04-21 16:39:24,447 - app.core.logging - INFO - Starting application...#######
+2026-04-21 16:39:24,479 - app.core.logging - ERROR - Failed to create dummy user: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'demo@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-04-21 16:39:24,479 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-21 16:42:54,509 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-21 16:43:24,682 - app.core.logging - INFO - Shutting down application...######
+2026-04-21 16:46:16,589 - app.core.logging - INFO - Starting application...#######
+2026-04-21 16:46:16,616 - app.core.logging - ERROR - Failed to create dummy user: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'demo@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-04-21 16:46:16,617 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-21 16:48:39,174 - app.core.logging - INFO - Shutting down application...######
+2026-04-21 16:54:06,142 - app.core.logging - INFO - Starting application...#######
+2026-04-21 16:54:06,170 - app.core.logging - ERROR - Failed to create dummy user: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'demo@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-04-21 16:54:06,170 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-21 16:56:26,602 - app.core.logging - INFO - Shutting down application...######
+2026-04-21 17:02:57,489 - app.core.logging - INFO - Starting application...#######
+2026-04-21 17:02:57,531 - app.core.logging - INFO - Database tables created...######
+2026-04-21 17:02:57,878 - app.core.logging - INFO - Created dummy user: demo@example.com (password: demo123456)
+2026-04-21 17:02:57,878 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-21 17:04:35,244 - app.core.logging - INFO - Login attempt: demo@example.com
+2026-04-21 17:04:35,548 - app.core.logging - INFO - User logged in: demo@example.com
+2026-04-21 17:30:12,263 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-21 17:30:12,273 - app.core.logging - INFO - Starting analysis 1 for https://example.com
+2026-04-21 17:30:16,666 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 17:30:16,713 - app.core.logging - INFO - Analysis 1 completed with score 30
+2026-04-21 17:47:27,324 - app.core.logging - INFO - Login attempt: demo@example.com
+2026-04-21 17:47:27,636 - app.core.logging - INFO - User logged in: demo@example.com
+2026-04-22 11:00:14,509 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:00:14,592 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:00:14,944 - app.core.logging - INFO - Created dummy user: demo@example.com (password: demo123456)
+2026-04-22 11:00:14,945 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:02:08,557 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-22 11:02:08,880 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
+2026-04-22 11:03:19,550 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 11:03:40,551 - app.core.logging - INFO - Login attempt: sahilkasar@gmail.com
+2026-04-22 11:04:52,962 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:05:05,850 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:05:05,879 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:05:05,888 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:05:05,889 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:05:24,875 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 11:05:25,214 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 11:05:44,908 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 11:07:10,762 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:07:23,347 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:07:23,373 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:07:23,381 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:07:23,382 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:07:34,071 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 11:07:34,082 - app.core.logging - INFO - Starting analysis 1 for https://example.com
+2026-04-22 11:07:34,087 - app.core.logging - ERROR - Analysis 1 failed: This transaction is closed
+2026-04-22 11:09:43,389 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:09:45,024 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:09:45,052 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:09:45,060 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:09:45,061 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:10:08,507 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 11:10:08,518 - app.core.logging - INFO - Starting analysis 2 for https://example.com
+2026-04-22 11:10:12,832 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:10:16,793 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:10:16,798 - app.core.logging - INFO - Analysis 2 completed: SEO 30, UX 40
+2026-04-22 11:14:03,296 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:14:22,940 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:14:22,966 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:14:22,974 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:14:22,974 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:14:39,175 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 11:14:39,186 - app.core.logging - INFO - Starting analysis 3 for https://example.com
+2026-04-22 11:14:43,655 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:14:47,753 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:14:47,756 - app.core.logging - INFO - Analysis 3 completed: SEO 30, UX 40
+2026-04-22 11:18:05,386 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:29:10,026 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:29:10,071 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:29:10,412 - app.core.logging - INFO - Created dummy user: demo@example.com (password: demo123456)
+2026-04-22 11:29:10,413 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:30:28,646 - app.core.logging - INFO - Login attempt: demo@example.com
+2026-04-22 11:30:28,975 - app.core.logging - INFO - User logged in: demo@example.com
+2026-04-22 11:30:42,362 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-22 11:30:42,373 - app.core.logging - INFO - Starting analysis 1 for https://example.com
+2026-04-22 11:30:46,771 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:30:50,885 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:30:50,892 - app.core.logging - ERROR - Analysis 1 failed: Instance <Analysis at 0x73e66cc607a0> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+2026-04-22 11:31:17,882 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:31:23,051 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:31:23,075 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:31:23,087 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:31:23,087 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:31:29,976 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-22 11:31:29,987 - app.core.logging - INFO - Starting analysis 2 for https://example.com
+2026-04-22 11:31:34,259 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:31:38,287 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:31:38,292 - app.core.logging - INFO - Analysis 2 completed: SEO 30, UX 40
+2026-04-22 11:33:47,360 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:34:14,127 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:34:14,151 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:34:14,163 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:34:14,163 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:34:17,782 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-22 11:34:17,795 - app.core.logging - INFO - Starting analysis 3 for https://example.com
+2026-04-22 11:34:22,931 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:34:26,912 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:34:26,914 - app.core.logging - INFO - SEO Report Score: 30
+2026-04-22 11:34:26,914 - app.core.logging - INFO - SEO Strengths: 2 items
+2026-04-22 11:34:26,915 - app.core.logging - INFO - UX Report Score: 40
+2026-04-22 11:34:26,915 - app.core.logging - INFO - UX Strengths: 2 items
+2026-04-22 11:34:26,915 - app.core.logging - INFO - Saving SEO Score: 30, Strengths: [{"finding": "The website has a clear and concise 
+2026-04-22 11:34:26,915 - app.core.logging - INFO - Saving UX Score: 40, Strengths: [{"finding": "The website has a clear title and a 
+2026-04-22 11:34:26,916 - app.core.logging - INFO - Analysis 3 completed: SEO 30, UX 40
+2026-04-22 11:36:07,537 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:36:17,420 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:36:17,447 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:36:17,459 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:36:17,459 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:36:34,411 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:36:40,426 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:36:40,452 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:36:40,463 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:36:40,464 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:36:58,326 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:36:59,979 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:37:00,009 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:37:00,021 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:37:00,022 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:37:00,826 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:37:02,862 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:37:02,890 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:37:02,901 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:37:02,901 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:37:03,002 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:37:04,775 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:37:04,817 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:37:04,829 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:37:04,829 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:37:05,733 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:37:07,482 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:37:07,507 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:37:07,521 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:37:07,522 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:37:45,171 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-22 11:37:45,183 - app.core.logging - INFO - Starting analysis 4 for https://example.com
+2026-04-22 11:37:49,459 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:37:53,364 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:37:53,368 - app.core.logging - INFO - SEO Report Score: 30
+2026-04-22 11:37:53,368 - app.core.logging - INFO - SEO Strengths: 2 items
+2026-04-22 11:37:53,369 - app.core.logging - INFO - UX Report Score: 40
+2026-04-22 11:37:53,369 - app.core.logging - INFO - UX Strengths: 2 items
+2026-04-22 11:37:53,371 - app.core.logging - INFO - Saving SEO Score: 30, Strengths: [{"finding": "The website has a clear and concise 
+2026-04-22 11:37:53,371 - app.core.logging - INFO - Saving UX Score: 40, Strengths: [{"finding": "The website has a clear title and a 
+2026-04-22 11:37:53,385 - app.core.logging - INFO - Analysis 4 completed: SEO 30, UX 40
+2026-04-22 11:42:30,432 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:42:50,600 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:42:50,626 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:42:50,636 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:42:50,636 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:42:57,609 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-22 11:42:57,622 - app.core.logging - INFO - Starting analysis 5 for https://example.com
+2026-04-22 11:43:01,877 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:43:05,975 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:43:05,994 - app.core.logging - INFO - Analysis 5 completed: SEO 30, UX 40
+2026-04-22 11:47:40,274 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:47:50,338 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:47:50,362 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:47:50,373 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:47:50,373 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:49:27,341 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:49:28,951 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:49:28,978 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:49:28,990 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:49:28,990 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:49:52,919 - app.core.logging - INFO - User 1 submitted analysis for https://example.com
+2026-04-22 11:49:52,936 - app.core.logging - INFO - Starting analysis 6 for https://example.com
+2026-04-22 11:49:59,022 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:50:03,861 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:50:03,883 - app.core.logging - INFO - Analysis 6 completed: SEO 20, UX 40
+2026-04-22 11:51:00,882 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 11:53:04,629 - app.core.logging - INFO - Starting application...#######
+2026-04-22 11:53:04,655 - app.core.logging - INFO - Database tables created...######
+2026-04-22 11:53:04,666 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 11:53:04,666 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 11:54:27,710 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-22 11:54:28,051 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
+2026-04-22 11:55:02,288 - app.core.logging - INFO - Login attempt: Sahil_kasar
+2026-04-22 11:55:21,937 - app.core.logging - INFO - Login attempt: sahilkasar@gmail.com
+2026-04-22 11:55:59,420 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 11:55:59,726 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 11:56:26,664 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 11:56:26,682 - app.core.logging - INFO - Starting analysis 7 for https://example.com
+2026-04-22 11:56:31,064 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:56:35,142 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-22 11:56:35,153 - app.core.logging - INFO - Analysis 7 completed: SEO 30, UX 40
+2026-04-22 12:00:25,666 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 12:00:27,508 - app.core.logging - INFO - Starting application...#######
+2026-04-22 12:00:27,536 - app.core.logging - INFO - Database tables created...######
+2026-04-22 12:00:27,549 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 12:00:27,550 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 12:00:37,612 - app.core.logging - INFO - User 2 requesting analysis 7
+2026-04-22 12:29:17,140 - app.core.logging - INFO - Starting application...#######
+2026-04-22 12:29:17,247 - app.core.logging - INFO - Database tables created...######
+2026-04-22 12:29:17,263 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 12:29:17,265 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 12:29:56,078 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 12:29:56,423 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 12:31:02,767 - app.core.logging - INFO - User 2 requesting analysis 7
+2026-04-22 12:31:02,771 - app.core.logging - INFO - DEBUG: analysis.user_id=2, current_user_id=2
+2026-04-22 12:31:02,771 - app.core.logging - ERROR - Error in get_analysis_results: 403: Not authorized
+2026-04-22 12:32:42,521 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 12:32:44,234 - app.core.logging - INFO - Starting application...#######
+2026-04-22 12:32:44,258 - app.core.logging - INFO - Database tables created...######
+2026-04-22 12:32:44,269 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 12:32:44,270 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 12:32:50,431 - app.core.logging - INFO - User 2 requesting analysis 7
+2026-04-22 12:35:06,908 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 12:35:08,510 - app.core.logging - INFO - Starting application...#######
+2026-04-22 12:35:08,545 - app.core.logging - INFO - Database tables created...######
+2026-04-22 12:35:08,556 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 12:35:08,556 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 12:35:12,818 - app.core.logging - INFO - User 2 requesting analysis 7
+2026-04-22 13:19:45,977 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 13:25:39,157 - app.core.logging - INFO - Starting application...#######
+2026-04-22 13:25:39,181 - app.core.logging - INFO - Database tables created...######
+2026-04-22 13:25:39,192 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 13:25:39,192 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 13:26:03,938 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 13:26:04,269 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 13:26:52,533 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 13:26:52,553 - app.core.logging - INFO - Starting analysis 8 for https://example.com
+2026-04-22 13:26:56,677 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-22 13:26:57,703 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-22 13:26:59,732 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-22 13:26:59,734 - app.core.logging - ERROR - Analysis 8 failed: RetryError[<Future at 0x785741b3f2f0 state=finished raised AuthenticationError>]
+2026-04-22 14:35:17,701 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 14:43:28,490 - app.core.logging - INFO - Starting application...#######
+2026-04-22 14:43:28,516 - app.core.logging - INFO - Database tables created...######
+2026-04-22 14:43:28,526 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 14:43:28,526 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 14:43:58,347 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 14:43:58,689 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 14:44:05,947 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 14:44:05,964 - app.core.logging - INFO - Starting analysis 9 for https://example.com
+2026-04-22 14:44:08,834 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-22 14:44:19,730 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-22 14:44:19,734 - google_genai._api_client - INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.6 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+2026-04-22 14:44:24,616 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-22 14:44:24,618 - google_genai._api_client - INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.87 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+2026-04-22 14:44:32,742 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-22 14:44:32,743 - google_genai._api_client - INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.08 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+2026-04-22 14:44:38,418 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-22 14:44:38,419 - google_genai._api_client - INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.5 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+2026-04-22 14:44:49,881 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-22 14:44:49,884 - google_genai._api_client - INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.5 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+2026-04-22 14:45:08,469 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-22 14:45:08,472 - app.core.logging - ERROR - Analysis 9 failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-22 14:48:48,872 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 14:48:51,482 - app.core.logging - INFO - Starting application...#######
+2026-04-22 14:48:51,507 - app.core.logging - INFO - Database tables created...######
+2026-04-22 14:48:51,518 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 14:48:51,519 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 14:50:11,529 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-22 14:50:11,547 - app.core.logging - INFO - Starting analysis 10 for https://example.com
+2026-04-22 14:50:14,633 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-22 14:50:18,372 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-22 14:50:21,196 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-22 14:50:25,887 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-22 14:50:25,911 - app.core.logging - INFO - Analysis 10 completed: SEO 5, UX 15
+2026-04-22 14:51:34,217 - app.core.logging - INFO - User 2 requesting analysis 10
+2026-04-22 15:19:09,318 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 16:17:48,600 - app.core.logging - INFO - Starting application...#######
+2026-04-22 16:17:48,625 - app.core.logging - INFO - Database tables created...######
+2026-04-22 16:17:48,635 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 16:17:48,635 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 16:18:36,077 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 16:18:36,423 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 16:25:59,483 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 16:26:02,111 - app.core.logging - INFO - Starting application...#######
+2026-04-22 16:26:02,137 - app.core.logging - INFO - Database tables created...######
+2026-04-22 16:26:02,150 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 16:26:02,152 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 16:26:02,654 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 16:51:05,023 - app.core.logging - INFO - Starting application...#######
+2026-04-22 16:51:05,048 - app.core.logging - INFO - Database tables created...######
+2026-04-22 16:51:05,059 - app.core.logging - INFO - Dummy user already exists: demo@example.com
+2026-04-22 16:51:05,059 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 16:51:53,648 - app.core.logging - INFO - Login attempt: Sahil_Kasar
+2026-04-22 16:51:53,988 - app.core.logging - INFO - User logged in: Sahil_Kasar
+2026-04-22 16:52:21,499 - app.core.logging - INFO - User 2 requesting analysis 10
+2026-04-22 16:52:42,763 - app.core.logging - INFO - Shutting down application...######
+2026-04-22 17:32:10,560 - app.core.logging - INFO - Starting application...#######
+2026-04-22 17:32:10,945 - app.core.logging - INFO - Created dummy user: demo@example.com (password: demo123456)
+2026-04-22 17:32:10,945 - app.core.logging - INFO - Dummy user setup complete...######
+2026-04-22 17:36:15,189 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-22 17:36:15,510 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
+2026-04-22 17:54:02,775 - app.core.logging - INFO - Shutting down application...######

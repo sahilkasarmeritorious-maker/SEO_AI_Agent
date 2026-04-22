@@ -1,31 +1,31 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from datetime import datetime
 
 
 class UserCreate(BaseModel):
-    email: EmailStr
-    full_name: str
-    password: str
+    username: str = Field(..., min_length=3, max_length=50, description="Unique username")
+    email: EmailStr = Field(..., description="Unique email address")
+    password: str = Field(..., min_length=8, description="Password (min 8 characters)")
     
     class Config:
         json_schema_extra = {
             "example": {
-                "email": "user@example.com",
-                "full_name": "John Doe",
+                "username": "johndoe",
+                "email": "john@example.com",
                 "password": "securepass123"
             }
         }
 
 
 class UserLogin(BaseModel):
-    email: EmailStr
-    password: str
+    username: str = Field(..., description="Username")
+    password: str = Field(..., description="Password")
     
     class Config:
         json_schema_extra = {
             "example": {
-                "email": "user@example.com",
+                "username": "johndoe",
                 "password": "securepass123"
             }
         }
@@ -33,8 +33,8 @@ class UserLogin(BaseModel):
 
 class UserResponse(BaseModel):
     id: int
+    username: str
     email: str
-    full_name: str
     is_active: bool
     created_at: datetime
     

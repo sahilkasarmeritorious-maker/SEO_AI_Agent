@@ -2,10 +2,22 @@ import json
 import time
 from typing import Optional
 from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_google_genai import ChatGoogleGenerativeAI
+from core.config import Config
 from core.llm import llm
 from schema.report import SEOReport
 from tools.scraper import PageScraper
 from tools.html_parser import HTMLParser
+
+
+llm = ChatGoogleGenerativeAI(
+    model=Config.LLM_MODEL,
+    google_api_key=Config.GEMINI_API_KEY,
+    temperature=Config.LLM_TEMPERATURE,
+    max_tokens=Config.LLM_MAX_TOKENS
+)
+
+__all__ = ["llm"]
 
 class SEOAgent:
     """Analyzes website SEO metrics and provides recommendations."""

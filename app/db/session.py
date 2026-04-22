@@ -16,11 +16,11 @@ engine = create_engine(
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-def get_db() -> Generator[Session:, None, None]: 
-    """Dependency to get database session."""
+def get_db() -> Generator[Session, None, None]:
     db = SessionLocal()
     try:
         yield db
+        db.commit()
     except Exception:
         db.rollback()
         raise
@@ -28,7 +28,7 @@ def get_db() -> Generator[Session:, None, None]:
         db.close()
 
 
-def create_tables():
-    """Create all tables."""
-    from app.db.base import Base
-    Base.metadata.create_all(bind=engine)
+# def create_tables():
+#     """Create all tables."""
+#     from app.db.base import Base
+#     Base.metadata.create_all(bind=engine)

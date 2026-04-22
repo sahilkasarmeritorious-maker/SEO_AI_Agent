@@ -8,12 +8,12 @@ class User(Base):
     __tablename__ = "users"
     
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    full_name = Column(String)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    username = Column(String(50), unique=True, index=True, nullable=False)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    hashed_password = Column(String, nullable=False)
+    is_active = Column(Boolean, default=True, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, index=True)
     
     # Relationships
     analyses = relationship("Analysis", back_populates="user", cascade="all, delete-orphan")
@@ -25,15 +25,22 @@ class Analysis(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), index=True)
     url = Column(String, index=True)
-    job_id = Column(String, unique=True, index=True)
+    analysis_id = Column(String, unique=True, index=True)  # Visible ID: ANALYSIS-ABC12345
     status = Column(String, default="pending")  # pending, processing, completed, failed
     
-    # Results
-    overall_score = Column(Integer, nullable=True)
-    strengths = Column(Text, nullable=True)  # JSON string
-    weaknesses = Column(Text, nullable=True)  # JSON string
-    missing_elements = Column(Text, nullable=True)  # JSON string
-    recommendations = Column(Text, nullable=True)  # JSON string
+    # SEO Results
+    seo_overall_score = Column(Integer, nullable=True)
+    seo_strengths = Column(Text, nullable=True)  # JSON string
+    seo_weaknesses = Column(Text, nullable=True)  # JSON string
+    seo_missing_elements = Column(Text, nullable=True)  # JSON string
+    seo_recommendations = Column(Text, nullable=True)  # JSON string
+    
+    # UX Results
+    ux_overall_score = Column(Integer, nullable=True)
+    ux_strengths = Column(Text, nullable=True)  # JSON string
+    ux_weaknesses = Column(Text, nullable=True)  # JSON string
+    ux_missing_elements = Column(Text, nullable=True)  # JSON string
+    ux_recommendations = Column(Text, nullable=True)  # JSON string
     
     error = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, index=True)

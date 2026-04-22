@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
 from app.core.logging import logger
-from app.db.session import create_tables, SessionLocal
+from app.db.session import SessionLocal  #, create_tables
 from app.db.models import User
 from app.api.routes import auth, analysis
 from app.services.user_service import UserService
@@ -30,8 +30,8 @@ async def startup_event():
     logger.info("Starting application...#######")
     
     # Create database tables
-    create_tables()
-    logger.info("Database tables created...######")
+    # create_tables()
+    # logger.info("Database tables created...######")
     
     # Create dummy user
     create_dummy_user()
@@ -48,7 +48,7 @@ def create_dummy_user():
     db = SessionLocal()
     try:
         # Check if dummy user exists
-        dummy_user = db.query(User).filter(User.email == settings.DUMMY_USER_EMAIL).first()
+        dummy_user = db.query(User).filter(User.username == settings.DUMMY_USER_EMAIL).first()
         
         if dummy_user:
             logger.info(f"Dummy user already exists: {settings.DUMMY_USER_EMAIL}")
@@ -56,13 +56,13 @@ def create_dummy_user():
         
         # Create dummy user
         user_create = UserCreate(
-            email=settings.DUMMY_USER_EMAIL,
-            full_name=settings.DUMMY_USER_FULL_NAME,
+            username=settings.DUMMY_USER_EMAIL,
+            email=f"{settings.DUMMY_USER_EMAIL}",
             password=settings.DUMMY_USER_PASSWORD
         )
         
         user = UserService.create_user(db, user_create)
-        logger.info(f"Created dummy user: {user.email} (password: {settings.DUMMY_USER_PASSWORD})")
+        logger.info(f"Created dummy user: {user.username} (password: {settings.DUMMY_USER_PASSWORD})")
         
     except Exception as e:
         logger.error(f"Failed to create dummy user: {str(e)}")
