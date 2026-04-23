@@ -3,13 +3,12 @@ from dataclasses import dataclass, field, asdict
 from typing import Optional
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
+import re
 
 
-# =============================================================================
-# DATA CLASSES — structured containers for extracted data
-# =============================================================================
-# Each dataclass maps to one domain of analysis.
-# Agents receive these objects and can access fields by name.
+# ═══════════════════════════════════════════════════════════════
+# DATA CLASSES
+# ═══════════════════════════════════════════════════════════════
 
 @dataclass
 class MetaInfo:
@@ -51,10 +50,7 @@ class HeadingStructure:
 
     @property
     def has_skipped_levels(self) -> bool:
-        """
-        Detects if heading levels are skipped (e.g. H1 directly to H3).
-        This is a WCAG accessibility issue and bad for document structure.
-        """
+        """Detects if heading levels are skipped (e.g. H1 directly to H3)."""
         levels_used = [i for i in range(1, 7) if len(getattr(self, f"h{i}")) > 0]
         for i in range(len(levels_used) - 1):
             if levels_used[i + 1] - levels_used[i] > 1:
@@ -98,415 +94,316 @@ class VideoInfo:
     sources: list[str]
     has_controls: bool
     autoplay: bool
-    has_captions: bool
-    width: Optional[str]
-    height: Optional[str]
+
+
+@dataclass
+class ButtonInfo:
+    text: str
+    button_type: str
+    is_submit: bool
 
 
 @dataclass
 class ParsedPage:
-    base_url: str
+    url: str
     meta: MetaInfo
     headings: HeadingStructure
     links: list[LinkInfo]
     images: list[ImageInfo]
     forms: list[FormInfo]
     videos: list[VideoInfo]
-    scripts: list[str]
-    stylesheets: list[str]
-    iframes: list[str]
-    schema_types: list[str]
+    buttons: list[ButtonInfo]
+    paragraphs: list[str]
     word_count: int
-    inline_styles_count: int
-
-    # Computed counts (derived from the lists above — set during parsing)
-    internal_link_count: int = 0
-    external_link_count: int = 0
-
-    @property
-    def has_schema_markup(self) -> bool:
-        return len(self.schema_types) > 0
-
-    @property
-    def has_viewport_meta(self) -> bool:
-        return bool(self.meta.viewport)
-
-    @property
-    def images_missing_alt(self) -> list[ImageInfo]:
-        """Images that have NO alt attribute at all — accessibility violation."""
-        return [img for img in self.images if not img.has_alt]
-
-    @property
-    def images_without_dimensions(self) -> list[ImageInfo]:
-        """Images missing width/height — causes Cumulative Layout Shift (CLS)."""
-        return [img for img in self.images if not img.width or not img.height]
-
-    def to_dict(self) -> dict:
-        """Convert entire ParsedPage to a JSON-serialisable dict."""
-        return asdict(self)
+    has_schema_markup: bool
+    schema_types: list[str]
+    internal_link_count: int
+    external_link_count: int
+    images_missing_alt: list[str]
+    has_skip_links: bool
+    has_focus_indicators: bool
+    is_mobile_responsive: bool
+    all_elements: list = field(default_factory=list)
 
 
-# =============================================================================
-# MAIN CLASS — HTMLParser
-# =============================================================================
+# ═══════════════════════════════════════════════════════════════
+# HTML PARSER
+# ═══════════════════════════════════════════════════════════════
 
 class HTMLParser:
-
+    """Parse and extract structured data from HTML."""
+    
     def __init__(self, html: str, base_url: str = ""):
-        """
-        Initialise the parser with HTML content and the page's base URL.
-
-        Args:
-            html    : Raw HTML string from PageScraper.scrape()
-            base_url: The page's URL — used to resolve relative links/images
-                      to absolute URLs (e.g. "/about" → "https://example.com/about")
-        """
         self.html = html
         self.base_url = base_url
-
-        # Extract the domain from base_url for internal/external link classification.
-        # urlparse("https://example.com/page").netloc → "example.com"
-        self.domain = urlparse(base_url).netloc if base_url else ""
-
-        # Build the BeautifulSoup tree once.
-        # "lxml" is faster than Python's built-in "html.parser" and handles
-        # malformed HTML more gracefully.
-        self._soup = BeautifulSoup(html, "lxml")
-
-    # -------------------------------------------------------------------------
-    # PUBLIC METHOD — parse()
-    # -------------------------------------------------------------------------
-
+        self.soup = BeautifulSoup(html, "html.parser")
+    
     def parse(self) -> ParsedPage:
-        links = self._parse_links()
-        internal = [l for l in links if not l.is_external]
-        external = [l for l in links if l.is_external]
-
+        """Parse HTML and extract all data."""
         return ParsedPage(
-            base_url=self.base_url,
-            meta=self._parse_meta(),
-            headings=self._parse_headings(),
-            links=links,
-            images=self._parse_images(),
-            forms=self._parse_forms(),
-            videos=self._parse_videos(),
-            scripts=self._parse_scripts(),
-            stylesheets=self._parse_stylesheets(),
-            iframes=self._parse_iframes(),
-            schema_types=self._parse_schema_types(),
-            word_count=self._calculate_word_count(),
-            inline_styles_count=self._count_inline_styles(),
-            internal_link_count=len(internal),
-            external_link_count=len(external),
+            url=self.base_url,
+            meta=self._extract_meta(),
+            headings=self._extract_headings(),
+            links=self._extract_links(),
+            images=self._extract_images(),
+            forms=self._extract_forms(),
+            videos=self._extract_videos(),
+            buttons=self._extract_buttons(),
+            paragraphs=self._extract_paragraphs(),
+            word_count=self._count_words(),
+            has_schema_markup=self._has_schema_markup(),
+            schema_types=self._extract_schema_types(),
+            internal_link_count=sum(1 for l in self._extract_links() if not l.is_external),
+            external_link_count=sum(1 for l in self._extract_links() if l.is_external),
+            images_missing_alt=[img.src for img in self._extract_images() if not img.has_alt],
+            has_skip_links=self._has_skip_links(),
+            has_focus_indicators=self._has_focus_indicators(),
+            is_mobile_responsive=self._is_mobile_responsive(),
         )
-
-    # -------------------------------------------------------------------------
-    # PRIVATE PARSE METHODS — each extracts one category of data
-    # -------------------------------------------------------------------------
-
-    def _get_meta_content(self, name: str = None, prop: str = None) -> str:
-        if name:
-            tag = self._soup.find("meta", attrs={"name": name})
-        elif prop:
-            tag = self._soup.find("meta", attrs={"property": prop})
-        else:
-            return ""
-        return tag.get("content", "").strip() if tag else ""
-
-    def _parse_meta(self) -> MetaInfo:
-        """
-        Extracts all <head> metadata.
-        Covers: title, description, Open Graph, Twitter Cards, viewport,
-                canonical, robots, charset, and language.
-        """
-        title_tag = self._soup.find("title")
-        canonical_tag = self._soup.find("link", attrs={"rel": "canonical"})
-        charset_tag = self._soup.find("meta", attrs={"charset": True})
-        html_tag = self._soup.find("html")
-
-        return MetaInfo(
-            title=title_tag.get_text().strip() if title_tag else "",
-            description=self._get_meta_content(name="description"),
-            keywords=self._get_meta_content(name="keywords"),
-            canonical=canonical_tag.get("href", "") if canonical_tag else "",
-            robots=self._get_meta_content(name="robots"),
-            og_title=self._get_meta_content(prop="og:title"),
-            og_description=self._get_meta_content(prop="og:description"),
-            og_image=self._get_meta_content(prop="og:image"),
-            og_type=self._get_meta_content(prop="og:type"),
-            twitter_card=self._get_meta_content(name="twitter:card"),
-            twitter_title=self._get_meta_content(name="twitter:title"),
-            twitter_description=self._get_meta_content(name="twitter:description"),
-            viewport=self._get_meta_content(name="viewport"),
-            charset=charset_tag.get("charset", "") if charset_tag else "",
-            language=html_tag.get("lang", "") if html_tag else "",
-        )
-
-    def _parse_headings(self) -> HeadingStructure:
-        return HeadingStructure(
-            h1=[h.get_text(strip=True) for h in self._soup.find_all("h1")],
-            h2=[h.get_text(strip=True) for h in self._soup.find_all("h2")],
-            h3=[h.get_text(strip=True) for h in self._soup.find_all("h3")],
-            h4=[h.get_text(strip=True) for h in self._soup.find_all("h4")],
-            h5=[h.get_text(strip=True) for h in self._soup.find_all("h5")],
-            h6=[h.get_text(strip=True) for h in self._soup.find_all("h6")],
-        )
-
-    def _parse_links(self) -> list[LinkInfo]:
+    
+    def _extract_meta(self) -> MetaInfo:
+        """Extract meta information."""
+        meta = MetaInfo()
+        
+        title_tag = self.soup.find("title")
+        meta.title = title_tag.text if title_tag else ""
+        
+        for tag in self.soup.find_all("meta"):
+            name = tag.get("name", "").lower()
+            prop = tag.get("property", "").lower()
+            content = tag.get("content", "")
+            
+            if name == "description":
+                meta.description = content
+            elif name == "keywords":
+                meta.keywords = content
+            elif name == "robots":
+                meta.robots = content
+            elif name == "viewport":
+                meta.viewport = content
+            elif name == "charset":
+                meta.charset = content
+            elif prop == "og:title":
+                meta.og_title = content
+            elif prop == "og:description":
+                meta.og_description = content
+            elif prop == "og:image":
+                meta.og_image = content
+            elif prop == "og:type":
+                meta.og_type = content
+            elif name == "twitter:card":
+                meta.twitter_card = content
+            elif name == "twitter:title":
+                meta.twitter_title = content
+            elif name == "twitter:description":
+                meta.twitter_description = content
+        
+        # Language
+        html_tag = self.soup.find("html")
+        meta.language = html_tag.get("lang", "") if html_tag else ""
+        
+        # Canonical
+        canonical_tag = self.soup.find("link", {"rel": "canonical"})
+        meta.canonical = canonical_tag.get("href", "") if canonical_tag else ""
+        
+        return meta
+    
+    def _extract_headings(self) -> HeadingStructure:
+        """Extract all headings."""
+        headings = HeadingStructure()
+        
+        for i in range(1, 7):
+            tags = self.soup.find_all(f"h{i}")
+            heading_list = getattr(headings, f"h{i}")
+            for tag in tags:
+                text = tag.get_text(strip=True)
+                if text:
+                    heading_list.append(text)
+        
+        return headings
+    
+    def _extract_links(self) -> list[LinkInfo]:
+        """Extract all links."""
         links = []
-        for a_tag in self._soup.find_all("a", href=True):
-            href = a_tag.get("href", "").strip()
-
-            # Skip non-navigational link types
-            if not href or href.startswith(("mailto:", "tel:", "javascript:", "#")):
-                continue
-
-            # urljoin converts relative URLs to absolute.
-            # urljoin("https://example.com/page", "/about") → "https://example.com/about"
-            # urljoin("https://example.com/page", "https://other.com") → "https://other.com"
-            abs_href = urljoin(self.base_url, href) if self.base_url else href
-            parsed = urlparse(abs_href)
-
-            # A link is external if it has a netloc (domain) AND that domain
-            # differs from our page's domain.
-            is_external = bool(parsed.netloc) and parsed.netloc != self.domain
-
-            # rel attribute can be a list: rel="nofollow noopener noreferrer"
-            rel_values = a_tag.get("rel", [])
-
+        
+        for tag in self.soup.find_all("a", href=True):
+            href = tag.get("href", "")
+            text = tag.get_text(strip=True)
+            
+            is_external = self._is_external_url(href)
+            has_nofollow = "nofollow" in tag.get("rel", [])
+            opens_new_tab = tag.get("target", "") == "_blank"
+            
             links.append(LinkInfo(
-                href=abs_href,
-                text=a_tag.get_text(strip=True),
+                href=href,
+                text=text,
                 is_external=is_external,
-                has_nofollow="nofollow" in rel_values,
-                opens_new_tab=a_tag.get("target", "") == "_blank",
+                has_nofollow=has_nofollow,
+                opens_new_tab=opens_new_tab,
             ))
+        
         return links
-
-    def _parse_images(self) -> list[ImageInfo]:
+    
+    def _extract_images(self) -> list[ImageInfo]:
+        """Extract all images."""
         images = []
-        for img in self._soup.find_all("img"):
-            src = img.get("src", "").strip()
-            alt = img.get("alt", None)       # None means alt attr is completely absent
-            has_alt = alt is not None        # alt="" is present (even if empty)
-
-            images.append(ImageInfo(
-                src=urljoin(self.base_url, src) if self.base_url and src else src,
-                alt=alt if alt is not None else "",
-                has_alt=has_alt,
-                width=img.get("width"),
-                height=img.get("height"),
-                is_decorative=(alt == ""),    # alt="" = deliberately decorative
-                loading=img.get("loading", "auto"),
-            ))
-        return images
-
-    def _parse_forms(self) -> list[FormInfo]:
-        forms = []
-        for form in self._soup.find_all("form"):
-            inputs = form.find_all(["input", "textarea", "select"])
-            input_types = list({i.get("type", "text") for i in inputs})
-
-            # Check for submit mechanism — either a submit input or a button
-            has_submit = bool(
-                form.find("input", type="submit") or
-                form.find("button", type="submit") or
-                form.find("button", type=None)   # button without type defaults to submit
+        
+        for tag in self.soup.find_all("img"):
+            src = tag.get("src", "")
+            alt = tag.get("alt", "")
+            width = tag.get("width")
+            height = tag.get("height")
+            loading = tag.get("loading", "auto")
+            
+            # Check if decorative (empty alt with role="presentation" or aria-hidden)
+            is_decorative = (
+                alt == "" and 
+                (tag.get("role") == "presentation" or tag.get("aria-hidden") == "true")
             )
-
+            
+            images.append(ImageInfo(
+                src=src,
+                alt=alt,
+                has_alt=len(alt) > 0,
+                width=width,
+                height=height,
+                is_decorative=is_decorative,
+                loading=loading,
+            ))
+        
+        return images
+    
+    def _extract_forms(self) -> list[FormInfo]:
+        """Extract all forms."""
+        forms = []
+        
+        for form_tag in self.soup.find_all("form"):
+            action = form_tag.get("action", "")
+            method = form_tag.get("method", "GET").upper()
+            
+            inputs = form_tag.find_all(["input", "textarea", "select"])
+            input_count = len(inputs)
+            input_types = [inp.get("type", "text") for inp in inputs if inp.name == "input"]
+            
+            labels = form_tag.find_all("label")
+            has_labels = len(labels) > 0
+            
+            has_submit = any(
+                inp.get("type") == "submit" 
+                for inp in form_tag.find_all("input")
+            )
+            
             forms.append(FormInfo(
-                action=form.get("action", ""),
-                method=form.get("method", "get").upper(),
-                input_count=len(inputs),
-                has_labels=bool(form.find_all("label")),
+                action=action,
+                method=method,
+                input_count=input_count,
+                has_labels=has_labels,
                 input_types=input_types,
                 has_submit=has_submit,
             ))
+        
         return forms
-
-    def _parse_videos(self) -> list[VideoInfo]:
+    
+    def _extract_videos(self) -> list[VideoInfo]:
+        """Extract all videos."""
         videos = []
-        for video in self._soup.find_all("video"):
-            # <source> children provide multiple format options (mp4, webm, etc.)
-            sources = [s.get("src", "") for s in video.find_all("source", src=True)]
-
+        
+        for video_tag in self.soup.find_all("video"):
+            src = video_tag.get("src", "")
+            sources = [s.get("src", "") for s in video_tag.find_all("source")]
+            has_controls = "controls" in video_tag.attrs
+            autoplay = "autoplay" in video_tag.attrs
+            
             videos.append(VideoInfo(
-                src=video.get("src", ""),
+                src=src,
                 sources=sources,
-                has_controls=video.has_attr("controls"),
-                autoplay=video.has_attr("autoplay"),
-                has_captions=bool(video.find("track", attrs={"kind": "captions"})),
-                width=video.get("width"),
-                height=video.get("height"),
+                has_controls=has_controls,
+                autoplay=autoplay,
             ))
+        
         return videos
-
-    def _parse_scripts(self) -> list[str]:
-        return [
-            s.get("src", "").strip()
-            for s in self._soup.find_all("script", src=True)
-            if s.get("src", "").strip()
-        ]
-
-    def _parse_stylesheets(self) -> list[str]:
-        return [
-            link.get("href", "").strip()
-            for link in self._soup.find_all("link", rel="stylesheet")
-            if link.get("href", "").strip()
-        ]
-
-    def _parse_iframes(self) -> list[str]:
-        return [
-            urljoin(self.base_url, f.get("src", ""))
-            for f in self._soup.find_all("iframe", src=True)
-        ]
-
-    def _parse_schema_types(self) -> list[str]:
-        schema_types = []
-        for script in self._soup.find_all("script", type="application/ld+json"):
+    
+    def _extract_buttons(self) -> list[ButtonInfo]:
+        """Extract all buttons."""
+        buttons = []
+        
+        for btn_tag in self.soup.find_all(["button", "input"]):
+            if btn_tag.name == "input" and btn_tag.get("type") not in ["button", "submit", "reset"]:
+                continue
+            
+            text = btn_tag.get_text(strip=True) if btn_tag.name == "button" else btn_tag.get("value", "")
+            button_type = btn_tag.get("type", "button")
+            is_submit = button_type == "submit"
+            
+            buttons.append(ButtonInfo(
+                text=text,
+                button_type=button_type,
+                is_submit=is_submit,
+            ))
+        
+        return buttons
+    
+    def _extract_paragraphs(self) -> list[str]:
+        """Extract all paragraphs."""
+        paragraphs = []
+        
+        for p_tag in self.soup.find_all("p"):
+            text = p_tag.get_text(strip=True)
+            if text:
+                paragraphs.append(text)
+        
+        return paragraphs
+    
+    def _count_words(self) -> int:
+        """Count total words on page."""
+        text = self.soup.get_text(strip=True)
+        words = text.split()
+        return len(words)
+    
+    def _has_schema_markup(self) -> bool:
+        """Check if page has schema markup."""
+        return bool(self.soup.find("script", {"type": "application/ld+json"}))
+    
+    def _extract_schema_types(self) -> list[str]:
+        """Extract schema markup types."""
+        types = []
+        
+        for script_tag in self.soup.find_all("script", {"type": "application/ld+json"}):
             try:
-                data = json.loads(script.string or "{}")
-                # JSON-LD can be a single object or an array of objects
-                if isinstance(data, list):
-                    for item in data:
-                        if "@type" in item:
-                            schema_types.append(item["@type"])
-                elif isinstance(data, dict) and "@type" in data:
-                    schema_types.append(data["@type"])
-            except (json.JSONDecodeError, AttributeError):
-                # Malformed JSON-LD — skip silently
+                data = json.loads(script_tag.string)
+                if isinstance(data, dict):
+                    schema_type = data.get("@type", "")
+                    if schema_type:
+                        types.append(schema_type)
+            except:
                 pass
-        return schema_types
-
-    def _calculate_word_count(self) -> int:
-        # Work on a copy so we don't mutate the original soup tree
-        soup_copy = BeautifulSoup(self.html, "lxml")
-        for invisible in soup_copy(["script", "style", "noscript", "head", "meta"]):
-            invisible.decompose()   # removes the tag and its contents entirely
-
-        visible_text = soup_copy.get_text(separator=" ", strip=True)
-        return len(visible_text.split())
-
-    def _count_inline_styles(self) -> int:
-        return len(self._soup.find_all(style=True))
-
-
-# =============================================================================
-# PRETTY PRINTER — for terminal testing
-# =============================================================================
-
-class ParseResultPrinter:
-    # Emoji indicators for pass/fail/warning states
-    OK = "Done ✓✓"
-    WARN = "Warning !! "
-    FAIL = "Failed XX"
-
-    def __init__(self, page: ParsedPage):
-        self.page = page
-
-    def _status(self, condition: bool, warn_on_false: bool = False) -> str:
-        """Returns OK, WARN, or FAIL emoji based on condition."""
-        if condition:
-            return self.OK
-        return self.WARN if warn_on_false else self.FAIL
-
-    def print(self) -> None:
-        """Print the full parsed page summary to stdout."""
-        p = self.page
-        self._section("META")
-        print(f"  Title        : {p.meta.title or f'{self.FAIL} MISSING'}")
-        desc = p.meta.description
-        print(f"  Description  : {(desc[:80] + '...') if len(desc) > 80 else desc or f'{self.FAIL} MISSING'}")
-        print(f"  Canonical    : {p.meta.canonical or f'{self.WARN} not set'}")
-        print(f"  OG Title     : {p.meta.og_title or f'{self.WARN} not set'}")
-        print(f"  OG Image     : {p.meta.og_image or f'{self.WARN} not set'}")
-        print(f"  Language     : {p.meta.language or f'{self.WARN} not set'}")
-        print(f"  Charset      : {p.meta.charset or f'{self.WARN} not set'}")
-        print(f"  Viewport     : {p.meta.viewport or f'{self.FAIL} MISSING'}")
-        print(f"  Robots       : {p.meta.robots or '(not set — defaults to index,follow)'}")
-
-        self._section("HEADINGS")
-        h1_status = self.OK if p.headings.has_single_h1 else (self.WARN if len(p.headings.h1) == 0 else self.FAIL)
-        print(f"  H1 ({len(p.headings.h1)}) {h1_status}: {p.headings.h1}")
-        print(f"  H2 ({len(p.headings.h2)}): {p.headings.h2[:4]}{'...' if len(p.headings.h2) > 4 else ''}")
-        print(f"  H3–H6 count  : {sum(len(getattr(p.headings, f'h{i}')) for i in range(3, 7))}")
-        if p.headings.has_skipped_levels:
-            print(f"  {self.WARN} Heading levels skipped (e.g. H1 → H3)")
-
-        self._section("LINKS")
-        print(f"  Total        : {len(p.links)}")
-        print(f"  Internal     : {p.internal_link_count}")
-        print(f"  External     : {p.external_link_count}")
-        notext = [l for l in p.links if not l.text]
-        if notext:
-            print(f"  {self.WARN} {len(notext)} links with no anchor text")
-
-        self._section("IMAGES")
-        missing = len(p.images_missing_alt)
-        lazy = sum(1 for i in p.images if i.loading == "lazy")
-        no_dims = len(p.images_without_dimensions)
-        print(f"  Total        : {len(p.images)}")
-        print(f"  Missing alt  : {missing} {self.OK if missing == 0 else self.FAIL}")
-        print(f"  Lazy loaded  : {lazy}/{len(p.images)}")
-        print(f"  No dimensions: {no_dims} {self.OK if no_dims == 0 else self.WARN}")
-
-        self._section("TECHNICAL")
-        print(f"  Word count   : {p.word_count:,} {self.OK if p.word_count >= 300 else self.WARN}")
-        print(f"  Scripts      : {len(p.scripts)}")
-        print(f"  Stylesheets  : {len(p.stylesheets)}")
-        print(f"  Inline styles: {p.inline_styles_count} {self.OK if p.inline_styles_count < 20 else self.WARN}")
-        print(f"  Iframes      : {len(p.iframes)}")
-        print(f"  Videos       : {len(p.videos)}")
-        print(f"  Forms        : {len(p.forms)}")
-
-        self._section("SCHEMA / STRUCTURED DATA")
-        if p.has_schema_markup:
-            print(f"  {self.OK} Found: {', '.join(p.schema_types)}")
-        else:
-            print(f"  {self.FAIL} No JSON-LD schema markup found")
-
-        if p.forms:
-            self._section("FORMS")
-            for i, f in enumerate(p.forms, 1):
-                label_status = self.OK if f.has_labels else self.FAIL
-                print(f"  Form {i}: method={f.method}, inputs={f.input_count}, "
-                      f"labels={label_status}, submit={self.OK if f.has_submit else self.FAIL}")
-
-        if p.videos:
-            self._section("VIDEOS")
-            for i, v in enumerate(p.videos, 1):
-                print(f"  Video {i}: controls={self.OK if v.has_controls else self.WARN}, "
-                      f"autoplay={self.FAIL if v.autoplay else self.OK}, "
-                      f"captions={self.OK if v.has_captions else self.WARN}")
-
-    def _section(self, title: str) -> None:
-        """Prints a section header."""
-        print(f"\n{'─' * 50}")
-        print(f"  {title}")
-        print(f"{'─' * 50}")
-
-
-# =============================================================================
-# CLI ENTRYPOINT
-# =============================================================================
-
-if __name__ == "__main__":
-    import sys
-
-    # Read HTML from stdin — pipe scraped HTML into this script:
-    # python tools/scraper.py https://... | python tools/html_parser.py
-    if not sys.stdin.isatty():
-        html_input = sys.stdin.read()
-        base = sys.argv[1] if len(sys.argv) > 1 else ""
-    else:
-        # Fallback: parse a saved HTML file
-        if len(sys.argv) < 2:
-            print("Usage: python html_parser.py <base_url> < page.html")
-            sys.exit(1)
-        with open(sys.argv[1], encoding="utf-8") as f:
-            html_input = f.read()
-        base = sys.argv[2] if len(sys.argv) > 2 else ""
-
-    parser = HTMLParser(html_input, base_url=base)
-    result = parser.parse()
-    ParseResultPrinter(result).print()
+        
+        return types
+    
+    def _has_skip_links(self) -> bool:
+        """Check for skip navigation links."""
+        for link in self.soup.find_all("a"):
+            href = link.get("href", "").lower()
+            text = link.get_text(strip=True).lower()
+            if "skip" in text or "skip" in href:
+                return True
+        return False
+    
+    def _has_focus_indicators(self) -> bool:
+        """Check for focus indicators in CSS."""
+        style_tags = self.soup.find_all("style")
+        css_text = " ".join(tag.string or "" for tag in style_tags)
+        return ":focus" in css_text or ":focus-visible" in css_text
+    
+    def _is_mobile_responsive(self) -> bool:
+        """Check if page is mobile responsive."""
+        meta_tags = self.soup.find_all("meta", {"name": "viewport"})
+        return len(meta_tags) > 0
+    
+    def _is_external_url(self, url: str) -> bool:
+        """Check if URL is external."""
+        if url.startswith("http://") or url.startswith("https://"):
+            parsed_url = urlparse(url)
+            parsed_base = urlparse(self.base_url)
+            return parsed_url.netloc != parsed_base.netloc
+        return False

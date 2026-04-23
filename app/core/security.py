@@ -62,13 +62,22 @@ class SecurityService:
 
 
 # Dependency to get current user
-async def get_current_user(token: str = Depends(oauth2_scheme)):
+async def get_current_user(token: str = Depends(oauth2_scheme)) -> int:  # Add return type
     """Get current authenticated user from token."""
     payload = SecurityService.verify_token(token)
-    user_id: int = payload.get("sub")
+    user_id: str = payload.get("sub")  #  It's a string from JWT
+    
     if user_id is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token"
         )
-    return user_id
+    
+    #  Convert to integer
+    try:
+        return int(user_id)
+    except (ValueError, TypeError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid user ID format"
+        )

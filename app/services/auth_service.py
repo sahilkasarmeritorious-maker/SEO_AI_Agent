@@ -1,5 +1,5 @@
 from datetime import timedelta
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import HTTPException, status
 from app.db.models import User
 from app.schemas.user import UserCreate
@@ -12,30 +12,32 @@ settings = get_settings()
 
 class AuthService:
     @staticmethod
-    def register(db: Session, user_data: UserCreate):
+    async def register(db: AsyncSession, user_data: UserCreate):  # async
         """Register new user."""
         # Check if username exists
-        if UserService.get_user_by_username(db, user_data.username):
+        existing_user = await UserService.get_user_by_username(db, user_data.username)  # await
+        if existing_user:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Username already registered"
             )
         
         # Check if email exists
-        if UserService.get_user_by_email(db, user_data.email):
+        existing_email = await UserService.get_user_by_email(db, user_data.email)  # await
+        if existing_email:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Email already registered"
             )
         
         # Create user
-        user = UserService.create_user(db, user_data)
+        user = await UserService.create_user(db, user_data)  #  await
         return user
     
     @staticmethod
-    def login(db: Session, username: str, password: str):
+    async def login(db: AsyncSession, username: str, password: str):  #  async
         """Login user and return tokens."""
-        user = UserService.authenticate_user(db, username, password)
+        user = await UserService.authenticate_user(db, username, password)  #  await
         
         if not user:
             raise HTTPException(
@@ -62,5 +64,6 @@ class AuthService:
         return {
             "access_token": access_token,
             "refresh_token": refresh_token,
+            "token_type": "bearer",
             "user": user
         }

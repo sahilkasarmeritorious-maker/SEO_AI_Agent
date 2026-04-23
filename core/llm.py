@@ -1,9 +1,9 @@
-from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 from core.config import Config
 
 class LLMManager:
-    """Manages ChatGroq instance with retry logic."""
+    """Manages ChatGoogleGenerativeAI instance with retry logic."""
     
     _instance = None  # Singleton pattern
     
@@ -14,22 +14,21 @@ class LLMManager:
         return cls._instance
     
     def __init__(self):
-        """Initialize ChatGroq once."""
+        """Initialize ChatGoogleGenerativeAI once."""
         if self._initialized:
             return
         
         Config.validate()  # Ensure API key exists
         
-        self.model = ChatGroq(
-            model_name=Config.LLM_MODEL,
+        self.model = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash-lite",
             temperature=Config.LLM_TEMPERATURE,
-            max_tokens=Config.LLM_MAX_TOKENS,
-            api_key=Config.GEMINI_API_KEY,
-            verbose=False
+            max_output_tokens=Config.LLM_MAX_TOKENS,
+            google_api_key=Config.GEMINI_API_KEY,
         )
         
         self._initialized = True
-        print(f"✅ LLMManager initialized with {Config.LLM_MODEL}")
+        print(f"✅ LLMManager initialized with gemini-2.5-flash-lite")
     
     @retry(
         stop=stop_after_attempt(Config.MAX_RETRIES),
@@ -47,7 +46,7 @@ class LLMManager:
             messages: List of message dicts or LangChain Message objects
         
         Returns:
-            Response from ChatGroq
+            Response from ChatGoogleGenerativeAI
         
         Raises:
             Exception after max retries exhausted

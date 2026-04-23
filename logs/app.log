@@ -322,3 +322,1023 @@ WHERE users.email = %(email_1)s
 2026-04-22 17:36:15,189 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
 2026-04-22 17:36:15,510 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
 2026-04-22 17:54:02,775 - app.core.logging - INFO - Shutting down application...######
+2026-04-23 11:32:04,907 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:32:04,947 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:32:04,948 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:32:04,950 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:32:04,950 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:32:04,951 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:32:04,951 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:32:04,952 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:32:04,952 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:32:04,953 - app.db.session - ERROR - Database connection failed: Not an executable object: 'SELECT 1'
+2026-04-23 11:32:04,953 - app.db.session - ERROR - Database initialization failed: Database connection failed!
+2026-04-23 11:32:04,954 - app.core.logging - ERROR -  Startup failed: Database connection failed!
+2026-04-23 11:34:49,434 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:34:49,472 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:34:49,472 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:34:49,474 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:34:49,474 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:34:49,475 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:34:49,475 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:34:49,476 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:34:49,476 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:34:49,477 - app.db.session - ERROR - Database connection failed: Not an executable object: 'SELECT 1'
+2026-04-23 11:34:49,477 - app.db.session - ERROR - Database initialization failed: Database connection failed!
+2026-04-23 11:34:49,477 - app.core.logging - ERROR - ❌ Startup failed: Database connection failed!
+2026-04-23 11:39:02,909 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:39:02,909 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:39:02,909 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:39:02,909 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:39:02,909 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:39:02,947 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:39:02,947 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:39:02,949 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:39:02,949 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:39:02,950 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:39:02,950 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:39:02,951 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:39:02,951 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:39:02,952 - app.db.session - ERROR - ❌ Database connection failed: Not an executable object: 'SELECT 1'
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    meth = statement._execute_on_connection
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute '_execute_on_connection'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 61, in check_database_connection
+    await conn.execute("SELECT 1")
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 659, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 190, in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1417, in execute
+    raise exc.ObjectNotExecutableError(statement) from err
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: 'SELECT 1'
+2026-04-23 11:39:02,957 - app.db.session - ERROR - Database initialization failed: Database connection failed!
+2026-04-23 11:39:02,957 - app.core.logging - ERROR - ❌ Startup failed: Database connection failed!
+2026-04-23 11:41:15,161 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:41:15,161 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:41:15,161 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:41:15,161 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:41:15,161 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:41:15,200 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:41:15,200 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:15,202 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:41:15,202 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:15,203 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:41:15,203 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:15,204 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:41:15,204 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:41:15,205 - app.db.session - ERROR - ❌ Database connection failed: Not an executable object: 'SELECT 1'
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    meth = statement._execute_on_connection
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute '_execute_on_connection'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 61, in check_database_connection
+    await conn.execute("SELECT 1")
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 659, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 190, in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1417, in execute
+    raise exc.ObjectNotExecutableError(statement) from err
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: 'SELECT 1'
+2026-04-23 11:41:15,206 - app.db.session - ERROR - Database initialization failed: Database connection failed!
+2026-04-23 11:41:15,207 - app.core.logging - ERROR - ❌ Startup failed: Database connection failed!
+2026-04-23 11:41:41,927 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:41:41,928 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:41:41,928 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:41:41,928 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:41:41,928 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:41:41,971 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:41:41,971 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:41,973 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:41:41,973 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:41,975 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:41:41,975 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:41,976 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:41:41,976 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:41:41,977 - app.db.session - ERROR - ❌ Database connection failed: 'AsyncConnection' object has no attribute 'execute9'
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 61, in check_database_connection
+    await conn.execute("SELECT 1")
+          ^^^^^^^^^^^^^
+AttributeError: 'AsyncConnection' object has no attribute 'execute9'. Did you mean: 'execute'?
+2026-04-23 11:41:41,978 - app.db.session - ERROR - Database initialization failed: Database connection failed!
+2026-04-23 11:41:41,978 - app.core.logging - ERROR - ❌ Startup failed: Database connection failed!
+2026-04-23 11:41:44,727 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:41:44,727 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:41:44,727 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:41:44,727 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:41:44,727 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:41:44,769 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:41:44,769 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:44,772 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:41:44,772 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:44,773 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:41:44,773 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:41:44,774 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:41:44,775 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:41:44,775 - app.db.session - ERROR - ❌ Database connection failed: Not an executable object: 'SELECT 1'
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    meth = statement._execute_on_connection
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute '_execute_on_connection'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 61, in check_database_connection
+    await conn.execute("SELECT 1")
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 659, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 190, in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1417, in execute
+    raise exc.ObjectNotExecutableError(statement) from err
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: 'SELECT 1'
+2026-04-23 11:41:44,777 - app.db.session - ERROR - Database initialization failed: Database connection failed!
+2026-04-23 11:41:44,777 - app.core.logging - ERROR - ❌ Startup failed: Database connection failed!
+2026-04-23 11:42:00,684 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:42:00,684 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:42:00,684 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:42:00,684 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:42:00,684 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:42:00,722 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:42:00,722 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:42:00,724 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:42:00,724 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:42:00,725 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:42:00,725 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:42:00,726 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:42:00,727 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2026-04-23 11:42:00,727 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] ()
+2026-04-23 11:42:00,728 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-04-23 11:42:00,729 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:42:00,729 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:42:01,488 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:42:01,488 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:42:01,490 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:42:01,498 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2026-04-23 11:42:01,498 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] ('demo@example.com',)
+2026-04-23 11:42:01,833 - app.core.logging - ERROR - ❌ Failed to create dummy user: object User can't be used in 'await' expression
+2026-04-23 11:42:01,833 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:42:01,834 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:42:21,899 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:42:21,902 - app.db.session - INFO - Database connections closed
+2026-04-23 11:42:21,902 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:42:39,096 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:42:39,096 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:42:39,096 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:42:39,096 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:42:39,097 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:42:39,134 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:42:39,134 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:42:39,136 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:42:39,136 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:42:39,137 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:42:39,137 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:42:39,138 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:42:39,139 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2026-04-23 11:42:39,139 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] ()
+2026-04-23 11:42:39,140 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-04-23 11:42:39,140 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:42:39,140 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:42:39,864 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:42:39,864 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:42:39,866 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:42:39,874 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2026-04-23 11:42:39,874 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] ('demo@example.com',)
+2026-04-23 11:42:40,202 - app.core.logging - ERROR - ❌ Failed to create dummy user: object User can't be used in 'await' expression
+2026-04-23 11:42:40,203 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:42:40,204 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:44:38,174 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:44:38,175 - app.db.session - INFO - Database connections closed
+2026-04-23 11:44:38,176 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:44:40,907 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:44:40,907 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:44:40,907 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:44:40,907 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:44:40,907 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:44:40,947 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:44:40,947 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:44:40,949 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:44:40,949 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:44:40,951 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:44:40,951 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:44:40,952 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:44:40,953 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2026-04-23 11:44:40,953 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] ()
+2026-04-23 11:44:40,954 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-04-23 11:44:40,955 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:44:40,955 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:44:41,738 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:44:41,739 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:44:41,740 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:44:41,748 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2026-04-23 11:44:41,748 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] ('demo@example.com',)
+2026-04-23 11:44:42,084 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, email, hashed_password, is_active, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::BOOLEAN, $5::TIMESTAMP WITHOUT TIME ZONE, $6::TIMESTAMP WITHOUT TIME ZONE) RETURNING users.id
+2026-04-23 11:44:42,084 - sqlalchemy.engine.Engine - INFO - [generated in 0.00033s] ('demo@example.com', 'demo@example.com', '$2b$12$0MFhxxHmPBQUEuwV2tRu.uE/q.wVnvpt.FC1uy2vhgkU/cnwfWljq', True, datetime.datetime(2026, 4, 23, 6, 14, 42, 84412), datetime.datetime(2026, 4, 23, 6, 14, 42, 84417))
+2026-04-23 11:44:42,086 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-04-23 11:44:42,092 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:44:42,094 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = $1::INTEGER
+2026-04-23 11:44:42,094 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] (1,)
+2026-04-23 11:44:42,096 - app.core.logging - INFO - ✅ Created dummy user: demo@example.com
+2026-04-23 11:44:42,096 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:44:42,097 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:44:57,945 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:44:57,946 - app.db.session - INFO - Database connections closed
+2026-04-23 11:44:57,946 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:45:00,698 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:45:00,699 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:45:00,699 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:45:00,699 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:45:00,699 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:45:00,738 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2026-04-23 11:45:00,738 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:45:00,740 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2026-04-23 11:45:00,740 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:45:00,741 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2026-04-23 11:45:00,741 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2026-04-23 11:45:00,742 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:45:00,742 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2026-04-23 11:45:00,743 - sqlalchemy.engine.Engine - INFO - [generated in 0.00025s] ()
+2026-04-23 11:45:00,744 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-04-23 11:45:00,744 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:45:00,744 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:45:01,549 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:45:01,549 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:45:01,551 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-04-23 11:45:01,558 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2026-04-23 11:45:01,558 - sqlalchemy.engine.Engine - INFO - [generated in 0.00034s] ('demo@example.com',)
+2026-04-23 11:45:01,561 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:45:01,561 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-04-23 11:45:01,562 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:46:01,042 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:46:01,043 - app.db.session - INFO - Database connections closed
+2026-04-23 11:46:01,043 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:46:03,899 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:46:03,900 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:46:03,900 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:46:03,900 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:46:03,900 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:46:03,962 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:46:03,962 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:46:04,989 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:46:04,990 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:46:05,017 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:46:05,018 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:46:05,123 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:46:05,126 - app.db.session - INFO - Database connections closed
+2026-04-23 11:46:05,127 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:46:27,936 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:46:27,937 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:46:27,937 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:46:27,937 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:46:27,937 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:46:27,980 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:46:27,980 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:46:28,745 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:46:28,745 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:46:28,756 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:46:28,757 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:46:38,391 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:46:38,392 - app.db.session - INFO - Database connections closed
+2026-04-23 11:46:38,392 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:46:41,263 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:46:41,263 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:46:41,263 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:46:41,263 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:46:41,264 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:46:41,312 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:46:41,312 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:46:42,126 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:46:42,126 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:46:42,138 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:46:42,139 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:48:17,419 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:48:17,422 - app.db.session - INFO - Database connections closed
+2026-04-23 11:48:17,422 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:48:23,634 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:48:23,634 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:48:23,634 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:48:23,634 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:48:23,634 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:48:23,678 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:48:23,678 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:48:24,477 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:48:24,478 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:48:24,488 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:48:24,489 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:48:35,632 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:48:35,633 - app.db.session - INFO - Database connections closed
+2026-04-23 11:48:35,633 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:48:43,160 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:48:43,160 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:48:43,160 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:48:43,160 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:48:43,160 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:48:43,204 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:48:43,204 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:48:43,933 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:48:43,933 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:48:43,944 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:48:43,945 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:49:02,509 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:49:02,510 - app.db.session - INFO - Database connections closed
+2026-04-23 11:49:02,510 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:49:05,284 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:49:05,284 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:49:05,284 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:49:05,284 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:49:05,285 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:49:05,330 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:49:05,330 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:49:06,163 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:49:06,163 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:49:06,174 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:49:06,175 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:49:06,276 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:49:06,277 - app.db.session - INFO - Database connections closed
+2026-04-23 11:49:06,277 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:49:08,818 - app.core.logging - INFO - 🚀 Starting application...
+2026-04-23 11:49:08,818 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:49:08,818 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:49:08,818 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:49:08,818 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:49:08,861 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:49:08,862 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:49:09,584 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:49:09,584 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:49:09,596 - app.core.logging - INFO - ✅ Dummy user already exists: demo@example.com
+2026-04-23 11:49:09,597 - app.core.logging - INFO - ✅ Application startup complete
+2026-04-23 11:49:09,798 - app.core.logging - INFO - 🛑 Shutting down application...
+2026-04-23 11:49:09,799 - app.db.session - INFO - Database connections closed
+2026-04-23 11:49:09,799 - app.core.logging - INFO - ✅ Application shutdown complete
+2026-04-23 11:51:03,677 - app.core.logging - INFO -  Starting application...
+2026-04-23 11:51:03,677 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:51:03,677 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:51:03,678 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:51:03,678 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:51:03,720 - app.db.session - INFO - ✅ Database connection successful
+2026-04-23 11:51:03,721 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:51:04,441 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:51:04,441 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:51:04,452 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 11:51:04,453 - app.core.logging - INFO -  Application startup complete
+2026-04-23 11:51:29,529 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 11:51:29,532 - app.db.session - INFO - Database connections closed
+2026-04-23 11:51:29,532 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 11:51:32,523 - app.core.logging - INFO -  Starting application...
+2026-04-23 11:51:32,524 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:51:32,524 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:51:32,524 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:51:32,524 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:51:32,569 - app.db.session - INFO -  Database connection successful
+2026-04-23 11:51:32,569 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:51:33,321 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:51:33,321 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:51:33,332 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 11:51:33,333 - app.core.logging - INFO -  Application startup complete
+2026-04-23 11:51:33,433 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 11:51:33,434 - app.db.session - INFO - Database connections closed
+2026-04-23 11:51:33,434 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 11:51:36,052 - app.core.logging - INFO -  Starting application...
+2026-04-23 11:51:36,052 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 11:51:36,052 - app.db.session - INFO -    Host: localhost
+2026-04-23 11:51:36,052 - app.db.session - INFO -    Port: 5432
+2026-04-23 11:51:36,052 - app.db.session - INFO -    Database: Mydb
+2026-04-23 11:51:36,095 - app.db.session - INFO -  Database connection successful
+2026-04-23 11:51:36,095 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 11:51:36,832 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 11:51:36,832 - app.db.session - INFO - Database initialization complete
+2026-04-23 11:51:36,843 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 11:51:36,844 - app.core.logging - INFO -  Application startup complete
+2026-04-23 11:51:41,359 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 11:51:41,360 - app.db.session - INFO - Database connections closed
+2026-04-23 11:51:41,360 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:13:26,857 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:13:26,857 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:13:26,857 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:13:26,857 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:13:26,857 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:13:26,900 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:13:26,900 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:13:27,635 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:13:27,635 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:13:27,646 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:13:27,647 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:15:00,374 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-23 12:15:00,374 - app.db.session - ERROR - Database session error: 'coroutine' object has no attribute 'email'
+2026-04-23 12:19:02,408 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:19:02,410 - app.db.session - INFO - Database connections closed
+2026-04-23 12:19:02,410 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:19:05,212 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:19:05,212 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:19:05,212 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:19:05,213 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:19:05,213 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:19:05,261 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:19:05,261 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:19:06,054 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:19:06,054 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:19:06,066 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:19:06,067 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:19:57,030 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:19:57,031 - app.db.session - INFO - Database connections closed
+2026-04-23 12:19:57,032 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:19:59,709 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:19:59,709 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:19:59,709 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:19:59,709 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:19:59,709 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:19:59,752 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:19:59,752 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:20:00,541 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:20:00,542 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:20:00,555 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:20:00,556 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:20:28,748 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:20:28,750 - app.db.session - INFO - Database connections closed
+2026-04-23 12:20:28,750 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:20:31,443 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:20:31,443 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:20:31,444 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:20:31,444 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:20:31,444 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:20:31,489 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:20:31,490 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:20:32,326 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:20:32,326 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:20:32,337 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:20:32,337 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:20:47,284 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:20:47,285 - app.db.session - INFO - Database connections closed
+2026-04-23 12:20:47,285 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:20:50,370 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:20:50,370 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:20:50,370 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:20:50,370 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:20:50,370 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:20:50,413 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:20:50,413 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:20:51,359 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:20:51,360 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:20:51,371 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:20:51,372 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:20:51,473 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:20:51,474 - app.db.session - INFO - Database connections closed
+2026-04-23 12:20:51,474 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:20:54,060 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:20:54,061 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:20:54,061 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:20:54,061 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:20:54,061 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:20:54,103 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:20:54,103 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:20:54,867 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:20:54,867 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:20:54,879 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:20:54,879 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:22:06,859 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:22:06,859 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:22:06,859 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:22:06,859 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:22:06,859 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:22:06,902 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:22:06,902 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:22:07,663 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:22:07,663 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:22:07,673 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:22:07,674 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:22:14,144 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-23 12:22:14,489 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
+2026-04-23 12:22:37,093 - app.core.logging - INFO - Login attempt: Sahil Kasar
+2026-04-23 12:22:37,408 - app.core.logging - INFO - User logged in: Sahil Kasar
+2026-04-23 12:22:48,853 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:22:48,858 - app.db.session - ERROR - Database session error: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $1: '2' ('str' object cannot be interpreted as an integer)
+[SQL: INSERT INTO analyses (user_id, url, analysis_id, status, seo_overall_score, seo_strengths, seo_weaknesses, seo_missing_elements, seo_recommendations, ux_overall_score, ux_strengths, ux_weaknesses, ux_missing_elements, ux_recommendations, error, created_at, completed_at, processing_time_ms) VALUES ($1::INTEGER, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::INTEGER, $6::VARCHAR, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::INTEGER, $11::VARCHAR, $12::VARCHAR, $13::VARCHAR, $14::VARCHAR, $15::VARCHAR, $16::TIMESTAMP WITHOUT TIME ZONE, $17::TIMESTAMP WITHOUT TIME ZONE, $18::INTEGER) RETURNING analyses.id]
+[parameters: ('2', 'https://example.com', None, 'pending', None, None, None, None, None, None, None, None, None, None, None, datetime.datetime(2026, 4, 23, 6, 52, 48, 856811), None, None)]
+(Background on this error at: https://sqlalche.me/e/20/dbapi)
+2026-04-23 12:24:08,090 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:24:08,091 - app.db.session - INFO - Database connections closed
+2026-04-23 12:24:08,091 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:24:10,854 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:24:10,854 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:24:10,854 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:24:10,854 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:24:10,854 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:24:10,899 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:24:10,900 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:24:11,742 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:24:11,742 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:24:11,752 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:24:11,753 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:24:11,854 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:24:11,858 - app.db.session - INFO - Database connections closed
+2026-04-23 12:24:11,858 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:24:15,196 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:24:15,196 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:24:15,196 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:24:15,196 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:24:15,196 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:24:15,240 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:24:15,240 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:24:16,052 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:24:16,052 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:24:16,064 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:24:16,064 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:24:16,165 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:24:16,166 - app.db.session - INFO - Database connections closed
+2026-04-23 12:24:16,167 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:24:18,810 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:24:18,810 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:24:18,810 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:24:18,810 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:24:18,810 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:24:18,853 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:24:18,853 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:24:19,643 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:24:19,643 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:24:19,655 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:24:19,655 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:24:19,756 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:24:19,757 - app.db.session - INFO - Database connections closed
+2026-04-23 12:24:19,758 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:24:22,395 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:24:22,395 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:24:22,395 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:24:22,396 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:24:22,396 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:24:22,440 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:24:22,441 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:24:23,201 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:24:23,202 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:24:23,212 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:24:23,213 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:24:24,563 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:24:59,434 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:24:59,436 - app.db.session - INFO - Database connections closed
+2026-04-23 12:24:59,436 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:27:08,228 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:27:08,228 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:27:08,229 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:27:08,229 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:27:08,229 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:27:08,272 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:27:08,272 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:27:09,085 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:27:09,085 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:27:09,105 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:27:09,105 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:27:15,690 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:27:15,710 - app.core.logging - INFO -  Analysis 2 queued for background processing
+2026-04-23 12:27:15,711 - app.core.logging - INFO -  Starting analysis 2 for https://example.com
+2026-04-23 12:27:15,717 - app.core.logging - INFO -  Analysis 2 now processing...
+2026-04-23 12:27:15,718 - app.core.logging - INFO -  Running SEO Agent for https://example.com
+2026-04-23 12:27:15,718 - app.core.logging - ERROR -  Analysis 2 FAILED: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/services/analysis_service.py", line 61, in _run_analysis
+    seo_report = seo_agent.analyze(url)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/agents/seo_agent.py", line 50, in analyze
+    scraper.start()
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/tools/scraper.py", line 101, in start
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+2026-04-23 12:30:32,435 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:30:32,436 - app.db.session - INFO - Database connections closed
+2026-04-23 12:30:32,436 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:30:35,503 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:30:35,503 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:30:35,503 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:30:35,503 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:30:35,503 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:30:35,548 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:30:35,548 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:30:36,301 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:30:36,301 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:30:36,314 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:30:36,315 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:30:36,717 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:30:36,718 - app.db.session - INFO - Database connections closed
+2026-04-23 12:30:36,718 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:37:07,258 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:37:07,258 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:37:07,258 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:37:07,258 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:37:07,258 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:37:07,300 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:37:07,300 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:37:08,091 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:37:08,092 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:37:08,103 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:37:08,103 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:37:19,413 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:37:19,432 - app.core.logging - INFO - ✅ Analysis 3 queued for background processing
+2026-04-23 12:37:19,433 - app.core.logging - INFO - 🔄 Starting analysis 3 for https://example.com
+2026-04-23 12:37:19,440 - app.core.logging - INFO - 📊 Analysis 3 now processing...
+2026-04-23 12:37:19,440 - app.core.logging - INFO - 🤖 Running SEO Agent for https://example.com
+2026-04-23 12:37:23,522 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-23 12:37:24,564 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-23 12:37:26,609 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-23 12:37:26,610 - app.core.logging - ERROR - ❌ Analysis 3 FAILED: RetryError[<Future at 0x7a3b025093a0 state=finished raised AuthenticationError>]
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/core/llm.py", line 55, in invoke
+    return self.model.invoke(messages)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/services/analysis_service.py", line 58, in _run_analysis
+    seo_report = await seo_agent.analyze(url)  # ✅ await async agent
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/agents/seo_agent.py", line 58, in analyze
+    seo_findings = self._call_llm(analysis_data)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/agents/seo_agent.py", line 145, in _call_llm
+    response = llm.invoke([SystemMessage(content=self.system_prompt), human_message])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 414, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x7a3b025093a0 state=finished raised AuthenticationError>]
+2026-04-23 12:39:32,031 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:39:32,032 - app.db.session - INFO - Database connections closed
+2026-04-23 12:39:32,032 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:39:58,984 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:39:58,984 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:39:58,984 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:39:58,985 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:39:58,985 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:39:59,028 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:39:59,028 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:39:59,893 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:39:59,893 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:39:59,905 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:39:59,907 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:40:02,620 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:40:02,622 - app.db.session - INFO - Database connections closed
+2026-04-23 12:40:02,622 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:45:30,570 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:45:30,571 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:45:30,571 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:45:30,571 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:45:30,571 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:45:30,616 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:45:30,616 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:45:31,359 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:45:31,359 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:45:31,370 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:45:31,371 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:45:37,063 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:45:37,089 - app.core.logging - INFO - ✅ Analysis 4 queued for background processing
+2026-04-23 12:45:37,090 - app.core.logging - INFO - 🔄 Starting analysis 4 for https://example.com
+2026-04-23 12:45:37,096 - app.core.logging - INFO - 📊 Analysis 4 now processing...
+2026-04-23 12:45:37,096 - app.core.logging - INFO - 🤖 Running SEO Agent for https://example.com
+2026-04-23 12:45:40,094 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-23 12:45:41,138 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-23 12:45:43,181 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-23 12:45:43,182 - app.core.logging - ERROR - ❌ Analysis 4 FAILED: RetryError[<Future at 0x7e10089c5b50 state=finished raised AuthenticationError>]
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/core/llm.py", line 55, in invoke
+    return self.model.invoke(messages)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 621, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 461, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/services/analysis_service.py", line 58, in _run_analysis
+    seo_report = await seo_agent.analyze(url)  # ✅ await async agent
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/agents/seo_agent.py", line 58, in analyze
+    seo_findings = self._call_llm(analysis_data)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/agents/seo_agent.py", line 145, in _call_llm
+    response = llm.invoke([SystemMessage(content=self.system_prompt), human_message])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 414, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x7e10089c5b50 state=finished raised AuthenticationError>]
+2026-04-23 12:48:22,773 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:48:22,774 - app.db.session - INFO - Database connections closed
+2026-04-23 12:48:22,774 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:49:26,834 - langchain_google_genai.chat_models - WARNING - Unexpected argument 'model_name' provided to ChatGoogleGenerativeAI. Did you mean: 'model'?
+2026-04-23 12:49:29,400 - langchain_google_genai.chat_models - WARNING - Unexpected argument 'model_name' provided to ChatGoogleGenerativeAI. Did you mean: 'model'?
+2026-04-23 12:49:42,808 - langchain_google_genai.chat_models - WARNING - Unexpected argument 'model_name' provided to ChatGoogleGenerativeAI. Did you mean: 'model'?
+2026-04-23 12:49:58,601 - langchain_google_genai.chat_models - WARNING - Unexpected argument 'model_name' provided to ChatGoogleGenerativeAI. Did you mean: 'model'?
+2026-04-23 12:50:14,823 - langchain_google_genai.chat_models - WARNING - Unexpected argument 'model_name' provided to ChatGoogleGenerativeAI. Did you mean: 'model'?
+2026-04-23 12:51:26,765 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:51:26,765 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:51:26,765 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:51:26,766 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:51:26,766 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:51:26,808 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:51:26,808 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:51:27,581 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:51:27,581 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:51:27,596 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:51:27,596 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:51:34,834 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:51:34,854 - app.core.logging - INFO - ✅ Analysis 5 queued for background processing
+2026-04-23 12:51:34,855 - app.core.logging - INFO - 🔄 Starting analysis 5 for https://example.com
+2026-04-23 12:51:34,861 - app.core.logging - INFO - 📊 Analysis 5 now processing...
+2026-04-23 12:51:34,861 - app.core.logging - INFO - 🤖 Running SEO Agent for https://example.com
+2026-04-23 12:51:37,736 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 12:51:43,220 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 12:51:43,226 - app.core.logging - ERROR - ❌ Analysis 5 FAILED: 3 validation errors for SEOReport
+strengths.0
+  Input should be a valid dictionary or instance of SEOFinding [type=model_type, input_value='Site is accessible', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+weaknesses.0
+  Input should be a valid dictionary or instance of SEOWeakness [type=model_type, input_value='Unable to parse response', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+recommendations.0
+  Input should be a valid dictionary or instance of SEORecommendation [type=model_type, input_value='Review SEO best practices', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/services/analysis_service.py", line 58, in _run_analysis
+    seo_report = await seo_agent.analyze(url)  # ✅ await async agent
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/agents/seo_agent.py", line 64, in analyze
+    report = SEOReport(
+             ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for SEOReport
+strengths.0
+  Input should be a valid dictionary or instance of SEOFinding [type=model_type, input_value='Site is accessible', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+weaknesses.0
+  Input should be a valid dictionary or instance of SEOWeakness [type=model_type, input_value='Unable to parse response', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+recommendations.0
+  Input should be a valid dictionary or instance of SEORecommendation [type=model_type, input_value='Review SEO best practices', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-04-23 12:53:00,454 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:53:00,455 - app.db.session - INFO - Database connections closed
+2026-04-23 12:53:00,455 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:53:25,446 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:53:25,447 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:53:25,447 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:53:25,447 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:53:25,447 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:53:25,494 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:53:25,494 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:53:26,312 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:53:26,312 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:53:26,334 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:53:26,335 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:54:32,039 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:54:32,040 - app.db.session - INFO - Database connections closed
+2026-04-23 12:54:32,041 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 12:54:48,098 - app.core.logging - INFO -  Starting application...
+2026-04-23 12:54:48,099 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 12:54:48,099 - app.db.session - INFO -    Host: localhost
+2026-04-23 12:54:48,099 - app.db.session - INFO -    Port: 5432
+2026-04-23 12:54:48,099 - app.db.session - INFO -    Database: Mydb
+2026-04-23 12:54:48,143 - app.db.session - INFO -  Database connection successful
+2026-04-23 12:54:48,143 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 12:54:48,923 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 12:54:48,924 - app.db.session - INFO - Database initialization complete
+2026-04-23 12:54:48,935 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 12:54:48,936 - app.core.logging - INFO -  Application startup complete
+2026-04-23 12:56:28,540 - app.core.logging - INFO - Login attempt: Sahil Kasar
+2026-04-23 12:56:28,867 - app.core.logging - INFO - User logged in: Sahil Kasar
+2026-04-23 12:56:32,283 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 12:56:32,304 - app.core.logging - INFO - ✅ Analysis 6 queued for background processing
+2026-04-23 12:56:32,305 - app.core.logging - INFO - 🔄 Starting analysis 6 for https://example.com
+2026-04-23 12:56:32,313 - app.core.logging - INFO - 📊 Analysis 6 now processing...
+2026-04-23 12:56:32,313 - app.core.logging - INFO - 🤖 Running SEO Agent for https://example.com
+2026-04-23 12:56:35,241 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 12:56:40,960 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 12:56:40,965 - app.core.logging - INFO - ✅ SEO Agent completed: 65/100
+2026-04-23 12:56:40,965 - app.core.logging - INFO - 🤖 Running UX Agent for https://example.com
+2026-04-23 12:56:43,778 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 12:56:48,936 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 12:56:48,941 - app.core.logging - INFO - ✅ UX Agent completed: 70/100
+2026-04-23 12:56:48,960 - app.core.logging - INFO - ✅ Analysis 6 COMPLETED! SEO: 65, UX: 70
+2026-04-23 12:57:37,900 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 12:57:37,902 - app.db.session - INFO - Database connections closed
+2026-04-23 12:57:37,902 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 13:03:01,060 - app.core.logging - INFO -  Starting application...
+2026-04-23 13:03:01,060 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 13:03:01,060 - app.db.session - INFO -    Host: localhost
+2026-04-23 13:03:01,061 - app.db.session - INFO -    Port: 5432
+2026-04-23 13:03:01,061 - app.db.session - INFO -    Database: Mydb
+2026-04-23 13:03:01,104 - app.db.session - INFO -  Database connection successful
+2026-04-23 13:03:01,104 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 13:03:01,916 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 13:03:01,917 - app.db.session - INFO - Database initialization complete
+2026-04-23 13:03:01,929 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 13:03:01,929 - app.core.logging - INFO -  Application startup complete
+2026-04-23 13:03:06,868 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 13:03:06,888 - app.core.logging - INFO - ✅ Analysis 7 queued for background processing
+2026-04-23 13:03:06,891 - app.core.logging - INFO - 🔄 Starting analysis 7 for https://example.com
+2026-04-23 13:03:06,898 - app.core.logging - INFO - 📊 Analysis 7 now processing...
+2026-04-23 13:03:06,899 - app.core.logging - INFO - 🤖 Running SEO Agent for https://example.com
+2026-04-23 13:03:09,814 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 13:03:14,796 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 13:03:14,801 - app.core.logging - INFO - ✅ SEO Agent completed: 5/100
+2026-04-23 13:03:14,801 - app.core.logging - INFO - 🤖 Running UX Agent for https://example.com
+2026-04-23 13:03:17,715 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 13:03:21,203 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 13:03:21,209 - app.core.logging - INFO - ✅ UX Agent completed: 15/100
+2026-04-23 13:03:21,226 - app.core.logging - INFO - ✅ Analysis 7 COMPLETED! SEO: 5, UX: 15
+2026-04-23 13:03:54,799 - app.core.logging - INFO - User 2 requesting analysis 7
+2026-04-23 13:05:35,430 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 13:05:35,431 - app.db.session - INFO - Database connections closed
+2026-04-23 13:05:35,431 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 13:07:12,956 - app.core.logging - INFO -  Starting application...
+2026-04-23 13:07:12,956 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 13:07:12,956 - app.db.session - INFO -    Host: localhost
+2026-04-23 13:07:12,956 - app.db.session - INFO -    Port: 5432
+2026-04-23 13:07:12,956 - app.db.session - INFO -    Database: Mydb
+2026-04-23 13:07:13,001 - app.db.session - INFO -  Database connection successful
+2026-04-23 13:07:13,001 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 13:07:13,736 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 13:07:13,736 - app.db.session - INFO - Database initialization complete
+2026-04-23 13:07:14,084 - app.core.logging - INFO -  Created dummy user: demo@example.com
+2026-04-23 13:07:14,085 - app.core.logging - INFO -  Application startup complete
+2026-04-23 13:08:26,389 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-23 13:08:26,705 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
+2026-04-23 13:08:54,602 - app.core.logging - INFO - Login attempt: Sahil Kasar
+2026-04-23 13:08:54,914 - app.core.logging - INFO - User logged in: Sahil Kasar
+2026-04-23 13:09:06,000 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-23 13:09:06,018 - app.core.logging - INFO - ✅ Analysis 1 queued for background processing
+2026-04-23 13:09:06,019 - app.core.logging - INFO - 🔄 Starting analysis 1 for https://example.com
+2026-04-23 13:09:06,032 - app.core.logging - INFO - 📊 Analysis 1 now processing...
+2026-04-23 13:09:06,032 - app.core.logging - INFO - 🤖 Running SEO Agent for https://example.com
+2026-04-23 13:09:08,922 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 13:09:15,032 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 13:09:15,035 - app.core.logging - INFO - ✅ SEO Agent completed: 5/100
+2026-04-23 13:09:15,035 - app.core.logging - INFO - 🤖 Running UX Agent for https://example.com
+2026-04-23 13:09:17,936 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-23 13:09:22,579 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-23 13:09:22,585 - app.core.logging - INFO - ✅ UX Agent completed: 15/100
+2026-04-23 13:09:22,602 - app.core.logging - INFO - ✅ Analysis 1 COMPLETED! SEO: 5, UX: 15
+2026-04-23 13:10:24,800 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 13:10:24,801 - app.db.session - INFO - Database connections closed
+2026-04-23 13:10:24,801 - app.core.logging - INFO -  Application shutdown complete
+2026-04-23 13:10:27,314 - app.core.logging - INFO -  Starting application...
+2026-04-23 13:10:27,314 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 13:10:27,314 - app.db.session - INFO -    Host: localhost
+2026-04-23 13:10:27,315 - app.db.session - INFO -    Port: 5432
+2026-04-23 13:10:27,315 - app.db.session - INFO -    Database: Mydb
+2026-04-23 13:10:27,357 - app.db.session - INFO -  Database connection successful
+2026-04-23 13:10:27,357 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 13:10:27,440 - app.db.session - ERROR - Alembic failed: Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/bin/alembic", line 5, in <module>
+    from alembic.config import main
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/alembic/__init__.py", line 1, in <module>
+    from . import context
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/alembic/context.py", line 1, in <module>
+    from .runtime.environment import EnvironmentContext
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/alembic/runtime/environment.py", line 18, in <module>
+    from sqlalchemy.sql.schema import Column
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/__init__.py", line 12, in <module>
+    from . import util as _util
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/__init__.py", line 14, in <module>
+    from ._collections import coerce_generator_arg as coerce_generator_arg
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 38, in <module>
+    from ._has_cy import HAS_CYEXTENSION
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_has_cy.py", line 32, in <module>
+    _import_cy_extensions()
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_has_cy.py", line 20, in _import_cy_extensions
+    from ..cyextension import util
+  File "lib/sqlalchemy/cyextension/util.pyx", line 9, in init sqlalchemy.cyextension.util
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/exc.py", line 26, in <module>
+    from .util import compat
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 226, in <module>
+    from importlib import metadata as importlib_metadata
+  File "/usr/lib/python3.12/importlib/metadata/__init__.py", line 8, in <module>
+    import zipfile
+  File "/usr/lib/python3.12/zipfile/__init__.py", line 2322, in <module>
+    from ._path import (  # noqa: E402
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1322, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1262, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1528, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1502, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1620, in find_spec
+KeyboardInterrupt
+
+2026-04-23 13:10:27,440 - app.db.session - ERROR - Database initialization failed: Alembic migrations failed!
+2026-04-23 13:10:27,441 - app.core.logging - ERROR -  Startup failed: Alembic migrations failed!
+2026-04-23 13:12:11,788 - app.core.logging - INFO -  Starting application...
+2026-04-23 13:12:11,788 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-23 13:12:11,788 - app.db.session - INFO -    Host: localhost
+2026-04-23 13:12:11,788 - app.db.session - INFO -    Port: 5432
+2026-04-23 13:12:11,788 - app.db.session - INFO -    Database: Mydb
+2026-04-23 13:12:11,830 - app.db.session - INFO -  Database connection successful
+2026-04-23 13:12:11,830 - app.db.session - INFO - Running Alembic migrations...
+2026-04-23 13:12:12,569 - app.db.session - INFO - Migrations completed successfully
+2026-04-23 13:12:12,569 - app.db.session - INFO - Database initialization complete
+2026-04-23 13:12:12,581 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-23 13:12:12,582 - app.core.logging - INFO -  Application startup complete
+2026-04-23 13:25:25,515 - app.core.logging - INFO -  Shutting down application...
+2026-04-23 13:25:25,517 - app.db.session - INFO - Database connections closed
+2026-04-23 13:25:25,517 - app.core.logging - INFO -  Application shutdown complete
