@@ -15,6 +15,7 @@ from app.api.routes import auth, analysis
 from app.services.user_service import UserService
 from app.schemas.user import UserCreate
 from app.core.security import SecurityService
+from app.services.chroma_service import chroma_service
 
 settings = get_settings()
 
@@ -63,9 +64,15 @@ async def lifespan(app: FastAPI):
     try:
         # Initialize database (run migrations)
         await init_db()
+        logger.info(" Database initialized")
+        
+        # Initialize Chroma
+        logger.info("🗄️  Initializing Chroma...")
+        _ = chroma_service  # Trigger initialization
+        logger.info(" Chroma initialized")
         
         # Create dummy user if needed
-        await create_dummy_user()  # Make it async
+        await create_dummy_user()
         
         logger.info(" Application startup complete")
     except Exception as e:

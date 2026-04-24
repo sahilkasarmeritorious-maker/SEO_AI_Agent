@@ -1342,3 +1342,250 @@ KeyboardInterrupt
 2026-04-23 13:25:25,515 - app.core.logging - INFO -  Shutting down application...
 2026-04-23 13:25:25,517 - app.db.session - INFO - Database connections closed
 2026-04-23 13:25:25,517 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:00:11,351 - app.core.logging - INFO - Initializing Chroma client...
+2026-04-24 15:00:11,579 - app.core.logging - INFO - Chroma initialized successfully
+2026-04-24 15:00:11,605 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:00:11,605 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:00:11,605 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:00:11,605 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:00:11,605 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:00:11,648 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:00:11,648 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:00:12,372 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:00:12,372 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:00:12,372 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:00:12,372 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:00:12,372 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:00:12,738 - app.core.logging - INFO -  Created dummy user: demo@example.com
+2026-04-24 15:00:12,739 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:00:12,840 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:00:12,840 - app.db.session - INFO - Database connections closed
+2026-04-24 15:00:12,841 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:00:21,420 - app.core.logging - INFO - Initializing Chroma client...
+2026-04-24 15:00:21,513 - app.core.logging - INFO - Chroma initialized successfully
+2026-04-24 15:00:21,535 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:00:21,538 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:00:21,538 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:00:21,538 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:00:21,538 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:00:21,581 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:00:21,581 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:00:22,297 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:00:22,297 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:00:22,297 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:00:22,297 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:00:22,297 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:00:22,309 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 15:00:22,310 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:00:22,411 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:00:22,412 - app.db.session - INFO - Database connections closed
+2026-04-24 15:00:22,412 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:00:34,837 - app.core.logging - INFO - Initializing Chroma client...
+2026-04-24 15:00:34,932 - app.core.logging - INFO - Chroma initialized successfully
+2026-04-24 15:00:34,954 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:00:34,954 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:00:34,954 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:00:34,954 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:00:34,954 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:00:34,997 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:00:34,997 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:00:35,771 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:00:35,771 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:00:35,771 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:00:35,771 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:00:35,771 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:00:35,785 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 15:00:35,786 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:01:35,773 - app.core.logging - INFO - User registration attempt: sahilkasar@gmail.com
+2026-04-24 15:01:36,114 - app.core.logging - INFO - User registered: sahilkasar@gmail.com
+2026-04-24 15:02:57,650 - app.core.logging - INFO - Login attempt: Sahil Kasar
+2026-04-24 15:02:57,968 - app.core.logging - INFO - User logged in: Sahil Kasar
+2026-04-24 15:03:05,306 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-24 15:03:05,325 - app.core.logging - INFO -  Analysis 1 queued for background processing
+2026-04-24 15:03:05,327 - app.core.logging - INFO -  Starting analysis 1 for https://example.com
+2026-04-24 15:03:05,335 - app.core.logging - INFO -  Analysis 1 now processing...
+2026-04-24 15:03:05,335 - app.core.logging - INFO -  Running SEO Agent for https://example.com
+2026-04-24 15:03:09,469 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-24 15:03:15,146 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-24 15:03:15,151 - app.core.logging - INFO -  SEO Agent completed: 5/100
+2026-04-24 15:03:15,151 - app.core.logging - INFO -  Running UX Agent for https://example.com
+2026-04-24 15:03:18,133 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-24 15:03:21,391 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-24 15:03:21,397 - app.core.logging - INFO -  UX Agent completed: 15/100
+2026-04-24 15:03:21,417 - app.core.logging - INFO -  Analysis 1 COMPLETED! SEO: 5, UX: 15
+2026-04-24 15:03:21,418 - app.core.logging - INFO -  Saving analysis 1 to Chroma for user 2...
+2026-04-24 15:03:21,418 - app.core.logging - INFO - Saving analysis 1 for user 2 to Chroma
+2026-04-24 15:03:22,431 - httpx - INFO - HTTP Request: GET https://chroma-onnx-models.s3.amazonaws.com/all-MiniLM-L6-v2/onnx.tar.gz "HTTP/1.1 200 OK"
+2026-04-24 15:04:55,897 - app.core.logging - INFO - Saved 8 chunks for analysis 1 to Chroma
+2026-04-24 15:04:55,897 - app.core.logging - INFO -  Analysis 1 saved to Chroma successfully!
+2026-04-24 15:05:45,408 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:05:45,409 - app.db.session - INFO - Database connections closed
+2026-04-24 15:05:45,412 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:08:51,055 - app.core.logging - INFO - Initializing Chroma client...
+2026-04-24 15:08:51,150 - app.core.logging - INFO - Chroma initialized successfully
+2026-04-24 15:08:51,163 - app.core.logging - INFO - Found 0 analyses for user 1
+2026-04-24 15:08:51,164 - app.core.logging - INFO - Found 0 analyses for user 2
+2026-04-24 15:51:50,210 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-24 15:51:50,372 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-24 15:51:50,374 - app.core.logging - INFO - Collection 'analyses' has 0 existing documents
+2026-04-24 15:51:50,397 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:51:50,397 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:51:50,397 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:51:50,398 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:51:50,398 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:51:50,444 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:51:50,444 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:51:51,223 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:51:51,223 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:51:51,223 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:51:51,223 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:51:51,224 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:51:51,580 - app.core.logging - INFO -  Created dummy user: demo@example.com
+2026-04-24 15:51:51,581 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:52:37,670 - app.core.logging - INFO - User registration attempt: john@example.com
+2026-04-24 15:52:37,992 - app.core.logging - INFO - User registered: john@example.com
+2026-04-24 15:53:09,185 - app.core.logging - INFO - Login attempt: Sahil Kasar
+2026-04-24 15:53:09,498 - app.core.logging - INFO - User logged in: Sahil Kasar
+2026-04-24 15:53:17,273 - app.core.logging - INFO - User 2 submitted analysis for https://example.com
+2026-04-24 15:53:17,292 - app.core.logging - INFO -  Analysis 1 queued for background processing
+2026-04-24 15:53:17,293 - app.core.logging - INFO -  Starting analysis 1 for https://example.com
+2026-04-24 15:53:17,299 - app.core.logging - INFO -  Analysis 1 now processing...
+2026-04-24 15:53:17,300 - app.core.logging - INFO -  Running SEO Agent for https://example.com
+2026-04-24 15:53:20,378 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-24 15:53:26,496 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-24 15:53:26,501 - app.core.logging - INFO -  SEO Agent completed: 5/100
+2026-04-24 15:53:26,501 - app.core.logging - INFO -  Running UX Agent for https://example.com
+2026-04-24 15:53:29,435 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-24 15:53:34,168 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-24 15:53:34,174 - app.core.logging - INFO -  UX Agent completed: 15/100
+2026-04-24 15:53:34,195 - app.core.logging - INFO -  Analysis 1 COMPLETED! SEO: 5, UX: 15
+2026-04-24 15:53:34,196 - app.core.logging - INFO -  Saving analysis 1 to Chroma for user 2...
+2026-04-24 15:53:34,196 - app.core.logging - INFO - Saving analysis 1 for user 2 to Chroma
+2026-04-24 15:53:34,754 - app.core.logging - INFO - Saved 8 chunks for analysis 1 to Chroma (collection total: 8)
+2026-04-24 15:53:34,754 - app.core.logging - INFO -  Analysis 1 saved to Chroma successfully!
+2026-04-24 15:55:00,054 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:55:00,055 - app.db.session - INFO - Database connections closed
+2026-04-24 15:55:00,058 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:55:09,434 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-24 15:55:09,543 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-24 15:55:09,551 - app.core.logging - INFO - Collection 'analyses' has 8 existing documents
+2026-04-24 15:55:09,572 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:55:09,572 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:55:09,572 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:55:09,572 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:55:09,572 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:55:09,617 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:55:09,617 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:55:10,347 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:55:10,347 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:55:10,347 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:55:10,347 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:55:10,347 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:55:10,359 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 15:55:10,360 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:55:30,019 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:55:30,020 - app.db.session - INFO - Database connections closed
+2026-04-24 15:55:30,020 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:55:38,893 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-24 15:55:39,010 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-24 15:55:39,021 - app.core.logging - INFO - Collection 'analyses' has 8 existing documents
+2026-04-24 15:55:39,046 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:55:39,046 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:55:39,046 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:55:39,046 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:55:39,047 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:55:39,094 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:55:39,094 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:55:39,911 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:55:39,912 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:55:39,912 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:55:39,912 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:55:39,912 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:55:39,925 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 15:55:39,926 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:55:41,231 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:55:41,232 - app.db.session - INFO - Database connections closed
+2026-04-24 15:55:41,232 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:55:50,342 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-24 15:55:50,454 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-24 15:55:50,461 - app.core.logging - INFO - Collection 'analyses' has 8 existing documents
+2026-04-24 15:55:50,484 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:55:50,485 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:55:50,485 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:55:50,485 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:55:50,485 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:55:50,534 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:55:50,534 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:55:51,300 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:55:51,300 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:55:51,301 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:55:51,301 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:55:51,301 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:55:51,312 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 15:55:51,312 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:55:51,413 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:55:51,414 - app.db.session - INFO - Database connections closed
+2026-04-24 15:55:51,414 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 15:55:59,839 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-24 15:55:59,951 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-24 15:55:59,957 - app.core.logging - INFO - Collection 'analyses' has 8 existing documents
+2026-04-24 15:55:59,981 - app.core.logging - INFO -  Starting application...
+2026-04-24 15:55:59,981 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 15:55:59,981 - app.db.session - INFO -    Host: localhost
+2026-04-24 15:55:59,981 - app.db.session - INFO -    Port: 5432
+2026-04-24 15:55:59,981 - app.db.session - INFO -    Database: Mydb
+2026-04-24 15:56:00,026 - app.db.session - INFO -  Database connection successful
+2026-04-24 15:56:00,026 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 15:56:00,775 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 15:56:00,775 - app.db.session - INFO - Database initialization complete
+2026-04-24 15:56:00,775 - app.core.logging - INFO -  Database initialized
+2026-04-24 15:56:00,775 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 15:56:00,775 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 15:56:00,786 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 15:56:00,787 - app.core.logging - INFO -  Application startup complete
+2026-04-24 15:58:06,553 - app.core.logging - INFO -  Shutting down application...
+2026-04-24 15:58:06,555 - app.db.session - INFO - Database connections closed
+2026-04-24 15:58:06,555 - app.core.logging - INFO -  Application shutdown complete
+2026-04-24 17:17:07,940 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-24 17:17:08,053 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-24 17:17:08,061 - app.core.logging - INFO - Collection 'analyses' has 8 existing documents
+2026-04-24 17:17:08,084 - app.core.logging - INFO -  Starting application...
+2026-04-24 17:17:08,084 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-24 17:17:08,084 - app.db.session - INFO -    Host: localhost
+2026-04-24 17:17:08,085 - app.db.session - INFO -    Port: 5432
+2026-04-24 17:17:08,085 - app.db.session - INFO -    Database: Mydb
+2026-04-24 17:17:08,129 - app.db.session - INFO -  Database connection successful
+2026-04-24 17:17:08,129 - app.db.session - INFO - Running Alembic migrations...
+2026-04-24 17:17:08,917 - app.db.session - INFO - Migrations completed successfully
+2026-04-24 17:17:08,917 - app.db.session - INFO - Database initialization complete
+2026-04-24 17:17:08,917 - app.core.logging - INFO -  Database initialized
+2026-04-24 17:17:08,917 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-24 17:17:08,917 - app.core.logging - INFO -  Chroma initialized
+2026-04-24 17:17:08,929 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-24 17:17:08,930 - app.core.logging - INFO -  Application startup complete
+2026-04-24 17:18:36,548 - app.core.logging - INFO - User registration attempt: john@example.com
+2026-04-24 17:18:36,558 - app.db.session - ERROR - Database session error: 400: Email already registered
+2026-04-24 17:18:47,564 - app.core.logging - INFO - User registration attempt: john1@example.com
+2026-04-24 17:18:47,917 - app.core.logging - INFO - User registered: john1@example.com
+2026-04-24 17:19:27,950 - app.core.logging - INFO - Login attempt: john
+2026-04-24 17:19:28,260 - app.core.logging - INFO - User logged in: john
+2026-04-24 17:19:59,761 - app.core.logging - INFO - Login attempt: john
+2026-04-24 17:20:00,068 - app.core.logging - INFO - User logged in: john
+2026-04-24 17:21:12,455 - app.core.logging - INFO - User 3 submitted analysis for https://www.seobility.net/en/seocheck/
+2026-04-24 17:21:12,477 - app.core.logging - INFO -  Analysis 2 queued for background processing
+2026-04-24 17:21:12,478 - app.core.logging - INFO -  Starting analysis 2 for https://www.seobility.net/en/seocheck/
+2026-04-24 17:21:12,484 - app.core.logging - INFO -  Analysis 2 now processing...
+2026-04-24 17:21:12,484 - app.core.logging - INFO -  Running SEO Agent for https://www.seobility.net/en/seocheck/
+2026-04-24 17:21:18,282 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-24 17:21:23,537 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-24 17:21:23,539 - app.core.logging - INFO -  SEO Agent completed: 85/100
+2026-04-24 17:21:23,539 - app.core.logging - INFO -  Running UX Agent for https://www.seobility.net/en/seocheck/
+2026-04-24 17:21:29,209 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-24 17:21:32,024 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-24 17:21:32,026 - app.core.logging - INFO -  UX Agent completed: 85/100
+2026-04-24 17:21:32,039 - app.core.logging - INFO -  Analysis 2 COMPLETED! SEO: 85, UX: 85
+2026-04-24 17:21:32,039 - app.core.logging - INFO -  Saving analysis 2 to Chroma for user 3...
+2026-04-24 17:21:32,039 - app.core.logging - INFO - Saving analysis 2 for user 3 to Chroma
+2026-04-24 17:21:32,756 - app.core.logging - INFO - Saved 8 chunks for analysis 2 to Chroma (collection total: 16)
+2026-04-24 17:21:32,756 - app.core.logging - INFO -  Analysis 2 saved to Chroma successfully!
+2026-04-24 17:22:07,580 - app.core.logging - INFO - User 3 requesting analysis 2
