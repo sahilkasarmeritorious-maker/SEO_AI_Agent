@@ -11,7 +11,7 @@ from app.core.config import get_settings
 from app.core.logging import logger
 from app.db.session import AsyncSessionLocal, init_db, close_db  #  Import async versions
 from app.db.models import User
-from app.api.routes import auth, analysis
+from app.api.routes import auth, analysis, chat
 from app.services.user_service import UserService
 from app.schemas.user import UserCreate
 from app.core.security import SecurityService
@@ -123,7 +123,7 @@ app.state.limiter = limiter
 
 app.include_router(auth.router)
 app.include_router(analysis.router)
-
+app.include_router(chat.router)
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
     """Handle rate limit exceeded errors."""

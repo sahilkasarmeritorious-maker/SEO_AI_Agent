@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Website Analysis Platform{% endblock %}
+
+{% block content %}
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <a href="/dashboard" class="nav-item active">📊 Dashboard</a>
+        <a href="/chat" class="nav-item">💬 Chat Assistant</a>
+    </nav>
+</div>
+
+<div class="main-content">
+    <div class="header-card">
+        <h1>Analyze Your Website</h1>
+        <p>Get comprehensive SEO and UX insights powered by AI</p>
+    </div>
+
+    <div class="white-card">
+        <form method="post" class="submit-form">
+            <input type="url" name="url" placeholder="https://example.com" required>
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+        
+        {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+    </div>
+
+    <h2>Recent Analyses</h2>
+    
+    {% if analyses %}
+    <div class="analyses-grid">
+        {% for analysis in analyses %}
+        <div class="analysis-card">
+            <div class="card-header">
+                <h3>{{ analysis.url }}</h3>
+                <span class="status status-{{ analysis.status }}">{{ analysis.status|upper }}</span>
+            </div>
+
+            {% if analysis.status == "completed" %}
+            <div class="scores">
+                <div class="score-item">
+                    <label>SEO Score</label>
+                    <div class="score-bar">
+                        {% set seo_score = analysis.seo_overall_score or 0 %}
+                        {% if seo_score >= 80 %}
+                            {% set bar_color = "green" %}
+                        {% elif seo_score >= 60 %}
+                            {% set bar_color = "orange" %}
+                        {% else %}
+                            {% set bar_color = "red" %}
+                        {% endif %}
+                        <div class="score-fill" style="width: {{ seo_score }}%; background-color: {{ bar_color }};"></div>
+                    </div>
+                    <span class="score-text">{{ seo_score }}</span>
+                </div>
+
+                <div class="score-item">
+                    <label>UX Score</label>
+                    <div class="score-bar">
+                        {% set ux_score = analysis.ux_overall_score or 0 %}
+                        {% if ux_score >= 80 %}
+                            {% set bar_color = "green" %}
+                        {% elif ux_score >= 60 %}
+                            {% set bar_color = "orange" %}
+                        {% else %}
+                            {% set bar_color = "red" %}
+                        {% endif %}
+                        <div class="score-fill" style="width: {{ ux_score }}%; background-color: {{ bar_color }};"></div>
+                    </div>
+                    <span class="score-text">{{ ux_score }}</span>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="card-actions">
+                {% if analysis.status == "completed" %}
+                <a href="/analysis/{{ analysis.analysis_id }}" class="btn btn-secondary">View Details</a>
+                {% endif %}
+                <a href="/chat?analysis_id={{ analysis.id }}" class="btn btn-primary">Ask Questions</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-data">No analyses yet. Submit a URL to get started!</p>
+    {% endif %}
+</div>
+{% endblock %}

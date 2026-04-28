@@ -61,7 +61,7 @@ class PageScraper:
 
     def __init__(
         self,
-        timeout_ms: int = 30000,
+        timeout_ms: int = 60000,  # ✅ CHANGED: 30s -> 60s
         viewport_w: int = 1440,
         viewport_h: int = 900,
         user_agent: str = None,
@@ -118,8 +118,13 @@ class PageScraper:
             page = await self._context.new_page()
             
             try:
-                # Navigate to URL
-                await page.goto(url, wait_until="networkidle", timeout=self.timeout_ms)
+                # ADDED: Try networkidle first, fallback to load if timeout
+                try:
+                    await page.goto(url, wait_until="networkidle", timeout=self.timeout_ms)
+                except PlaywrightTimeout:
+                    # Fallback: use 'load' instead of 'networkidle' for slow websites
+                    print(f"⚠️  networkidle timeout for {url}, retrying with 'load' condition...")
+                    await page.goto(url, wait_until="load", timeout=30000)
                 
                 # Get title
                 title = await page.title()

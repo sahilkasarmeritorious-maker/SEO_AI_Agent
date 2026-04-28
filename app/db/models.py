@@ -17,6 +17,7 @@ class User(Base):
     
     # Relationships
     analyses = relationship("Analysis", back_populates="user", cascade="all, delete-orphan")
+    chat_messages = relationship("ChatMessage", back_populates="user", cascade="all, delete-orphan")
 
 
 class Analysis(Base):
@@ -49,3 +50,25 @@ class Analysis(Base):
     
     # Relationships
     user = relationship("User", back_populates="analyses")
+
+class ChatMessage(Base):
+    __tablename__ = "chat_messages"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), index=True)
+    analysis_id = Column(Integer, ForeignKey("analyses.id"), nullable=True, index=True)
+    
+    # Message content
+    user_message = Column(Text, nullable=False)  # User's question
+    assistant_response = Column(Text, nullable=False)  # RAG-generated answer
+    
+    # Source metadata
+    source_analyses = Column(Text, nullable=True)  # JSON: which analyses were used for context
+    relevance_scores = Column(Text, nullable=True)  # JSON: similarity scores of sources
+    
+    # Timestamps
+    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+    
+    # Relationships
+    user = relationship("User", back_populates="chat_messages")
+    analysis = relationship("Analysis")

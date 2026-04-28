@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Chat - Website Analysis Platform{% endblock %}
+
+{% block content %}
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <a href="/dashboard" class="nav-item">📊 Dashboard</a>
+        <a href="/chat" class="nav-item active">💬 Chat Assistant</a>
+    </nav>
+</div>
+
+<div class="main-content">
+    <div class="header-card">
+        <h1>AI Chat Assistant</h1>
+        {% if analysis_id %}
+            <p>💬 Asking about analysis #{{ analysis_id }}</p>
+        {% else %}
+            <p>💬 Asking about all your analyses</p>
+        {% endif %}
+    </div>
+
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    <div class="chat-container">
+        <div class="messages-area">
+            {% if messages %}
+                {% for msg in messages %}
+                <div class="message user-message">
+                    <p><strong>You:</strong> {{ msg.user_message }}</p>
+                </div>
+
+                <div class="message assistant-message">
+                    <p><strong>Assistant:</strong> {{ msg.assistant_response }}</p>
+                    
+                    {% if msg.sources %}
+                    <div class="sources">
+                        <strong>📌 Sources ({{ msg.sources|length }}):</strong>
+                        <div class="sources-list">
+                            {% for source in msg.sources %}
+                            <div class="source-item">
+                                <p><strong>Analysis #{{ source.analysis_id }}</strong></p>
+                                <p>URL: {{ source.url }}</p>
+                                <small>SEO: {{ source.seo_score }}/100 | UX: {{ source.ux_score }}/100 | {{ (source.relevance_score * 100)|int }}% relevant</small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+            <p class="no-messages">No messages yet. Start a conversation...</p>
+            {% endif %}
+        </div>
+
+        <form method="post" action="/api/chat/send" class="chat-input-form">
+            <input 
+                type="text" 
+                name="message" 
+                placeholder="Ask a question..." 
+                required 
+                autofocus
+            >
+            {% if analysis_id %}
+            <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 1.5rem;">
+        {% if analysis_id %}
+            <p style="color: #666; font-size: 0.9rem;">
+                <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a> | 
+                <a href="/chat" style="color: #2563eb; text-decoration: none;">Ask About All Analyses →</a>
+            </p>
+        {% else %}
+            <p style="color: #666; font-size: 0.9rem;">
+                <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a>
+            </p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
