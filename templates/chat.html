@@ -11,14 +11,21 @@
 </div>
 
 <div class="main-content">
-    <div class="header-card">
-        <h1>AI Chat Assistant</h1>
-        {% if analysis_id %}
-            <p>💬 Asking about analysis #{{ analysis_id }}</p>
-        {% else %}
-            <p>💬 Asking about all your analyses</p>
-        {% endif %}
+    {% if analysis_id %}
+    <!-- SPECIFIC ANALYSIS MODE -->
+    <div class="header-card" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);">
+        <h1>💬 Analysis-Specific Chat</h1>
+        <p>📌 Asking about Analysis #{{ analysis_id }} only</p>
+        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Questions will be answered based on THIS analysis only</p>
     </div>
+    {% else %}
+    <!-- UNIVERSAL MODE -->
+    <div class="header-card" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+        <h1>💬 Universal Chat Assistant</h1>
+        <p>🌐 Asking about all your analyses</p>
+        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Questions will search through ALL your analyses for the best answer</p>
+    </div>
+    {% endif %}
 
     {% if error %}
     <div class="alert alert-error">{{ error }}</div>
@@ -30,6 +37,11 @@
                 {% for msg in messages %}
                 <div class="message user-message">
                     <p><strong>You:</strong> {{ msg.user_message }}</p>
+                    {% if msg.analysis_id %}
+                    <small style="opacity: 0.7; font-size: 0.8rem;">📌 Analysis #{{ msg.analysis_id }}</small>
+                    {% else %}
+                    <small style="opacity: 0.7; font-size: 0.8rem;">👤 {{ user.username or user.email }}</small>
+                    {% endif %}
                 </div>
 
                 <div class="message assistant-message">
@@ -57,17 +69,19 @@
         </div>
 
         <form method="post" action="/api/chat/send" class="chat-input-form">
-            <input 
-                type="text" 
-                name="message" 
-                placeholder="Ask a question..." 
-                required 
-                autofocus
-            >
-            {% if analysis_id %}
-            <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
-            {% endif %}
-            <button type="submit" class="btn btn-primary">Send</button>
+            <div>
+                <input 
+                    type="text" 
+                    name="message" 
+                    placeholder="Ask a question..." 
+                    required 
+                    autofocus
+                >
+                {% if analysis_id %}
+                <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
         </form>
     </div>
 
@@ -75,11 +89,11 @@
         {% if analysis_id %}
             <p style="color: #666; font-size: 0.9rem;">
                 <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a> | 
-                <a href="/chat" style="color: #2563eb; text-decoration: none;">Ask About All Analyses →</a>
+                <a href="/chat" style="color: #2563eb; text-decoration: none;">🌐 Ask About All Analyses →</a>
             </p>
         {% else %}
             <p style="color: #666; font-size: 0.9rem;">
-                <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a>
+                <a href="/dashboard" style="color: #10b981; text-decoration: none;">← Back to Dashboard</a>
             </p>
         {% endif %}
     </div>

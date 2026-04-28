@@ -18,9 +18,9 @@ def get_embeddings_model():
 
 async def generate_embedding(text: str) -> list:
     """Async: Generate vector embedding for text"""
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     model = get_embeddings_model()
-    
+
     # Run embedding generation in thread pool (non-blocking)
     embedding = await loop.run_in_executor(
         _executor,
@@ -30,9 +30,9 @@ async def generate_embedding(text: str) -> list:
 
 async def generate_embeddings_batch(texts: list) -> list:
     """Async: Generate embeddings for multiple texts"""
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     model = get_embeddings_model()
-    
+
     # Run batch encoding in thread pool
     embeddings = await loop.run_in_executor(
         _executor,

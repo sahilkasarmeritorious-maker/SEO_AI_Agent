@@ -260,18 +260,24 @@ Please provide a clear, helpful answer that references the relevant metrics."""
 
         try:
             loop = asyncio.get_running_loop()
-            
-            # Run LLM in executor to avoid blocking
-            response = await loop.run_in_executor(
-                None,
-                lambda: self.llm.invoke([
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
-                ]).content
+
+            # Run LLM in executor with timeout to avoid blocking indefinitely
+            response = await asyncio.wait_for(
+                loop.run_in_executor(
+                    None,
+                    lambda: self.llm.invoke([
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt}
+                    ]).content
+                ),
+                timeout=60.0
             )
 
             return response
 
+        except asyncio.TimeoutError:
+            logger.error(" LLM response generation timed out after 60s")
+            raise
         except Exception as e:
             logger.error(f"Error generating response: {e}", exc_info=True)
             raise
@@ -326,33 +332,37 @@ Please provide a clear, helpful answer that references the relevant metrics."""
         analysis_id: Optional[int] = None,
         limit: int = 50
     ) -> List[ChatMessage]:
-        """Get user's chat conversation history."""
+        """Get user's chat conversation history (separated by analysis_id)."""
         user_id = int(user_id)
         logger.info(
             f" Fetching chat history for user {user_id} "
-            f"(limit: {limit})"
+            f"(analysis_id: {analysis_id}, limit: {limit})"
         )
-
+    
         try:
-            query = select(ChatMessage).where(
-                ChatMessage.user_id == user_id
-            )
-
             if analysis_id:
-                query = query.where(
+                # Get messages ONLY for this specific analysis
+                query = select(ChatMessage).where(
+                    ChatMessage.user_id == user_id,
                     ChatMessage.analysis_id == analysis_id
                 )
-
+            else:
+                # Get messages ONLY for universal chat (no analysis_id)
+                query = select(ChatMessage).where(
+                    ChatMessage.user_id == user_id,
+                    ChatMessage.analysis_id == None  # ✅ ONLY universal messages
+                )
+            
             query = query.order_by(
                 desc(ChatMessage.created_at)
             ).limit(limit)
-
+    
             result = await db.execute(query)
             messages = result.scalars().all()
-
-            logger.info(f" Retrieved {len(messages)} messages")
+    
+            logger.info(f" Retrieved {len(messages)} messages (analysis_id: {analysis_id})")
             return messages
-
+    
         except Exception as e:
             logger.error(f"Error fetching history: {e}", exc_info=True)
             raise

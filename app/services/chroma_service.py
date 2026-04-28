@@ -9,6 +9,9 @@ from concurrent.futures import ThreadPoolExecutor
 # Thread pool for blocking Chroma operations
 _executor = ThreadPoolExecutor(max_workers=3)
 
+# Semaphore to limit concurrent Chroma operations
+_semaphore = asyncio.Semaphore(5)
+
 # Persistent storage path
 CHROMA_PERSIST_PATH = "./chroma_db"
 
@@ -167,32 +170,19 @@ class ChromaService:
         logger.info(f"Querying Chroma for user {user_id}: '{question}'")
 
         try:
-            # FIX: cap n_results to actual count for this user to avoid Chroma error
             loop = asyncio.get_running_loop()
-
-            user_doc_count = await loop.run_in_executor(
-                _executor,
-                lambda: len(
-                    self.collection.get(where={"user_id": {"$eq": user_id}})["ids"]
-                )
-            )
-
-            if user_doc_count == 0:
-                logger.warning(f"No Chroma documents found for user {user_id}")
-                return {"ids": [[]], "documents": [[]], "metadatas": [[]], "distances": [[]]}
-
-            safe_n = min(n_results, user_doc_count)
-
             question_embedding = await generate_embedding(question)
 
-            results = await loop.run_in_executor(
-                _executor,
-                lambda: self.collection.query(
-                    query_embeddings=[question_embedding],
-                    n_results=safe_n,
-                    where={"user_id": {"$eq": user_id}},
+            # Use semaphore to limit concurrent Chroma operations
+            async with _semaphore:
+                results = await loop.run_in_executor(
+                    _executor,
+                    lambda: self.collection.query(
+                        query_embeddings=[question_embedding],
+                        n_results=n_results,
+                        where={"user_id": {"$eq": user_id}},
+                    )
                 )
-            )
 
             # Security double-check: every returned doc must belong to this user
             if results and results.get("metadatas"):

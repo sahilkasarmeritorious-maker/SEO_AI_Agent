@@ -14,7 +14,7 @@ router = APIRouter(prefix="/api/analysis", tags=["Analysis"])
 
 
 @router.post("/analyze", response_model=AnalysisResponse, status_code=status.HTTP_202_ACCEPTED)
-@limiter.limit("10/minute")
+@limiter.limit("3/minute")  # Reduced: each analysis takes 30-60s with SEO+UX+LLM
 async def submit_analysis(  # ✅ Make async
     request: Request,
     req: AnalysisRequest,

@@ -270,28 +270,32 @@ async def chat_page(
         return RedirectResponse(url="/login", status_code=303)
     
     try:
-        # Fetch chat history
+        # Fetch chat history - properly passing analysis_id
         async with httpx.AsyncClient() as client:
+            params = {"limit": 50}
+            if analysis_id:
+                params["analysis_id"] = analysis_id
+            
             response = await client.get(
                 f"{BACKEND_API}/api/chat/history",
                 headers=await get_headers(access_token),
-                params={"analysis_id": analysis_id, "limit": 50}
+                params=params
             )
         
         messages = response.json() if response.status_code == 200 else []
-        user = json.loads(request.cookies.get("user", "{}"))  # ADDED
+        user = json.loads(request.cookies.get("user", "{}"))
         
         return templates.TemplateResponse(
             request,
             "chat.html",
-            {"messages": messages, "analysis_id": analysis_id, "user": user}  # ADDED user
+            {"messages": messages, "analysis_id": analysis_id, "user": user}
         )
     except Exception as e:
-        user = json.loads(request.cookies.get("user", "{}"))  # ADDED
+        user = json.loads(request.cookies.get("user", "{}"))
         return templates.TemplateResponse(
             request,
             "chat.html",
-            {"messages": [], "error": str(e), "analysis_id": analysis_id, "user": user}  # ADDED user
+            {"messages": [], "error": str(e), "analysis_id": analysis_id, "user": user}
         )
 
 
@@ -325,24 +329,27 @@ async def send_chat_message(
                 )
             
             messages = history_response.json() if history_response.status_code == 200 else []
+            user = json.loads(request.cookies.get("user", "{}"))  #  ADDED
             
             return templates.TemplateResponse(
                 request,
                 "chat.html",
-                {"messages": messages, "analysis_id": analysis_id}
+                {"messages": messages, "analysis_id": analysis_id, "user": user}  #  ADDED user
             )
         else:
             error = response.json().get("detail", "Failed to send message")
+            user = json.loads(request.cookies.get("user", "{}"))  #  ADDED
             return templates.TemplateResponse(
                 request,
                 "chat.html",
-                {"error": error, "analysis_id": analysis_id}
+                {"error": error, "analysis_id": analysis_id, "user": user}  #  ADDED user
             )
     except Exception as e:
+        user = json.loads(request.cookies.get("user", "{}"))  #  ADDED
         return templates.TemplateResponse(
             request,
             "chat.html",
-            {"error": str(e), "analysis_id": analysis_id}
+            {"error": str(e), "analysis_id": analysis_id, "user": user}  # ADDED user
         )
 
 

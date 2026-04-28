@@ -140,12 +140,16 @@ class HTMLParser:
     
     def parse(self) -> ParsedPage:
         """Parse HTML and extract all data."""
+        # Extract once and reuse to avoid redundant parsing
+        links = self._extract_links()
+        images = self._extract_images()
+
         return ParsedPage(
             url=self.base_url,
             meta=self._extract_meta(),
             headings=self._extract_headings(),
-            links=self._extract_links(),
-            images=self._extract_images(),
+            links=links,
+            images=images,
             forms=self._extract_forms(),
             videos=self._extract_videos(),
             buttons=self._extract_buttons(),
@@ -153,9 +157,9 @@ class HTMLParser:
             word_count=self._count_words(),
             has_schema_markup=self._has_schema_markup(),
             schema_types=self._extract_schema_types(),
-            internal_link_count=sum(1 for l in self._extract_links() if not l.is_external),
-            external_link_count=sum(1 for l in self._extract_links() if l.is_external),
-            images_missing_alt=[img.src for img in self._extract_images() if not img.has_alt],
+            internal_link_count=sum(1 for l in links if not l.is_external),
+            external_link_count=sum(1 for l in links if l.is_external),
+            images_missing_alt=[img.src for img in images if not img.has_alt],
             has_skip_links=self._has_skip_links(),
             has_focus_indicators=self._has_focus_indicators(),
             is_mobile_responsive=self._is_mobile_responsive(),

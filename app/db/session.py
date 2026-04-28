@@ -1,7 +1,8 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from sqlalchemy import text 
+from sqlalchemy import text
 from typing import AsyncGenerator
 import logging
+import asyncio
 from app.core.config import get_settings
 
 logger = logging.getLogger(__name__)
@@ -41,11 +42,14 @@ async def get_db() -> AsyncGenerator:
             yield session
             await session.commit()
         except Exception as e:
-            logger.error(f"Database session error: {str(e)}")
+            logger.error(f"Database session error: {str(e)}", exc_info=True)
             await session.rollback()
             raise
         finally:
-            await session.close()
+            try:
+                await session.close()
+            except Exception as close_error:
+                logger.error(f"Failed to close database session: {close_error}")
 
 
 # Health check function
@@ -103,19 +107,25 @@ async def run_migrations() -> bool:
 async def init_db():
     """Initialize database on startup (run migrations + health check)."""
     try:
-        # Check database connection
-        if not await check_database_connection():
-            raise Exception("Database connection failed!")
-        
+        # Check database connection with retry
+        max_retries = 3
+        for attempt in range(max_retries):
+            if await check_database_connection():
+                break
+            if attempt == max_retries - 1:
+                raise Exception(f"Database connection failed after {max_retries} attempts")
+            logger.warning(f"Database connection attempt {attempt + 1} failed, retrying...")
+            await asyncio.sleep(1 * (attempt + 1))
+
         # Run migrations
         if not await run_migrations():
             raise Exception("Alembic migrations failed!")
-        
+
         logger.info("Database initialization complete")
         return True
-        
+
     except Exception as e:
-        logger.error(f"Database initialization failed: {str(e)}")
+        logger.error(f"Database initialization failed: {str(e)}", exc_info=True)
         raise
 
 

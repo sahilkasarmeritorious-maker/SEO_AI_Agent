@@ -1,5 +1,6 @@
 import json
 import time
+import asyncio
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from core.config import Config
@@ -55,7 +56,7 @@ class UXAgent:
             analysis_data = self._prepare_analysis_data(scrape_result, parsed_page)
             
             # Step 4: Call LLM
-            ux_findings = self._call_llm(analysis_data)
+            ux_findings = await self._call_llm(analysis_data)
             
             # Step 5: Create report
             print(" Step 4: Creating report...")
@@ -140,8 +141,8 @@ class UXAgent:
             },
         }
     
-    def _call_llm(self, analysis_data: dict) -> dict:
-        """Call LLM to analyze UX data."""
+    async def _call_llm(self, analysis_data: dict) -> dict:
+        """Call LLM to analyze UX data (non-blocking)."""
         # Create prompt
         data_str = json.dumps(analysis_data, indent=2)
 
@@ -155,8 +156,19 @@ class UXAgent:
 
         system_message = SystemMessage(content=self.system_prompt)
 
-        # Call LLM
-        response = llm.invoke([system_message, human_message])
+        # Run LLM in executor to avoid blocking event loop
+        loop = asyncio.get_running_loop()
+        try:
+            response = await asyncio.wait_for(
+                loop.run_in_executor(
+                    None,
+                    lambda: llm.invoke([system_message, human_message])
+                ),
+                timeout=60.0
+            )
+        except asyncio.TimeoutError:
+            print("  LLM call timed out after 60s")
+            return {"overall_score": 50, "error": "LLM call timed out"}
 
         # Parse response
         response_text = response.content
@@ -177,5 +189,5 @@ class UXAgent:
             print(f" JSON parsing failed: {e}")
             print(f"   Raw response: {response_text[:200]}...")
             findings = {"overall_score": 50, "error": str(e)}
-        
+
         return findings
