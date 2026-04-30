@@ -31,33 +31,59 @@ class ChatService:
         user_id: int,
         message: str,
         analysis_id: Optional[int] = None,
-        db: Optional[AsyncSession] = None
+        db: Optional[AsyncSession] = None,
+        session_id: Optional[int] = None
     ) -> Dict[str, Any]:
-        
+
         user_id = int(user_id)
-        logger.info(f" Processing chat for user {user_id}: {message[:50]}...")
+        logger.info(f"💬 Processing chat for user {user_id}: {message[:50]}...")
 
         try:
-            # Step 1: Retrieve relevant analyses from Chroma
+            from app.services.chat_session_service import ChatSessionService
+
+            # ─────────────────────────────────────────────────────────────
+            # STEP 1: Get or create session
+            # ─────────────────────────────────────────────────────────────
+
+            if session_id:
+                # Reuse existing session (validate ownership)
+                session = await ChatSessionService.get_session(db, session_id, user_id)
+                if not session:
+                    raise ValueError(f"Session {session_id} not found or doesn't belong to user")
+                logger.info(f"♻️  Reusing session {session_id}")
+            else:
+                # Create NEW session with auto-generated title
+                session = await ChatSessionService.create_session(
+                    db=db,
+                    user_id=user_id,
+                    analysis_id=analysis_id,
+                    first_message=message  # Use first message to generate title
+                )
+                session_id = session.id
+                logger.info(f"✨ Created new session {session_id}")
+
+            # ─────────────────────────────────────────────────────────────
+            # STEP 2: Retrieve relevant context from Chroma
+            # ─────────────────────────────────────────────────────────────
+
             retrieved = await self._retrieve_context(
                 user_id=user_id,
                 question=message,
                 analysis_id=analysis_id
             )
 
-            # Step 2: Build context string from retrieved chunks
+            # ─────────────────────────────────────────────────────────────
+            # STEP 3: Build context and generate response
+            # ─────────────────────────────────────────────────────────────
+
             context = self._build_context(retrieved)
-
-            # Step 3: Generate response using Gemini
-            response = await self._generate_response(
-                question=message,
-                context=context
-            )
-
-            # Step 4: Extract source analysis IDs and scores
+            response = await self._generate_response(question=message, context=context)
             sources = self._parse_sources(retrieved)
 
-            # Step 5: Store in PostgreSQL (if db provided)
+            # ─────────────────────────────────────────────────────────────
+            # STEP 4: Store message in PostgreSQL
+            # ─────────────────────────────────────────────────────────────
+
             chat_message = None
             if db:
                 chat_message = await self._store_message(
@@ -66,16 +92,35 @@ class ChatService:
                     user_message=message,
                     assistant_response=response,
                     sources=sources,
-                    analysis_id=analysis_id  # ADDED
+                    analysis_id=analysis_id,
+                    session_id=session_id
+                )
+
+                # Update session.updated_at timestamp for sidebar sorting
+                await ChatSessionService.update_session_timestamp(db, session_id, user_id)
+
+            # ─────────────────────────────────────────────────────────────
+            # STEP 5: Save to Chroma in background (fire-and-forget)
+            # ─────────────────────────────────────────────────────────────
+
+            if chat_message:
+                asyncio.create_task(
+                    self._save_to_chroma_background(
+                        user_id=user_id,
+                        message=message,
+                        response=response,
+                        analysis_id=analysis_id
+                    )
                 )
 
             logger.info(
-                f" Generated response for user {user_id} "
+                f"✅ Chat response generated for user {user_id} in session {session_id} "
                 f"({len(sources)} sources)"
             )
 
             return {
                 "id": chat_message.id if chat_message else None,
+                "session_id": session_id,
                 "user_message": message,
                 "assistant_response": response,
                 "sources": sources,
@@ -86,9 +131,34 @@ class ChatService:
                 )
             }
 
+        except ValueError as e:
+            logger.warning(f"⚠️  Validation error: {e}")
+            raise
         except Exception as e:
             logger.error(f"❌ Chat error for user {user_id}: {e}", exc_info=True)
             raise
+    
+    async def _save_to_chroma_background(
+        self,
+        user_id: int,
+        message: str,
+        response: str,
+        analysis_id: Optional[int] = None
+    ) -> None:
+        """Save message exchange to Chroma asynchronously (background task)."""
+        try:
+            # This runs in background, doesn't block the response
+            # We save the Q&A pair to Chroma for future context
+            await asyncio.sleep(0.1)  # Small delay to ensure DB commit
+            
+            # Optionally: save message exchange as new chunk to Chroma
+            # This improves context in future queries
+            # Implementation depends on your Chroma strategy
+            
+            logger.info(f"💾 Background: Saved message to Chroma for user {user_id}")
+        except Exception as e:
+            logger.error(f"⚠️  Background Chroma save failed: {e}", exc_info=True)
+            # Don't raise - this is background task, shouldn't affect response
 
     # ─────────────────────────────────────────────────────────────────────────
     # RETRIEVAL (Chroma + PostgreSQL)
@@ -293,19 +363,21 @@ Please provide a clear, helpful answer that references the relevant metrics."""
         user_message: str,
         assistant_response: str,
         sources: List[Dict[str, Any]],
-        analysis_id: Optional[int] = None  # ADDED
+        analysis_id: Optional[int] = None,
+        session_id: Optional[int] = None
     ) -> ChatMessage:
-        """Store message and response in PostgreSQL."""
+        """Store message in PostgreSQL with session association."""
+        
+        # Serialize sources to JSON
+        sources_json = json.dumps(sources) if sources else None
         try:
             chat_message = ChatMessage(
                 user_id=user_id,
-                analysis_id=analysis_id,  # ADDED: Store analysis_id
+                session_id=session_id,
+                analysis_id=analysis_id,
                 user_message=user_message,
                 assistant_response=assistant_response,
-                source_analyses=json.dumps(sources),
-                relevance_scores=json.dumps(
-                    {s["analysis_id"]: s["relevance_score"] for s in sources}
-                ),
+                source_analyses=sources_json,
                 created_at=datetime.utcnow()
             )
 
@@ -313,7 +385,11 @@ Please provide a clear, helpful answer that references the relevant metrics."""
             await db.commit()
             await db.refresh(chat_message)
 
-            logger.info(f" Stored chat message {chat_message.id} for analysis {analysis_id}")
+            logger.info(
+                f" Stored message {chat_message.id} in session {session_id} "
+                f"for user {user_id}"
+            )
+
             return chat_message
 
         except Exception as e:

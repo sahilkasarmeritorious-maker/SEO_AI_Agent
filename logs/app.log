@@ -4821,3 +4821,1892 @@ fastapi.exceptions.HTTPException: 401: Invalid credentials
 2026-04-28 18:00:49,341 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
 2026-04-28 18:01:35,177 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
 2026-04-28 18:01:35,179 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 11:00:06,987 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 11:00:07,238 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 11:00:07,289 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 11:00:07,367 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 11:00:07,400 - app.core.logging - INFO -  Starting application...
+2026-04-29 11:00:07,400 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 11:00:07,400 - app.db.session - INFO -    Host: localhost
+2026-04-29 11:00:07,400 - app.db.session - INFO -    Port: 5432
+2026-04-29 11:00:07,401 - app.db.session - INFO -    Database: Mydb
+2026-04-29 11:00:07,488 - app.db.session - INFO -  Database connection successful
+2026-04-29 11:00:07,488 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 11:00:08,320 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 11:00:08,320 - app.db.session - INFO - Database initialization complete
+2026-04-29 11:00:08,320 - app.core.logging - INFO -  Database initialized
+2026-04-29 11:00:08,320 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 11:00:08,320 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 11:00:08,341 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 11:00:08,342 - app.core.logging - INFO -  Application startup complete
+2026-04-29 11:01:11,675 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 11:01:12,014 - app.core.logging - INFO - User logged in: tony stark
+2026-04-29 11:01:17,231 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 11:01:17,240 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 11:01:21,146 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 11:01:21,149 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 11:01:25,586 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 11:01:25,590 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: 10)
+2026-04-29 11:01:28,184 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 11:01:28,186 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: 10)
+2026-04-29 11:01:32,564 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 9, limit: 50)
+2026-04-29 11:01:32,567 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: 9)
+2026-04-29 11:01:34,217 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 9, limit: 50)
+2026-04-29 11:01:34,221 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: 9)
+2026-04-29 11:01:41,454 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 11:01:41,456 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 11:01:46,305 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 11:01:46,309 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 12:19:46,121 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 12:19:46,123 - app.db.session - INFO - Database connections closed
+2026-04-29 12:19:46,123 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 12:53:13,136 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 12:53:13,255 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 12:53:13,268 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 12:53:13,350 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 12:53:13,378 - app.core.logging - INFO -  Starting application...
+2026-04-29 12:53:13,379 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 12:53:13,379 - app.db.session - INFO -    Host: localhost
+2026-04-29 12:53:13,379 - app.db.session - INFO -    Port: 5432
+2026-04-29 12:53:13,379 - app.db.session - INFO -    Database: Mydb
+2026-04-29 12:53:13,424 - app.db.session - INFO -  Database connection successful
+2026-04-29 12:53:13,424 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 12:53:14,226 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 12:53:14,226 - app.db.session - INFO - Database initialization complete
+2026-04-29 12:53:14,226 - app.core.logging - INFO -  Database initialized
+2026-04-29 12:53:14,226 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 12:53:14,227 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 12:53:14,247 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 12:53:14,248 - app.core.logging - INFO -  Application startup complete
+2026-04-29 12:53:58,390 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 12:53:58,724 - app.core.logging - INFO - User logged in: tony stark
+2026-04-29 12:54:02,255 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 12:54:02,263 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 12:54:05,287 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 12:54:05,292 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: 10)
+2026-04-29 12:54:27,724 - app.core.logging - INFO -  Processing chat for user 9: what is the overall review of the analysis accordi...
+2026-04-29 12:54:27,741 - app.core.logging - INFO - Created new session 1 for user 9
+2026-04-29 12:54:27,742 - app.core.logging - INFO - 🔍 Retrieving context for: what is the overall review of the analysis accordi...
+2026-04-29 12:54:27,742 - app.core.logging - INFO - Querying Chroma for user 9: 'what is the overall review of the analysis according to you '
+2026-04-29 12:54:27,742 - app.core.logging - INFO - Loading sentence-transformers model...
+2026-04-29 12:54:27,744 - sentence_transformers.base.model - INFO - No device provided, using cpu
+2026-04-29 12:54:28,072 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:28,072 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-29 12:54:28,094 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:28,350 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:28,374 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:28,378 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-29 12:54:28,626 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:28,650 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:28,917 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:28,941 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-29 12:54:29,194 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:29,216 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:29,466 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:29,489 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:29,748 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 12:54:30,003 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:30,027 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:30,539 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 12:54:30,787 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 12:54:31,035 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 12:54:31,316 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 12:54:31,563 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:31,588 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:31,840 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:31,863 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:32,117 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:32,139 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:32,400 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:32,431 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:32,690 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-29 12:54:32,947 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-29 12:54:33,275 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 12:54:33,301 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-29 12:54:33,555 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-29 12:54:33,572 - app.core.logging - INFO - Model loaded successfully
+2026-04-29 12:54:33,876 - app.core.logging - INFO - Chroma returned 5 results for user 9
+2026-04-29 12:54:33,876 - app.core.logging - INFO -  Retrieved 1 chunks from Chroma
+2026-04-29 12:54:33,876 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 12:54:33,886 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 12:54:37,257 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 12:54:37,275 - app.core.logging - INFO -  Stored chat message 20 for analysis 10
+2026-04-29 12:54:37,275 - app.core.logging - INFO -  Generated response for user 9 in session 1 (1 sources)
+2026-04-29 12:54:39,233 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 12:54:39,235 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: 10)
+2026-04-29 12:54:50,056 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 12:54:50,059 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: 10)
+2026-04-29 12:54:54,670 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 12:54:54,672 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: 10)
+2026-04-29 13:17:50,248 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 9, limit: 50)
+2026-04-29 13:17:50,250 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: 9)
+2026-04-29 13:18:24,278 - app.core.logging - INFO -  Processing chat for user 9: what should i give priority for the updates ...
+2026-04-29 13:18:24,448 - app.core.logging - INFO - Created new session 2 for user 9
+2026-04-29 13:18:24,448 - app.core.logging - INFO - 🔍 Retrieving context for: what should i give priority for the updates ...
+2026-04-29 13:18:24,448 - app.core.logging - INFO - Querying Chroma for user 9: 'what should i give priority for the updates '
+2026-04-29 13:18:24,523 - app.core.logging - INFO - Chroma returned 5 results for user 9
+2026-04-29 13:18:24,523 - app.core.logging - INFO -  Retrieved 3 chunks from Chroma
+2026-04-29 13:18:24,523 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 13:18:24,524 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 13:18:28,825 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 13:18:28,846 - app.core.logging - INFO -  Stored chat message 21 for analysis 9
+2026-04-29 13:18:28,847 - app.core.logging - INFO -  Generated response for user 9 in session 2 (1 sources)
+2026-04-29 13:18:28,895 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 9, limit: 50)
+2026-04-29 13:18:28,898 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: 9)
+2026-04-29 13:22:24,011 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 13:22:24,013 - app.core.logging - INFO -  Retrieved 1 messages (analysis_id: None)
+2026-04-29 13:23:10,428 - app.core.logging - INFO -  Processing chat for user 9: which website's analysis is actually good and give...
+2026-04-29 13:23:10,436 - app.core.logging - INFO - Created new session 3 for user 9
+2026-04-29 13:23:10,436 - app.core.logging - INFO - 🔍 Retrieving context for: which website's analysis is actually good and give...
+2026-04-29 13:23:10,437 - app.core.logging - INFO - Querying Chroma for user 9: 'which website's analysis is actually good and give me total webpages we have analyzed'
+2026-04-29 13:23:10,564 - app.core.logging - INFO - Chroma returned 5 results for user 9
+2026-04-29 13:23:10,565 - app.core.logging - INFO -  Retrieved 5 chunks from Chroma
+2026-04-29 13:23:10,565 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 13:23:10,566 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 13:23:14,207 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 13:23:14,219 - app.core.logging - INFO -  Stored chat message 22 for analysis None
+2026-04-29 13:23:14,220 - app.core.logging - INFO -  Generated response for user 9 in session 3 (2 sources)
+2026-04-29 13:23:14,260 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 13:23:14,263 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: None)
+2026-04-29 13:23:42,763 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 10, limit: 50)
+2026-04-29 13:23:42,766 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: 10)
+2026-04-29 13:23:47,224 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: 9, limit: 50)
+2026-04-29 13:23:47,226 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: 9)
+2026-04-29 13:26:04,638 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 13:26:04,946 - app.db.session - ERROR - Database session error: 401: Invalid credentials
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 42, in get_db
+    yield session
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/slowapi/extension.py", line 734, in async_wrapper
+    response = await func(*args, **kwargs)  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/auth.py", line 41, in login
+    result = await AuthService.login(db, form_data.username, form_data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/services/auth_service.py", line 43, in login
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 401: Invalid credentials
+2026-04-29 13:26:15,573 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 13:26:15,881 - app.core.logging - INFO - User logged in: tony stark
+2026-04-29 13:26:59,754 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 13:26:59,757 - app.core.logging - INFO -  Retrieved 2 messages (analysis_id: None)
+2026-04-29 13:27:43,583 - app.core.logging - INFO -  Processing chat for user 9: total webpages we have analyzed and average score ...
+2026-04-29 13:27:43,586 - app.core.logging - INFO - Reusing session 3 for user 9
+2026-04-29 13:27:43,586 - app.core.logging - INFO - 🔍 Retrieving context for: total webpages we have analyzed and average score ...
+2026-04-29 13:27:43,586 - app.core.logging - INFO - Querying Chroma for user 9: 'total webpages we have analyzed and average score they are getting'
+2026-04-29 13:27:43,710 - app.core.logging - INFO - Chroma returned 5 results for user 9
+2026-04-29 13:27:43,710 - app.core.logging - INFO -  Retrieved 5 chunks from Chroma
+2026-04-29 13:27:43,710 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 13:27:43,712 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 13:27:46,475 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 13:27:46,489 - app.core.logging - INFO -  Stored chat message 23 for analysis None
+2026-04-29 13:27:46,489 - app.core.logging - INFO -  Generated response for user 9 in session 3 (2 sources)
+2026-04-29 13:27:46,524 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 13:27:46,527 - app.core.logging - INFO -  Retrieved 3 messages (analysis_id: None)
+2026-04-29 13:33:15,869 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 13:33:15,878 - app.db.session - INFO - Database connections closed
+2026-04-29 13:33:15,880 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 13:33:25,379 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 13:33:25,493 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 13:33:25,503 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 13:33:25,579 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 13:33:49,406 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 13:33:49,549 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 13:33:49,563 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 13:33:49,655 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 13:33:49,688 - app.core.logging - INFO -  Starting application...
+2026-04-29 13:33:49,689 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 13:33:49,689 - app.db.session - INFO -    Host: localhost
+2026-04-29 13:33:49,690 - app.db.session - INFO -    Port: 5432
+2026-04-29 13:33:49,690 - app.db.session - INFO -    Database: Mydb
+2026-04-29 13:33:49,741 - app.db.session - INFO -  Database connection successful
+2026-04-29 13:33:49,741 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 13:33:50,770 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 13:33:50,770 - app.db.session - INFO - Database initialization complete
+2026-04-29 13:33:50,770 - app.core.logging - INFO -  Database initialized
+2026-04-29 13:33:50,770 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 13:33:50,770 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 13:33:50,803 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 13:33:50,804 - app.core.logging - INFO -  Application startup complete
+2026-04-29 13:33:50,905 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 13:33:50,909 - app.db.session - INFO - Database connections closed
+2026-04-29 13:33:50,909 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 13:34:00,139 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 13:34:00,252 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 13:34:00,263 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 13:34:00,339 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 13:34:00,367 - app.core.logging - INFO -  Starting application...
+2026-04-29 13:34:00,367 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 13:34:00,367 - app.db.session - INFO -    Host: localhost
+2026-04-29 13:34:00,367 - app.db.session - INFO -    Port: 5432
+2026-04-29 13:34:00,367 - app.db.session - INFO -    Database: Mydb
+2026-04-29 13:34:00,409 - app.db.session - INFO -  Database connection successful
+2026-04-29 13:34:00,410 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 13:34:01,213 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 13:34:01,213 - app.db.session - INFO - Database initialization complete
+2026-04-29 13:34:01,213 - app.core.logging - INFO -  Database initialized
+2026-04-29 13:34:01,213 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 13:34:01,213 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 13:34:01,234 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 13:34:01,235 - app.core.logging - INFO -  Application startup complete
+2026-04-29 13:34:01,336 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 13:34:01,338 - app.db.session - INFO - Database connections closed
+2026-04-29 13:34:01,338 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 13:34:10,371 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 13:34:10,482 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 13:34:10,492 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 13:34:10,568 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 13:34:10,595 - app.core.logging - INFO -  Starting application...
+2026-04-29 13:34:10,596 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 13:34:10,596 - app.db.session - INFO -    Host: localhost
+2026-04-29 13:34:10,596 - app.db.session - INFO -    Port: 5432
+2026-04-29 13:34:10,596 - app.db.session - INFO -    Database: Mydb
+2026-04-29 13:34:10,640 - app.db.session - INFO -  Database connection successful
+2026-04-29 13:34:10,640 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 13:34:11,478 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 13:34:11,479 - app.db.session - INFO - Database initialization complete
+2026-04-29 13:34:11,479 - app.core.logging - INFO -  Database initialized
+2026-04-29 13:34:11,479 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 13:34:11,479 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 13:34:11,499 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 13:34:11,500 - app.core.logging - INFO -  Application startup complete
+2026-04-29 13:34:11,601 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 13:34:11,602 - app.db.session - INFO - Database connections closed
+2026-04-29 13:34:11,602 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 13:34:20,612 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 13:34:20,727 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 13:34:20,737 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 13:34:20,814 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 13:34:20,842 - app.core.logging - INFO -  Starting application...
+2026-04-29 13:34:20,842 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 13:34:20,842 - app.db.session - INFO -    Host: localhost
+2026-04-29 13:34:20,842 - app.db.session - INFO -    Port: 5432
+2026-04-29 13:34:20,843 - app.db.session - INFO -    Database: Mydb
+2026-04-29 13:34:20,887 - app.db.session - INFO -  Database connection successful
+2026-04-29 13:34:20,888 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 13:34:21,698 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 13:34:21,698 - app.db.session - INFO - Database initialization complete
+2026-04-29 13:34:21,698 - app.core.logging - INFO -  Database initialized
+2026-04-29 13:34:21,698 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 13:34:21,698 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 13:34:21,719 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 13:34:21,720 - app.core.logging - INFO -  Application startup complete
+2026-04-29 13:34:21,722 - app.core.logging - INFO -  Processing chat for user 9: total webpages we have analyzed and average score ...
+2026-04-29 13:34:21,727 - app.core.logging - INFO -  Reusing session 3 for user 9
+2026-04-29 13:34:21,727 - app.core.logging - INFO - 🔍 Retrieving context for: total webpages we have analyzed and average score ...
+2026-04-29 13:34:21,727 - app.core.logging - INFO - Querying Chroma for user 9: 'total webpages we have analyzed and average score they are getting'
+2026-04-29 13:34:21,727 - app.core.logging - INFO - Loading sentence-transformers model...
+2026-04-29 13:34:21,728 - sentence_transformers.base.model - INFO - No device provided, using cpu
+2026-04-29 13:34:22,058 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:22,081 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:22,354 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:22,378 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:22,378 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-29 13:34:22,751 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:22,775 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:23,023 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:23,024 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-29 13:34:23,045 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-29 13:34:23,294 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:23,316 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:23,570 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:23,593 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:23,842 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 13:34:24,096 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:24,119 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:24,497 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 13:34:24,748 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 13:34:25,000 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 13:34:25,251 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 13:34:25,515 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:25,539 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:25,788 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:25,811 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:26,059 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:26,080 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:26,326 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:26,347 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:26,600 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-29 13:34:26,864 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-29 13:34:27,172 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 13:34:27,195 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-29 13:34:27,449 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-29 13:34:27,457 - app.core.logging - INFO - Model loaded successfully
+2026-04-29 13:34:27,778 - app.core.logging - INFO - Chroma returned 5 results for user 9
+2026-04-29 13:34:27,778 - app.core.logging - INFO -  Retrieved 5 chunks from Chroma
+2026-04-29 13:34:27,778 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 13:34:27,787 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 13:34:29,994 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 13:34:30,021 - app.core.logging - INFO -  Stored chat message 24 for analysis None
+2026-04-29 13:34:30,021 - app.core.logging - INFO -  Generated response for user 9 in session 3 (2 sources)
+2026-04-29 13:34:30,996 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 13:34:31,000 - app.core.logging - INFO -  Retrieved 4 messages (analysis_id: None)
+2026-04-29 13:34:36,493 - app.core.logging - INFO -  Fetching chat history for user 9 (analysis_id: None, limit: 50)
+2026-04-29 13:34:36,496 - app.core.logging - INFO -  Retrieved 4 messages (analysis_id: None)
+2026-04-29 14:51:21,751 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 14:51:22,120 - app.core.logging - INFO - User logged in: tony stark
+2026-04-29 15:57:17,554 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 15:57:17,567 - app.db.session - INFO - Database connections closed
+2026-04-29 15:57:17,570 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 15:57:26,545 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 15:57:26,669 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 15:57:26,678 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 15:57:26,752 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 15:57:26,781 - app.core.logging - INFO -  Starting application...
+2026-04-29 15:57:26,781 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 15:57:26,781 - app.db.session - INFO -    Host: localhost
+2026-04-29 15:57:26,781 - app.db.session - INFO -    Port: 5432
+2026-04-29 15:57:26,781 - app.db.session - INFO -    Database: Mydb
+2026-04-29 15:57:26,824 - app.db.session - INFO -  Database connection successful
+2026-04-29 15:57:26,824 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 15:57:27,590 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 15:57:27,590 - app.db.session - INFO - Database initialization complete
+2026-04-29 15:57:27,590 - app.core.logging - INFO -  Database initialized
+2026-04-29 15:57:27,590 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 15:57:27,590 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 15:57:27,611 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 15:57:27,612 - app.core.logging - INFO -  Application startup complete
+2026-04-29 16:14:06,251 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 16:14:06,363 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 16:14:06,372 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 16:14:06,453 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 16:14:06,480 - app.core.logging - INFO -  Starting application...
+2026-04-29 16:14:06,481 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 16:14:06,481 - app.db.session - INFO -    Host: localhost
+2026-04-29 16:14:06,481 - app.db.session - INFO -    Port: 5432
+2026-04-29 16:14:06,481 - app.db.session - INFO -    Database: Mydb
+2026-04-29 16:14:06,525 - app.db.session - INFO -  Database connection successful
+2026-04-29 16:14:06,526 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 16:14:07,327 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 16:14:07,327 - app.db.session - INFO - Database initialization complete
+2026-04-29 16:14:07,327 - app.core.logging - INFO -  Database initialized
+2026-04-29 16:14:07,327 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 16:14:07,327 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 16:14:07,349 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 16:14:07,349 - app.core.logging - INFO -  Application startup complete
+2026-04-29 16:14:48,002 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 16:14:48,336 - app.core.logging - INFO - User logged in: tony stark
+2026-04-29 16:14:51,114 - app.core.logging - INFO - 📚 Retrieved 1 sessions for user 9
+2026-04-29 16:14:51,119 - app.core.logging - ERROR - Error fetching sessions: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+2026-04-29 16:14:51,136 - app.db.session - ERROR - Database session error: 500: Failed to fetch sessions
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 42, in get_db
+    yield session
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 115, in get_sessions
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Failed to fetch sessions
+2026-04-29 16:15:09,745 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:15:09,746 - app.core.logging - ERROR - Error fetching sessions: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+2026-04-29 16:15:09,748 - app.db.session - ERROR - Database session error: 500: Failed to fetch sessions
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 42, in get_db
+    yield session
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 115, in get_sessions
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Failed to fetch sessions
+2026-04-29 16:15:17,548 - app.core.logging - INFO - 📚 Retrieved 1 sessions for user 9
+2026-04-29 16:15:17,549 - app.core.logging - ERROR - Error fetching sessions: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+2026-04-29 16:15:17,551 - app.db.session - ERROR - Database session error: 500: Failed to fetch sessions
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 42, in get_db
+    yield session
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 115, in get_sessions
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Failed to fetch sessions
+2026-04-29 16:15:22,483 - app.core.logging - INFO - 📚 Retrieved 1 sessions for user 9
+2026-04-29 16:15:22,484 - app.core.logging - ERROR - Error fetching sessions: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+2026-04-29 16:15:22,487 - app.db.session - ERROR - Database session error: 500: Failed to fetch sessions
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 107, in get_sessions
+    "message_count": len(s.messages),
+                         ^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py", line 1141, in _emit_lazyload
+    result = session.execute(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2366, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 123, in await_only
+    raise exc.MissingGreenlet(
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/db/session.py", line 42, in get_db
+    yield session
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/app/api/routes/chat.py", line 115, in get_sessions
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Failed to fetch sessions
+2026-04-29 16:17:27,833 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 16:17:27,834 - app.db.session - INFO - Database connections closed
+2026-04-29 16:17:27,834 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 16:17:36,882 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 16:17:37,020 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 16:17:37,037 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 16:17:37,118 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 16:17:51,198 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 16:17:51,312 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 16:17:51,322 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 16:17:51,396 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 16:17:51,423 - app.core.logging - INFO -  Starting application...
+2026-04-29 16:17:51,423 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 16:17:51,423 - app.db.session - INFO -    Host: localhost
+2026-04-29 16:17:51,423 - app.db.session - INFO -    Port: 5432
+2026-04-29 16:17:51,423 - app.db.session - INFO -    Database: Mydb
+2026-04-29 16:17:51,466 - app.db.session - INFO -  Database connection successful
+2026-04-29 16:17:51,466 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 16:17:52,343 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 16:17:52,343 - app.db.session - INFO - Database initialization complete
+2026-04-29 16:17:52,344 - app.core.logging - INFO -  Database initialized
+2026-04-29 16:17:52,344 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 16:17:52,344 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 16:17:52,367 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 16:17:52,368 - app.core.logging - INFO -  Application startup complete
+2026-04-29 16:18:28,179 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 16:18:28,180 - app.db.session - INFO - Database connections closed
+2026-04-29 16:18:28,180 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 16:18:37,249 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 16:18:37,365 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 16:18:37,377 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 16:18:37,454 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 16:18:37,480 - app.core.logging - INFO -  Starting application...
+2026-04-29 16:18:37,480 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 16:18:37,481 - app.db.session - INFO -    Host: localhost
+2026-04-29 16:18:37,481 - app.db.session - INFO -    Port: 5432
+2026-04-29 16:18:37,481 - app.db.session - INFO -    Database: Mydb
+2026-04-29 16:18:37,529 - app.db.session - INFO -  Database connection successful
+2026-04-29 16:18:37,529 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 16:18:38,382 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 16:18:38,382 - app.db.session - INFO - Database initialization complete
+2026-04-29 16:18:38,382 - app.core.logging - INFO -  Database initialized
+2026-04-29 16:18:38,382 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 16:18:38,382 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 16:18:38,404 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 16:18:38,405 - app.core.logging - INFO -  Application startup complete
+2026-04-29 16:18:46,630 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 16:18:46,631 - app.db.session - INFO - Database connections closed
+2026-04-29 16:18:46,631 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 16:18:55,641 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 16:18:55,758 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 16:18:55,770 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 16:18:55,848 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 16:18:55,875 - app.core.logging - INFO -  Starting application...
+2026-04-29 16:18:55,875 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 16:18:55,875 - app.db.session - INFO -    Host: localhost
+2026-04-29 16:18:55,875 - app.db.session - INFO -    Port: 5432
+2026-04-29 16:18:55,875 - app.db.session - INFO -    Database: Mydb
+2026-04-29 16:18:55,924 - app.db.session - INFO -  Database connection successful
+2026-04-29 16:18:55,924 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 16:18:56,752 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 16:18:56,752 - app.db.session - INFO - Database initialization complete
+2026-04-29 16:18:56,752 - app.core.logging - INFO -  Database initialized
+2026-04-29 16:18:56,752 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 16:18:56,752 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 16:18:56,772 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 16:18:56,773 - app.core.logging - INFO -  Application startup complete
+2026-04-29 16:19:00,791 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:00,797 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:19:08,348 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:08,354 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 16:19:11,602 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:11,606 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 1
+2026-04-29 16:19:18,678 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:18,682 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:19:29,017 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:29,024 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 16:19:31,769 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:31,773 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 1
+2026-04-29 16:19:39,080 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:19:39,084 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:20:04,913 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:20:04,917 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:20:13,826 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:20:13,831 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 16:20:16,061 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 9
+2026-04-29 16:20:16,065 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 1
+2026-04-29 16:20:19,597 - app.core.logging - INFO - ✨ Created new session 4: 'New Chat' for user 9
+2026-04-29 16:20:19,648 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:19,652 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 4
+2026-04-29 16:20:29,883 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:29,888 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:20:30,900 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:30,907 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 16:20:31,419 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:31,425 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 1
+2026-04-29 16:20:32,124 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:32,129 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 4
+2026-04-29 16:20:40,191 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:40,198 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:20:45,737 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:45,741 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 16:20:49,562 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:20:49,570 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 1
+2026-04-29 16:35:53,990 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:35:53,994 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 1
+2026-04-29 16:35:57,230 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:35:57,234 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 4
+2026-04-29 16:36:01,386 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:36:01,391 - app.core.logging - INFO - 📨 Retrieved 3 messages from session 3
+2026-04-29 16:36:05,943 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 9
+2026-04-29 16:36:05,948 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 4
+2026-04-29 16:38:31,561 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 16:38:31,562 - app.db.session - INFO - Database connections closed
+2026-04-29 16:38:31,562 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:07:35,034 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:07:35,147 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:07:35,157 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:07:35,231 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:07:35,258 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:07:35,259 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:07:35,259 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:07:35,259 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:07:35,259 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:07:35,304 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:07:35,304 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:07:36,078 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:07:36,078 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:07:36,078 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:07:36,078 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:07:36,078 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:07:36,441 - app.core.logging - INFO -  Created dummy user: demo@example.com
+2026-04-29 17:07:36,442 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:10:48,135 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 17:10:48,141 - app.db.session - INFO - Database connections closed
+2026-04-29 17:10:48,143 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:10:57,508 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:10:57,631 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:10:57,645 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:10:57,724 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:10:57,752 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:10:57,752 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:10:57,753 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:10:57,753 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:10:57,753 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:10:57,813 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:10:57,813 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:10:58,688 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:10:58,688 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:10:58,688 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:10:58,689 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:10:58,689 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:10:58,713 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 17:10:58,714 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:10:58,815 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 17:10:58,815 - app.db.session - INFO - Database connections closed
+2026-04-29 17:10:58,816 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:11:08,845 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:11:08,966 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:11:08,983 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:11:09,099 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:11:09,131 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:11:09,131 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:11:09,131 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:11:09,131 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:11:09,131 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:11:09,180 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:11:09,180 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:11:10,218 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:11:10,218 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:11:10,218 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:11:10,218 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:11:10,218 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:11:10,243 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 17:11:10,244 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:11:10,346 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 17:11:10,351 - app.db.session - INFO - Database connections closed
+2026-04-29 17:11:10,353 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:11:20,280 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:11:20,400 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:11:20,412 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:11:20,486 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:11:20,512 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:11:20,512 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:11:20,512 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:11:20,512 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:11:20,512 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:11:20,558 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:11:20,558 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:11:21,336 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:11:21,336 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:11:21,336 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:11:21,336 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:11:21,336 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:11:21,360 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 17:11:21,361 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:11:21,461 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 17:11:21,462 - app.db.session - INFO - Database connections closed
+2026-04-29 17:11:21,463 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:11:30,040 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:11:30,152 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:11:30,164 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:11:30,241 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:11:30,267 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:11:30,267 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:11:30,267 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:11:30,268 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:11:30,268 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:11:30,312 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:11:30,312 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:11:31,070 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:11:31,070 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:11:31,070 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:11:31,070 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:11:31,070 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:11:31,094 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 17:11:31,094 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:11:31,195 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 17:11:31,197 - app.db.session - INFO - Database connections closed
+2026-04-29 17:11:31,197 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:11:39,934 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:11:40,047 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:11:40,058 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:11:40,135 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:11:40,161 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:11:40,162 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:11:40,162 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:11:40,162 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:11:40,162 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:11:40,209 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:11:40,209 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:11:40,988 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:11:40,988 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:11:40,988 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:11:40,988 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:11:40,988 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:11:41,008 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 17:11:41,009 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:18:09,892 - app.core.logging - INFO - User registration attempt: abcd@gmail.com
+2026-04-29 17:18:10,227 - app.core.logging - INFO - User registered: abcd@gmail.com
+2026-04-29 17:18:10,229 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-04-29 17:18:27,069 - app.core.logging - INFO - Login attempt: abcd
+2026-04-29 17:18:27,374 - app.core.logging - INFO - User logged in: abcd
+2026-04-29 17:18:27,375 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-04-29 17:18:27,527 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:19:49,357 - app.core.logging - INFO - User 2 submitted analysis for https://www.gandhinagaruni.ac.in/
+2026-04-29 17:19:49,377 - app.core.logging - INFO -  Analysis 1 queued for background processing
+2026-04-29 17:19:49,378 - app.core.logging - INFO -  Starting analysis 1 for https://www.gandhinagaruni.ac.in/
+2026-04-29 17:19:49,379 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/analysis/analyze "HTTP/1.1 202 Accepted"
+2026-04-29 17:19:49,386 - app.core.logging - INFO -  Analysis 1 now processing...
+2026-04-29 17:19:49,387 - app.core.logging - INFO -  Running SEO Agent for https://www.gandhinagaruni.ac.in/
+2026-04-29 17:19:49,472 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:20:00,771 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 17:20:06,787 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 17:20:06,791 - app.core.logging - INFO -  SEO Agent completed: 75/100
+2026-04-29 17:20:06,791 - app.core.logging - INFO -  Running UX Agent for https://www.gandhinagaruni.ac.in/
+2026-04-29 17:20:10,073 - app.core.logging - INFO - 📚 Retrieved 0 sessions for user 2
+2026-04-29 17:20:10,077 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=1 "HTTP/1.1 200 OK"
+2026-04-29 17:20:16,857 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 17:20:21,601 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 17:20:21,604 - app.core.logging - INFO -  UX Agent completed: 45/100
+2026-04-29 17:20:21,612 - app.core.logging - INFO -  Analysis 1 COMPLETED! SEO: 75, UX: 45
+2026-04-29 17:20:21,613 - app.core.logging - INFO -  Saving analysis 1 to Chroma for user 2...
+2026-04-29 17:20:21,613 - app.core.logging - INFO - Saving analysis 1 for user 2 to Chroma
+2026-04-29 17:20:22,639 - app.core.logging - INFO - Saved 8 chunks for analysis 1 to Chroma (collection total: 64)
+2026-04-29 17:20:22,640 - app.core.logging - INFO -  Analysis 1 saved to Chroma successfully!
+2026-04-29 17:20:31,651 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:20:38,246 - app.core.logging - INFO - User 2 requesting analysis 1
+2026-04-29 17:20:38,250 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/results/1 "HTTP/1.1 200 OK"
+2026-04-29 17:21:10,332 - app.core.logging - INFO - 📚 Retrieved 0 sessions for user 2
+2026-04-29 17:21:10,333 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=1 "HTTP/1.1 200 OK"
+2026-04-29 17:21:26,258 - app.core.logging - INFO - ✨ Created new session 1: 'Analysis #1' for user 2
+2026-04-29 17:21:26,260 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/chat/sessions/new?analysis_id=1 "HTTP/1.1 200 OK"
+2026-04-29 17:21:26,323 - app.core.logging - INFO - 📚 Retrieved 1 sessions for user 2
+2026-04-29 17:21:26,324 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=1 "HTTP/1.1 200 OK"
+2026-04-29 17:21:26,330 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 1
+2026-04-29 17:21:26,333 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/1/messages "HTTP/1.1 200 OK"
+2026-04-29 17:21:52,687 - app.core.logging - INFO - 💬 Processing chat for user 2: what is the overview of the analysis...
+2026-04-29 17:21:52,700 - app.core.logging - INFO - ✨ Created new session 2: 'what is the overview of the analysis' for user 2
+2026-04-29 17:21:52,700 - app.core.logging - INFO - ✨ Created new session 2
+2026-04-29 17:21:52,700 - app.core.logging - INFO - 🔍 Retrieving context for: what is the overview of the analysis...
+2026-04-29 17:21:52,701 - app.core.logging - INFO - Querying Chroma for user 2: 'what is the overview of the analysis'
+2026-04-29 17:21:52,701 - app.core.logging - INFO - Loading sentence-transformers model...
+2026-04-29 17:21:52,704 - sentence_transformers.base.model - INFO - No device provided, using cpu
+2026-04-29 17:21:53,036 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:53,037 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-29 17:21:53,058 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:53,307 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:53,326 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:53,327 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-29 17:21:53,575 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:53,595 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:53,838 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:53,856 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-29 17:21:54,099 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:54,119 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:54,365 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:54,384 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:54,636 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 17:21:54,883 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:54,901 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:55,295 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 17:21:55,544 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 17:21:55,784 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 17:21:56,033 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 17:21:56,280 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:56,298 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:56,545 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:56,562 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:56,810 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:56,832 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:57,095 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:57,115 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:57,369 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-29 17:21:57,625 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-29 17:21:57,685 - app.core.logging - ERROR - Chat send error: 
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 136, in handle_async_request
+    raise exc
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/frontend_app.py", line 385, in send_chat_message
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+2026-04-29 17:21:57,957 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 17:21:57,973 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-29 17:21:58,228 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-29 17:21:58,242 - app.core.logging - INFO - Model loaded successfully
+2026-04-29 17:21:58,298 - app.core.logging - INFO - Chroma returned 5 results for user 2
+2026-04-29 17:21:58,298 - app.core.logging - INFO -  Retrieved 4 chunks from Chroma
+2026-04-29 17:21:58,298 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 17:21:58,299 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 17:22:01,614 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 17:22:01,641 - app.core.logging - INFO -  Stored message 1 in session 2 for user 2
+2026-04-29 17:22:01,647 - app.core.logging - INFO - 🔄 Updated timestamp for session 2
+2026-04-29 17:22:01,650 - app.core.logging - INFO - ✅ Chat response generated for user 2 in session 2 (1 sources)
+2026-04-29 17:22:01,751 - app.core.logging - INFO - 💾 Background: Saved message to Chroma for user 2
+2026-04-29 17:22:04,043 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:22:06,466 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:06,467 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:06,471 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 17:22:06,473 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/2/messages "HTTP/1.1 200 OK"
+2026-04-29 17:22:10,630 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:10,632 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:10,636 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 1
+2026-04-29 17:22:10,637 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/1/messages "HTTP/1.1 200 OK"
+2026-04-29 17:22:12,381 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:12,382 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:12,386 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 17:22:12,389 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/2/messages "HTTP/1.1 200 OK"
+2026-04-29 17:22:16,779 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:16,780 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:16,784 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 1
+2026-04-29 17:22:16,786 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/1/messages "HTTP/1.1 200 OK"
+2026-04-29 17:22:22,061 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:22,062 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:22,073 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 17:22:22,077 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/2/messages "HTTP/1.1 200 OK"
+2026-04-29 17:22:28,550 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:28,552 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:28,556 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 1
+2026-04-29 17:22:28,560 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/1/messages "HTTP/1.1 200 OK"
+2026-04-29 17:22:32,691 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:22:35,835 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:22:35,837 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:22:35,840 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 17:22:35,841 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/2/messages "HTTP/1.1 200 OK"
+2026-04-29 17:23:28,927 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:23:28,928 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:23:28,932 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 1
+2026-04-29 17:23:28,933 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/1/messages "HTTP/1.1 200 OK"
+2026-04-29 17:23:56,837 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 2
+2026-04-29 17:23:56,838 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:23:56,841 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 2
+2026-04-29 17:23:56,843 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/2/messages "HTTP/1.1 200 OK"
+2026-04-29 17:24:05,040 - app.core.logging - INFO - User 2 requesting analysis 1
+2026-04-29 17:24:05,044 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/results/1 "HTTP/1.1 200 OK"
+2026-04-29 17:24:12,957 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:24:35,159 - app.core.logging - INFO - User registration attempt: sahil@gmail.com
+2026-04-29 17:24:35,473 - app.core.logging - INFO - User registered: sahil@gmail.com
+2026-04-29 17:24:35,474 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-04-29 17:24:44,724 - app.core.logging - INFO - Login attempt: sahil
+2026-04-29 17:24:45,033 - app.core.logging - INFO - User logged in: sahil
+2026-04-29 17:24:45,035 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-04-29 17:24:45,078 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:25:11,651 - app.core.logging - INFO - User 3 submitted analysis for https://meritorious.global/
+2026-04-29 17:25:11,662 - app.core.logging - INFO -  Analysis 2 queued for background processing
+2026-04-29 17:25:11,663 - app.core.logging - INFO -  Starting analysis 2 for https://meritorious.global/
+2026-04-29 17:25:11,664 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/analysis/analyze "HTTP/1.1 202 Accepted"
+2026-04-29 17:25:11,670 - app.core.logging - INFO -  Analysis 2 now processing...
+2026-04-29 17:25:11,670 - app.core.logging - INFO -  Running SEO Agent for https://meritorious.global/
+2026-04-29 17:25:11,749 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:26:16,550 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 17:26:21,049 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 17:26:21,051 - app.core.logging - INFO -  SEO Agent completed: 75/100
+2026-04-29 17:26:21,054 - app.core.logging - INFO -  Running UX Agent for https://meritorious.global/
+2026-04-29 17:26:28,224 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 17:26:33,204 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 17:26:33,211 - app.core.logging - INFO -  UX Agent completed: 75/100
+2026-04-29 17:26:33,227 - app.core.logging - INFO -  Analysis 2 COMPLETED! SEO: 75, UX: 75
+2026-04-29 17:26:33,228 - app.core.logging - INFO -  Saving analysis 2 to Chroma for user 3...
+2026-04-29 17:26:33,228 - app.core.logging - INFO - Saving analysis 2 for user 3 to Chroma
+2026-04-29 17:26:33,702 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:26:34,124 - app.core.logging - INFO - Saved 8 chunks for analysis 2 to Chroma (collection total: 64)
+2026-04-29 17:26:34,124 - app.core.logging - INFO -  Analysis 2 saved to Chroma successfully!
+2026-04-29 17:26:37,509 - app.core.logging - INFO - User 3 requesting analysis 2
+2026-04-29 17:26:37,511 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/results/2 "HTTP/1.1 200 OK"
+2026-04-29 17:27:10,692 - app.core.logging - INFO - 📚 Retrieved 0 sessions for user 3
+2026-04-29 17:27:10,693 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:27:14,411 - app.core.logging - INFO - ✨ Created new session 3: 'Analysis #2' for user 3
+2026-04-29 17:27:14,412 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/chat/sessions/new?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:27:14,458 - app.core.logging - INFO - 📚 Retrieved 1 sessions for user 3
+2026-04-29 17:27:14,460 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:27:14,464 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 3
+2026-04-29 17:27:14,467 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/3/messages "HTTP/1.1 200 OK"
+2026-04-29 17:27:38,638 - app.core.logging - INFO - 💬 Processing chat for user 3: give me the overall analysis of the webpage...
+2026-04-29 17:27:38,647 - app.core.logging - INFO - ✨ Created new session 4: 'give me the overall analysis of the webpage' for user 3
+2026-04-29 17:27:38,647 - app.core.logging - INFO - ✨ Created new session 4
+2026-04-29 17:27:38,647 - app.core.logging - INFO - 🔍 Retrieving context for: give me the overall analysis of the webpage...
+2026-04-29 17:27:38,647 - app.core.logging - INFO - Querying Chroma for user 3: 'give me the overall analysis of the webpage'
+2026-04-29 17:27:38,728 - app.core.logging - INFO - Chroma returned 5 results for user 3
+2026-04-29 17:27:38,728 - app.core.logging - INFO -  Retrieved 5 chunks from Chroma
+2026-04-29 17:27:38,729 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 17:27:38,730 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 17:27:42,440 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 17:27:42,460 - app.core.logging - INFO -  Stored message 2 in session 4 for user 3
+2026-04-29 17:27:42,465 - app.core.logging - INFO - 🔄 Updated timestamp for session 4
+2026-04-29 17:27:42,465 - app.core.logging - INFO - ✅ Chat response generated for user 3 in session 4 (1 sources)
+2026-04-29 17:27:42,466 - httpx - INFO - HTTP Request: POST http://192.168.1.15:8000/api/chat/message "HTTP/1.1 200 OK"
+2026-04-29 17:27:42,504 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 3
+2026-04-29 17:27:42,506 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/3/messages "HTTP/1.1 200 OK"
+2026-04-29 17:27:42,550 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:27:42,551 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:27:42,566 - app.core.logging - INFO - 💾 Background: Saved message to Chroma for user 3
+2026-04-29 17:27:44,670 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:27:44,671 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:27:44,674 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:27:44,675 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:29:04,760 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:29:09,043 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:29:09,044 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:29:09,048 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:29:09,049 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:29:19,581 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:29:21,438 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:29:21,439 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:29:21,443 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:29:21,444 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:29:29,716 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:29:31,612 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:29:31,613 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:29:31,616 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:29:31,619 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:29:43,434 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:29:43,435 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:29:43,438 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 3
+2026-04-29 17:29:43,439 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/3/messages "HTTP/1.1 200 OK"
+2026-04-29 17:29:45,043 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:29:45,044 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:29:45,046 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:29:45,047 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:29:55,538 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:32:44,063 - app.core.logging - INFO - User 3 requesting analysis 2
+2026-04-29 17:32:44,066 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/results/2 "HTTP/1.1 200 OK"
+2026-04-29 17:33:23,951 - httpx - INFO - HTTP Request: GET http://192.168.1.15:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:33:59,837 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 17:33:59,839 - app.db.session - INFO - Database connections closed
+2026-04-29 17:33:59,839 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 17:58:31,567 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 17:58:31,683 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 17:58:31,693 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 17:58:31,769 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 17:58:31,797 - app.core.logging - INFO -  Starting application...
+2026-04-29 17:58:31,797 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 17:58:31,797 - app.db.session - INFO -    Host: localhost
+2026-04-29 17:58:31,797 - app.db.session - INFO -    Port: 5432
+2026-04-29 17:58:31,797 - app.db.session - INFO -    Database: Mydb
+2026-04-29 17:58:31,843 - app.db.session - INFO -  Database connection successful
+2026-04-29 17:58:31,843 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 17:58:32,648 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 17:58:32,649 - app.db.session - INFO - Database initialization complete
+2026-04-29 17:58:32,649 - app.core.logging - INFO -  Database initialized
+2026-04-29 17:58:32,649 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 17:58:32,649 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 17:58:32,669 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 17:58:32,670 - app.core.logging - INFO -  Application startup complete
+2026-04-29 17:59:08,895 - app.core.logging - INFO - Login attempt: sahil
+2026-04-29 17:59:09,231 - app.core.logging - INFO - User logged in: sahil
+2026-04-29 17:59:09,233 - httpx - INFO - HTTP Request: POST http://localhost:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-04-29 17:59:09,282 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:59:12,185 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:12,187 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:59:12,234 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:59:12,235 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:59:21,850 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:59:24,444 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:24,445 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:59:24,486 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:59:24,488 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:59:27,063 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:27,064 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:59:27,103 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:59:27,105 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:59:33,272 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:33,273 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:59:33,311 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 3
+2026-04-29 17:59:33,312 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/3/messages "HTTP/1.1 200 OK"
+2026-04-29 17:59:35,751 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:35,753 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:59:35,794 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:59:35,795 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 17:59:36,972 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:36,973 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 17:59:37,009 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 3
+2026-04-29 17:59:37,011 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/3/messages "HTTP/1.1 200 OK"
+2026-04-29 17:59:39,523 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 17:59:40,887 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 3
+2026-04-29 17:59:40,888 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions?analysis_id=2 "HTTP/1.1 200 OK"
+2026-04-29 17:59:40,926 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 4
+2026-04-29 17:59:40,927 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/4/messages "HTTP/1.1 200 OK"
+2026-04-29 18:00:21,627 - app.core.logging - INFO - User registration attempt: tony2000@gmail.com
+2026-04-29 18:00:21,949 - app.core.logging - INFO - User registered: tony2000@gmail.com
+2026-04-29 18:00:21,950 - httpx - INFO - HTTP Request: POST http://localhost:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-04-29 18:00:30,878 - app.core.logging - INFO - Login attempt: tony stark
+2026-04-29 18:00:31,189 - app.core.logging - INFO - User logged in: tony stark
+2026-04-29 18:00:31,190 - httpx - INFO - HTTP Request: POST http://localhost:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-04-29 18:00:31,247 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:01:10,307 - app.core.logging - INFO - User 4 submitted analysis for https://www.smartsensesolutions.com/
+2026-04-29 18:01:10,322 - app.core.logging - INFO -  Analysis 3 queued for background processing
+2026-04-29 18:01:10,323 - app.core.logging - INFO -  Starting analysis 3 for https://www.smartsensesolutions.com/
+2026-04-29 18:01:10,323 - httpx - INFO - HTTP Request: POST http://localhost:8000/api/analysis/analyze "HTTP/1.1 202 Accepted"
+2026-04-29 18:01:10,331 - app.core.logging - INFO -  Analysis 3 now processing...
+2026-04-29 18:01:10,331 - app.core.logging - INFO -  Running SEO Agent for https://www.smartsensesolutions.com/
+2026-04-29 18:01:10,445 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:02:14,834 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 18:02:20,577 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 18:02:20,579 - app.core.logging - INFO -  SEO Agent completed: 75/100
+2026-04-29 18:02:20,579 - app.core.logging - INFO -  Running UX Agent for https://www.smartsensesolutions.com/
+2026-04-29 18:03:24,939 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 18:03:30,570 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 18:03:30,572 - app.core.logging - INFO -  UX Agent completed: 65/100
+2026-04-29 18:03:30,584 - app.core.logging - INFO -  Analysis 3 COMPLETED! SEO: 75, UX: 65
+2026-04-29 18:03:30,584 - app.core.logging - INFO -  Saving analysis 3 to Chroma for user 4...
+2026-04-29 18:03:30,584 - app.core.logging - INFO - Saving analysis 3 for user 4 to Chroma
+2026-04-29 18:03:31,470 - app.core.logging - INFO - Saved 8 chunks for analysis 3 to Chroma (collection total: 64)
+2026-04-29 18:03:31,470 - app.core.logging - INFO -  Analysis 3 saved to Chroma successfully!
+2026-04-29 18:03:38,981 - app.core.logging - INFO - 📚 Retrieved 0 sessions for user 4
+2026-04-29 18:03:38,982 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:03:39,037 - app.core.logging - INFO - ✨ Created new session 5: 'New Chat' for user 4
+2026-04-29 18:03:39,039 - httpx - INFO - HTTP Request: POST http://localhost:8000/api/chat/sessions/new "HTTP/1.1 200 OK"
+2026-04-29 18:03:44,066 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:03:46,027 - app.core.logging - INFO - 📚 Retrieved 0 sessions for user 4
+2026-04-29 18:03:46,028 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions?analysis_id=3 "HTTP/1.1 200 OK"
+2026-04-29 18:03:46,074 - app.core.logging - INFO - ✨ Created new session 6: 'Analysis #3' for user 4
+2026-04-29 18:03:46,075 - httpx - INFO - HTTP Request: POST http://localhost:8000/api/chat/sessions/new?analysis_id=3 "HTTP/1.1 200 OK"
+2026-04-29 18:03:51,795 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:03:53,941 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:03:53,942 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:03:53,982 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:03:53,983 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:03:58,524 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:04:00,049 - app.core.logging - INFO - 📚 Retrieved 1 sessions for user 4
+2026-04-29 18:04:00,050 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions?analysis_id=3 "HTTP/1.1 200 OK"
+2026-04-29 18:04:00,087 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:04:00,088 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:02,838 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:04:03,669 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:03,670 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:03,708 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:04:03,709 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:05,487 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:05,488 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:05,525 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:04:05,526 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:06,734 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:06,736 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:06,772 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:04:06,773 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:08,224 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:08,225 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:08,262 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:04:08,263 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:09,410 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:09,411 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:09,448 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:04:09,449 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:10,521 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:10,522 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:10,559 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:04:10,561 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:22,471 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:22,472 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:22,513 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:04:22,514 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:23,821 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:04:23,822 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:04:23,869 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:04:23,871 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:04:27,965 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:04:33,112 - app.core.logging - INFO - User 4 requesting analysis 3
+2026-04-29 18:04:33,114 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/results/3 "HTTP/1.1 200 OK"
+2026-04-29 18:15:08,272 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:15:14,868 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:15:14,868 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:15:14,910 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:15:14,911 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:15:16,541 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:15:16,542 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:15:16,579 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:15:16,581 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:15:17,604 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:15:17,605 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:15:17,642 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:15:17,643 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:15:18,799 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:15:18,800 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:15:18,838 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:15:18,840 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:15:19,914 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:15:19,915 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:15:19,956 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:15:19,958 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:15:22,089 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:15:22,090 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:15:22,130 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:15:22,132 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:24:46,255 - app.core.logging - INFO -  Shutting down application...
+2026-04-29 18:24:46,256 - app.db.session - INFO - Database connections closed
+2026-04-29 18:24:46,256 - app.core.logging - INFO -  Application shutdown complete
+2026-04-29 18:24:55,375 - app.core.logging - INFO - Initializing Chroma persistent client...
+2026-04-29 18:24:55,487 - app.core.logging - INFO - Chroma initialized — persisting to '/home/ubuntu/Desktop/Backend_SK/AI_Agent/chroma_db'
+2026-04-29 18:24:55,499 - app.core.logging - INFO - Collection 'analyses' has 64 existing documents
+2026-04-29 18:24:55,572 - app.core.logging - INFO -  Chat service initialized with Gemini 2.5 Flash
+2026-04-29 18:24:55,599 - app.core.logging - INFO -  Starting application...
+2026-04-29 18:24:55,599 - app.db.session - INFO - 🔌 Attempting to connect to: postgresql+asyncpg://postgres:password@localhost:5432/Mydb
+2026-04-29 18:24:55,600 - app.db.session - INFO -    Host: localhost
+2026-04-29 18:24:55,600 - app.db.session - INFO -    Port: 5432
+2026-04-29 18:24:55,600 - app.db.session - INFO -    Database: Mydb
+2026-04-29 18:24:55,644 - app.db.session - INFO -  Database connection successful
+2026-04-29 18:24:55,644 - app.db.session - INFO - Running Alembic migrations...
+2026-04-29 18:24:56,468 - app.db.session - INFO - Migrations completed successfully
+2026-04-29 18:24:56,468 - app.db.session - INFO - Database initialization complete
+2026-04-29 18:24:56,468 - app.core.logging - INFO -  Database initialized
+2026-04-29 18:24:56,468 - app.core.logging - INFO - 🗄️  Initializing Chroma...
+2026-04-29 18:24:56,468 - app.core.logging - INFO -  Chroma initialized
+2026-04-29 18:24:56,492 - app.core.logging - INFO -  Dummy user already exists: demo@example.com
+2026-04-29 18:24:56,493 - app.core.logging - INFO -  Application startup complete
+2026-04-29 18:25:14,563 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:25:17,461 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:17,463 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:17,512 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:25:17,513 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:19,078 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:19,079 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:19,117 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:25:19,119 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:20,517 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:20,519 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:20,563 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:25:20,564 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:22,955 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:22,957 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:22,994 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:25:22,995 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:24,394 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:24,396 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:24,437 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:25:24,438 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:26,261 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:26,263 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:26,305 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:25:26,306 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:27,563 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:27,564 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:27,600 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:25:27,601 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:29,528 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:29,530 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:29,571 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:25:29,572 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:25:33,840 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:25:43,249 - app.core.logging - INFO - 📚 Retrieved 2 sessions for user 4
+2026-04-29 18:25:43,250 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:25:43,290 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:25:43,291 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:07,344 - app.core.logging - INFO - 💬 Processing chat for user 4: how to improve the page slow loading problem...
+2026-04-29 18:26:07,362 - app.core.logging - INFO - ✨ Created new session 7: 'how to improve the page slow loading problem' for user 4
+2026-04-29 18:26:07,362 - app.core.logging - INFO - ✨ Created new session 7
+2026-04-29 18:26:07,362 - app.core.logging - INFO - 🔍 Retrieving context for: how to improve the page slow loading problem...
+2026-04-29 18:26:07,362 - app.core.logging - INFO - Querying Chroma for user 4: 'how to improve the page slow loading problem'
+2026-04-29 18:26:07,362 - app.core.logging - INFO - Loading sentence-transformers model...
+2026-04-29 18:26:07,363 - sentence_transformers.base.model - INFO - No device provided, using cpu
+2026-04-29 18:26:07,691 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:07,693 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-29 18:26:07,710 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:07,959 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:07,977 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:07,979 - sentence_transformers.base.model - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-29 18:26:08,221 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:08,241 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:08,483 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:08,503 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-29 18:26:08,753 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:08,772 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:09,074 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:09,091 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:09,342 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 18:26:09,597 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:09,616 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:09,994 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 18:26:10,240 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 18:26:10,480 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 18:26:10,723 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-29 18:26:10,965 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:10,984 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:11,228 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:11,249 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:11,498 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:11,517 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:11,770 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:11,791 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:12,056 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-29 18:26:12,303 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-29 18:26:12,343 - app.core.logging - ERROR - Chat send error: 
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 136, in handle_async_request
+    raise exc
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/frontend_app.py", line 420, in send_chat_message
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+2026-04-29 18:26:12,612 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-29 18:26:12,630 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-29 18:26:12,873 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-29 18:26:12,879 - app.core.logging - INFO - Model loaded successfully
+2026-04-29 18:26:12,966 - app.core.logging - INFO - Chroma returned 5 results for user 4
+2026-04-29 18:26:12,966 - app.core.logging - INFO -  Retrieved 5 chunks from Chroma
+2026-04-29 18:26:12,966 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 18:26:12,973 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 18:26:16,931 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-29 18:26:16,933 - google_genai._api_client - INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.64 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+2026-04-29 18:26:17,044 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/analysis/history?skip=0&limit=10 "HTTP/1.1 200 OK"
+2026-04-29 18:26:18,646 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:18,647 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:18,688 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 7
+2026-04-29 18:26:18,689 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:20,536 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:20,537 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:20,578 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:26:20,580 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:21,465 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:21,468 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:21,509 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:26:21,510 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:22,113 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:22,114 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:22,162 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 7
+2026-04-29 18:26:22,164 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:22,796 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 18:26:22,813 - app.core.logging - INFO -  Stored message 3 in session 7 for user 4
+2026-04-29 18:26:22,818 - app.core.logging - INFO - 🔄 Updated timestamp for session 7
+2026-04-29 18:26:22,819 - app.core.logging - INFO - ✅ Chat response generated for user 4 in session 7 (1 sources)
+2026-04-29 18:26:22,919 - app.core.logging - INFO - 💾 Background: Saved message to Chroma for user 4
+2026-04-29 18:26:24,779 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:24,780 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:24,818 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 7
+2026-04-29 18:26:24,819 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:27,602 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:27,603 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:27,640 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:26:27,641 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:29,416 - app.core.logging - INFO - 📚 Retrieved 3 sessions for user 4
+2026-04-29 18:26:29,417 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:26:29,453 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 7
+2026-04-29 18:26:29,454 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:26:51,510 - app.core.logging - INFO - 💬 Processing chat for user 4: how to improve to get above 80 score in both...
+2026-04-29 18:26:51,520 - app.core.logging - INFO - ✨ Created new session 8: 'how to improve to get above 80 score in both' for user 4
+2026-04-29 18:26:51,521 - app.core.logging - INFO - ✨ Created new session 8
+2026-04-29 18:26:51,521 - app.core.logging - INFO - 🔍 Retrieving context for: how to improve to get above 80 score in both...
+2026-04-29 18:26:51,521 - app.core.logging - INFO - Querying Chroma for user 4: 'how to improve to get above 80 score in both'
+2026-04-29 18:26:51,621 - app.core.logging - INFO - Chroma returned 5 results for user 4
+2026-04-29 18:26:51,622 - app.core.logging - INFO -  Retrieved 5 chunks from Chroma
+2026-04-29 18:26:51,622 - app.core.logging - INFO -  Generating response with Gemini...
+2026-04-29 18:26:51,623 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-04-29 18:26:56,509 - app.core.logging - ERROR - Chat send error: 
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 136, in handle_async_request
+    raise exc
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Desktop/Backend_SK/AI_Agent/frontend_app.py", line 420, in send_chat_message
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/ubuntu/Desktop/Backend_SK/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+2026-04-29 18:27:04,423 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:04,424 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:04,460 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 8
+2026-04-29 18:27:04,463 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/8/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:06,353 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:06,354 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:06,393 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 7
+2026-04-29 18:27:06,394 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:07,066 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:07,068 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:07,112 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 8
+2026-04-29 18:27:07,113 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/8/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:09,455 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:09,456 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:09,499 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 8
+2026-04-29 18:27:09,501 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/8/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:11,098 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:11,101 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:11,154 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 7
+2026-04-29 18:27:11,155 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:11,597 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-04-29 18:27:11,613 - app.core.logging - INFO -  Stored message 4 in session 8 for user 4
+2026-04-29 18:27:11,617 - app.core.logging - INFO - 🔄 Updated timestamp for session 8
+2026-04-29 18:27:11,617 - app.core.logging - INFO - ✅ Chat response generated for user 4 in session 8 (1 sources)
+2026-04-29 18:27:11,718 - app.core.logging - INFO - 💾 Background: Saved message to Chroma for user 4
+2026-04-29 18:27:14,128 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:14,129 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:14,169 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 8
+2026-04-29 18:27:14,171 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/8/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:19,696 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:19,698 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:19,739 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 6
+2026-04-29 18:27:19,740 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/6/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:21,198 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:21,199 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:21,235 - app.core.logging - INFO - 📨 Retrieved 0 messages from session 5
+2026-04-29 18:27:21,237 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/5/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:24,017 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:24,018 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:24,057 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 7
+2026-04-29 18:27:24,058 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/7/messages "HTTP/1.1 200 OK"
+2026-04-29 18:27:27,988 - app.core.logging - INFO - 📚 Retrieved 4 sessions for user 4
+2026-04-29 18:27:27,989 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions "HTTP/1.1 200 OK"
+2026-04-29 18:27:28,026 - app.core.logging - INFO - 📨 Retrieved 1 messages from session 8
+2026-04-29 18:27:28,027 - httpx - INFO - HTTP Request: GET http://localhost:8000/api/chat/sessions/8/messages "HTTP/1.1 200 OK"

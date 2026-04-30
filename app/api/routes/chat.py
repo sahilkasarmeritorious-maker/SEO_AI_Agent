@@ -1,6 +1,5 @@
-import json
+from fastapi import APIRouter, Depends, HTTPException, status, Query, Request
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.logging import logger
@@ -12,26 +11,39 @@ from app.schemas.chat import (
     ChatHistoryResponse
 )
 from app.services.chat_service import chat_service
+from app.services.chat_session_service import ChatSessionService
+import json
 
 router = APIRouter(prefix="/api/chat", tags=["Chat"])
 
 
 @router.post("/message", response_model=ChatMessageResponse)
 async def send_message(
-    request: ChatMessageRequest,
+    request: Request,
+    req: ChatMessageRequest,
     current_user: int = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
-
+    """Send a chat message to existing or new session."""
     try:
+        # Get optional session_id from request body or query param
+        session_id = getattr(req, 'session_id', None)
+        
         response = await chat_service.chat(
             user_id=current_user,
-            message=request.message,
-            analysis_id=request.analysis_id,
-            db=db
+            message=req.message,
+            analysis_id=req.analysis_id,
+            db=db,
+            session_id=session_id  # ✅ Pass session_id if provided
         )
         return response
 
+    except ValueError as e:
+        logger.error(f"Validation error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
     except Exception as e:
         logger.error(f"Chat error: {e}", exc_info=True)
         raise HTTPException(
@@ -40,67 +52,132 @@ async def send_message(
         )
 
 
-@router.get("/history", response_model=list[ChatHistoryResponse])
-async def get_history(
+@router.post("/sessions/new")
+async def create_new_session(
+    request: Request,
+    analysis_id: Optional[int] = Query(None),
     current_user: int = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db),
-    analysis_id: Optional[str] = Query(None),
-    limit: int = 50
+    db: AsyncSession = Depends(get_db)
 ):
-    
+    """Create a new chat session (frontend clicks 'New Chat' button)."""
     try:
-        # Convert analysis_id from string to int if provided
-        analysis_id_int = None
-        if analysis_id and analysis_id.strip():
-            analysis_id_int = int(analysis_id)
-        
-        messages = await chat_service.get_chat_history(
-            user_id=current_user,
+        session = await ChatSessionService.create_session(
             db=db,
-            analysis_id=analysis_id_int,
-            limit=limit
+            user_id=current_user,
+            analysis_id=analysis_id,
+            title=f"Analysis #{analysis_id}" if analysis_id else "New Chat"
         )
         
-        # Parse JSON fields and return with sources
+        return {
+            "id": session.id,
+            "title": session.title,
+            "analysis_id": session.analysis_id,
+            "session_type": session.session_type,
+            "created_at": session.created_at.isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Error creating session: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to create session"
+        )
+
+
+@router.get("/sessions")
+async def get_sessions(
+    request: Request,
+    analysis_id: Optional[int] = Query(None),
+    current_user: int = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Get all sessions for current user (optionally filtered by analysis_id)."""
+    try:
+        sessions = await ChatSessionService.get_user_sessions(
+            db=db,
+            user_id=current_user,
+            analysis_id=analysis_id
+        )
+        
+        return [
+            {
+                "id": s.id,
+                "title": s.title,
+                "session_type": s.session_type,
+                "analysis_id": s.analysis_id,
+                "message_count": len(s.messages) if s.messages else 0,  # ✅ Safe access
+                "created_at": s.created_at.isoformat(),
+                "updated_at": s.updated_at.isoformat()
+            }
+            for s in sessions
+        ]
+    except Exception as e:
+        logger.error(f"Error fetching sessions: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to fetch sessions: {str(e)}"  # ✅ Include error details for debugging
+        )
+
+
+@router.get("/sessions/{session_id}/messages")
+async def get_session_messages(
+    request: Request,
+    session_id: int,
+    current_user: int = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Get all messages in a specific session."""
+    try:
+        messages = await ChatSessionService.get_session_messages(
+            db=db,
+            session_id=session_id,
+            user_id=current_user
+        )
+        
         return [
             {
                 "id": msg.id,
-                "analysis_id": msg.analysis_id,  # ADDED
+                "session_id": msg.session_id,
+                "analysis_id": msg.analysis_id,
                 "user_message": msg.user_message,
                 "assistant_response": msg.assistant_response,
-                "created_at": msg.created_at,
+                "created_at": msg.created_at.isoformat(),
                 "sources": json.loads(msg.source_analyses) if msg.source_analyses else []
             }
             for msg in messages
         ]
-
     except Exception as e:
-        logger.error(f"History error: {e}", exc_info=True)
+        logger.error(f"Error fetching session messages: {e}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to fetch history"
+            detail=f"Failed to fetch messages: {str(e)}"
         )
 
 
-@router.delete("/clear")
-async def clear_history(
-    current_user: int = Depends(get_current_user),  # Already an int!
+@router.delete("/sessions/{session_id}")
+async def delete_session(
+    request: Request,
+    session_id: int,
+    current_user: int = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
-    """Delete all chat messages for user."""
+    """Delete a session (cascade deletes messages)."""
     try:
-        count = await chat_service.clear_chat_history(
-            user_id=current_user,  # Already an int!
-            db=db
+        success = await ChatSessionService.delete_session(
+            db=db,
+            session_id=session_id,
+            user_id=current_user
         )
-        return {
-            "message": "Chat history cleared",
-            "deleted_messages": count
-        }
-
+        
+        if not success:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Session not found"
+            )
+        
+        return {"message": "Session deleted successfully"}
     except Exception as e:
-        logger.error(f"Clear error: {e}", exc_info=True)
+        logger.error(f"Error deleting session: {e}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to clear history"
+            detail="Failed to delete session"
         )

@@ -3,44 +3,356 @@
 {% block title %}Chat - Website Analysis Platform{% endblock %}
 
 {% block content %}
-<div class="sidebar">
-    <nav class="sidebar-nav">
-        <a href="/dashboard" class="nav-item">📊 Dashboard</a>
-        <a href="/chat" class="nav-item active">💬 Chat Assistant</a>
-    </nav>
-</div>
+<style>
+    /* Chat layout with sidebar */
+    .chat-layout {
+        display: flex;
+        height: calc(100vh - 70px);
+        gap: 0;
+    }
 
-<div class="main-content">
-    {% if analysis_id %}
-    <!-- SPECIFIC ANALYSIS MODE -->
-    <div class="header-card" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);">
-        <h1>💬 Analysis-Specific Chat</h1>
-        <p>📌 Asking about Analysis #{{ analysis_id }} only</p>
-        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Questions will be answered based on THIS analysis only</p>
+    .chat-sidebar {
+        width: 280px;
+        background: #f8f9fa;
+        border-right: 1px solid #e9ecef;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .sidebar-header {
+        padding: 1rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .new-chat-btn {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+        margin-bottom: 0.5rem;
+    }
+
+    .new-chat-btn:hover {
+        background: #1d4ed8;
+    }
+
+    .sessions-list {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0.5rem;
+    }
+
+    .session-item {
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .session-item:hover {
+        background: #e7f3ff;
+        border-color: #2563eb;
+    }
+
+    .session-item.active {
+        background: #dbeafe;
+        border-color: #2563eb;
+        font-weight: 600;
+    }
+
+    .session-title {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .session-type-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        white-space: nowrap;
+        margin-left: 0.5rem;
+    }
+
+    .session-type-badge.specific {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .session-type-badge.universal {
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    .session-delete-btn {
+        background: #dc2626;
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        font-size: 0.75rem;
+        margin-left: 0.5rem;
+    }
+
+    .session-delete-btn:hover {
+        background: #b91c1c;
+    }
+
+    .chat-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chat-header {
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        color: white;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .chat-header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .chat-header p {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 0.9rem;
+    }
+
+    .chat-header.universal {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+        background: white;
+    }
+
+    .chat-input-section {
+        padding: 1.5rem;
+        background: white;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .chat-input-form {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .chat-input-form input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+
+    .chat-input-form input:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .chat-input-form button {
+        padding: 0.75rem 1.5rem;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .chat-input-form button:hover {
+        background: #1d4ed8;
+    }
+
+    .message {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        line-height: 1.5;
+    }
+
+    .user-message {
+        background: #f3f4f6;
+        border-left: 4px solid #2563eb;
+    }
+
+    .assistant-message {
+        background: #f0fdf4;
+        border-left: 4px solid #10b981;
+    }
+
+    .message p {
+        margin: 0.5rem 0;
+    }
+
+    .message strong {
+        color: #1f2937;
+    }
+
+    .no-messages {
+        text-align: center;
+        color: #999;
+        padding: 2rem;
+        font-style: italic;
+    }
+
+    .sources {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: rgba(37, 99, 235, 0.05);
+        border-radius: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .source-item {
+        margin: 0.75rem 0;
+        padding: 0.75rem;
+        background: white;
+        border-radius: 0.25rem;
+        border-left: 3px solid #2563eb;
+    }
+
+    .source-item p {
+        margin: 0.25rem 0;
+    }
+
+    .alert {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        background: #fef2f2;
+        border-left: 4px solid #dc2626;
+        color: #991b1b;
+    }
+
+    @media (max-width: 768px) {
+        .chat-layout {
+            flex-direction: column;
+        }
+
+        .chat-sidebar {
+            width: 100%;
+            height: auto;
+            max-height: 30vh;
+            border-right: none;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .sessions-list {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            flex-direction: row;
+            padding: 0.5rem;
+        }
+
+        .session-item {
+            min-width: 200px;
+            margin-bottom: 0;
+        }
+    }
+</style>
+
+<div class="chat-layout">
+    <!-- 📌 LEFT SIDEBAR: Session History -->
+    <div class="chat-sidebar">
+        <div class="sidebar-header">
+            <form method="post" action="/chat/new" style="margin: 0;">
+                <button type="submit" class="new-chat-btn">➕ New Chat</button>
+                {% if analysis_id %}
+                <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
+                {% endif %}
+            </form>
+        </div>
+
+        <div class="sessions-list">
+            {% if sessions %}
+                {% for session in sessions %}
+                <a 
+                    href="/chat?session_id={{ session.id }}{% if analysis_id %}&analysis_id={{ analysis_id }}{% endif %}"
+                    class="session-item {% if current_session and current_session.id == session.id %}active{% endif %}"
+                >
+                    <span class="session-title" title="{{ session.title }}">{{ session.title }}</span>
+                    <span class="session-type-badge {{ session.session_type }}">
+                        {% if session.session_type == 'specific' %}📌{% else %}🌐{% endif %}
+                    </span>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center; color: #999; padding: 1rem; font-size: 0.9rem;">
+                    No sessions yet. Create one! 👆
+                </p>
+            {% endif %}
+        </div>
     </div>
-    {% else %}
-    <!-- UNIVERSAL MODE -->
-    <div class="header-card" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-        <h1>💬 Universal Chat Assistant</h1>
-        <p>🌐 Asking about all your analyses</p>
-        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Questions will search through ALL your analyses for the best answer</p>
-    </div>
-    {% endif %}
 
-    {% if error %}
-    <div class="alert alert-error">{{ error }}</div>
-    {% endif %}
+    <!-- 💬 MAIN CHAT AREA -->
+    <div class="chat-main">
+        <!-- Header -->
+        <div class="chat-header {% if not analysis_id %}universal{% endif %}">
+            {% if analysis_id %}
+                <h1>💬 Analysis-Specific Chat</h1>
+                <p>📌 Asking about Analysis #{{ analysis_id }} only</p>
+            {% else %}
+                <h1>💬 Universal Chat Assistant</h1>
+                <p>🌐 Asking about all your analyses</p>
+            {% endif %}
+            {% if current_session %}
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                    Current: <strong>{{ current_session.title }}</strong>
+                    ({{ current_session.message_count }} messages)
+                </p>
+            {% endif %}
+        </div>
 
-    <div class="chat-container">
-        <div class="messages-area">
+        <!-- Error Alert -->
+        {% if error %}
+        <div class="alert">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <!-- Messages -->
+        <div class="chat-messages">
             {% if messages %}
                 {% for msg in messages %}
                 <div class="message user-message">
                     <p><strong>You:</strong> {{ msg.user_message }}</p>
                     {% if msg.analysis_id %}
-                    <small style="opacity: 0.7; font-size: 0.8rem;">📌 Analysis #{{ msg.analysis_id }}</small>
-                    {% else %}
-                    <small style="opacity: 0.7; font-size: 0.8rem;">👤 {{ user.username or user.email }}</small>
+                    <small style="opacity: 0.7;">📌 Analysis #{{ msg.analysis_id }}</small>
                     {% endif %}
                 </div>
 
@@ -50,26 +362,26 @@
                     {% if msg.sources %}
                     <div class="sources">
                         <strong>📌 Sources ({{ msg.sources|length }}):</strong>
-                        <div class="sources-list">
-                            {% for source in msg.sources %}
-                            <div class="source-item">
-                                <p><strong>Analysis #{{ source.analysis_id }}</strong></p>
-                                <p>URL: {{ source.url }}</p>
-                                <small>SEO: {{ source.seo_score }}/100 | UX: {{ source.ux_score }}/100 | {{ (source.relevance_score * 100)|int }}% relevant</small>
-                            </div>
-                            {% endfor %}
+                        {% for source in msg.sources %}
+                        <div class="source-item">
+                            <p><strong>Analysis #{{ source.analysis_id }}</strong></p>
+                            <p style="margin: 0.25rem 0; font-size: 0.85rem;">{{ source.url }}</p>
+                            <small>SEO: {{ source.seo_score }}/100 | UX: {{ source.ux_score }}/100 | {{ (source.relevance_score * 100)|int }}% match</small>
                         </div>
+                        {% endfor %}
                     </div>
                     {% endif %}
                 </div>
                 {% endfor %}
             {% else %}
-            <p class="no-messages">No messages yet. Start a conversation...</p>
+                <p class="no-messages">No messages yet. Start a conversation below... 👇</p>
             {% endif %}
         </div>
 
-        <form method="post" action="/api/chat/send" class="chat-input-form">
-            <div>
+        <!-- Input Form -->
+        <div class="chat-input-section">
+            {% if current_session %}
+            <form method="post" action="/api/chat/send" class="chat-input-form">
                 <input 
                     type="text" 
                     name="message" 
@@ -77,26 +389,29 @@
                     required 
                     autofocus
                 >
+                <input type="hidden" name="session_id" value="{{ current_session.id }}">
                 {% if analysis_id %}
                 <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
                 {% endif %}
-                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="submit">Send 🚀</button>
+            </form>
+            {% else %}
+            <div style="text-align: center; color: #999;">
+                <p>Create a new chat to get started! ➕</p>
             </div>
-        </form>
+            {% endif %}
+        </div>
     </div>
+</div>
 
-    <div style="text-align: center; margin-top: 1.5rem;">
-        {% if analysis_id %}
-            <p style="color: #666; font-size: 0.9rem;">
-                <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a> | 
-                <a href="/chat" style="color: #2563eb; text-decoration: none;">🌐 Ask About All Analyses →</a>
-            </p>
-        {% else %}
-            <p style="color: #666; font-size: 0.9rem;">
-                <a href="/dashboard" style="color: #10b981; text-decoration: none;">← Back to Dashboard</a>
-            </p>
-        {% endif %}
-    </div>
+<!-- Navigation -->
+<div style="text-align: center; padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6;">
+    {% if analysis_id %}
+        <a href="/dashboard" style="color: #2563eb; text-decoration: none; margin-right: 1rem;">← Back to Dashboard</a>
+        <a href="/chat" style="color: #2563eb; text-decoration: none;">🌐 Ask About All Analyses →</a>
+    {% else %}
+        <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a>
+    {% endif %}
 </div>
 
 {% endblock %}

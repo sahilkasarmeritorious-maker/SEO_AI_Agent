@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Request, HTTPException, Form, Cookie
+from app.core.logging import logger
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import httpx
 import json
 from pathlib import Path
+from typing import Optional
 import os
 
 # Get the absolute path to the app directory
@@ -262,95 +264,255 @@ async def analysis_detail(
 @app.get("/chat", response_class=HTMLResponse)
 async def chat_page(
     request: Request,
-    analysis_id: int = None,
+    analysis_id: Optional[int] = None,
+    session_id: Optional[int] = None,
     access_token: str = Cookie(None)
 ):
-    """Chat interface."""
+    """Chat interface with sidebar showing all sessions."""
     if not access_token:
         return RedirectResponse(url="/login", status_code=303)
     
     try:
-        # Fetch chat history - properly passing analysis_id
         async with httpx.AsyncClient() as client:
-            params = {"limit": 50}
-            if analysis_id:
-                params["analysis_id"] = analysis_id
-            
-            response = await client.get(
-                f"{BACKEND_API}/api/chat/history",
-                headers=await get_headers(access_token),
-                params=params
+            # 🔄 STEP 1: Fetch all sessions (for sidebar)
+            # ✅ FIX: Don't filter by analysis_id when fetching sessions
+            # This way sidebar shows ALL sessions, not just filtered ones
+            sessions_response = await client.get(
+                f"{BACKEND_API}/api/chat/sessions",
+                headers=await get_headers(access_token)
+                # Removed: params={"analysis_id": analysis_id}
             )
+            
+            sessions = sessions_response.json() if sessions_response.status_code == 200 else []
+            
+            # 🔄 STEP 2: Determine which session to display
+            messages = []
+            current_session = None
+            
+            # If explicit session_id provided, use it (user clicked a session)
+            if session_id:
+                current_session = next((s for s in sessions if s["id"] == session_id), None)
+                # ✅ FIX: Update analysis_id based on the selected session
+                # If session is universal, clear analysis_id; if specific, use it
+                if current_session:
+                    analysis_id = current_session.get("analysis_id")
+            
+            # If no sessions exist, auto-create one
+            if not sessions:
+                async with httpx.AsyncClient() as client:
+                    create_response = await client.post(
+                        f"{BACKEND_API}/api/chat/sessions/new",
+                        headers=await get_headers(access_token),
+                        params={"analysis_id": analysis_id} if analysis_id else {}
+                    )
+                
+                if create_response.status_code == 200:
+                    session_data = create_response.json()
+                    current_session = session_data
+                    sessions = [session_data]
+            else:
+                # Fallback to latest if not set
+                if not current_session:
+                    current_session = sessions[0]
+                
+                # Fetch messages from current session
+                if current_session:
+                    async with httpx.AsyncClient() as client:
+                        msg_response = await client.get(
+                            f"{BACKEND_API}/api/chat/sessions/{current_session['id']}/messages",
+                            headers=await get_headers(access_token)
+                        )
+                    messages = msg_response.json() if msg_response.status_code == 200 else []
         
-        messages = response.json() if response.status_code == 200 else []
         user = json.loads(request.cookies.get("user", "{}"))
         
         return templates.TemplateResponse(
             request,
             "chat.html",
-            {"messages": messages, "analysis_id": analysis_id, "user": user}
+            {
+                "sessions": sessions,
+                "current_session": current_session,
+                "messages": messages,
+                "analysis_id": analysis_id,  # ✅ Now reflects selected session's analysis_id
+                "user": user
+            }
         )
     except Exception as e:
+        logger.error(f"Chat page error: {e}", exc_info=True)
         user = json.loads(request.cookies.get("user", "{}"))
         return templates.TemplateResponse(
             request,
             "chat.html",
-            {"messages": [], "error": str(e), "analysis_id": analysis_id, "user": user}
+            {
+                "sessions": [],
+                "current_session": None,
+                "messages": [],
+                "error": str(e),
+                "analysis_id": analysis_id,
+                "user": user
+            }
         )
+    except Exception as e:
+        logger.error(f"Chat page error: {e}", exc_info=True)
+        user = json.loads(request.cookies.get("user", "{}"))
+        return templates.TemplateResponse(
+            request,
+            "chat.html",
+            {
+                "sessions": [],
+                "current_session": None,
+                "messages": [],
+                "error": str(e),
+                "analysis_id": analysis_id,
+                "user": user
+            }
+        )
+
+
+@app.post("/chat/new", response_class=HTMLResponse)
+async def create_new_chat(
+    request: Request,
+    analysis_id: Optional[int] = Form(None),
+    access_token: str = Cookie(None)
+):
+    """Create a new chat session and redirect."""
+    if not access_token:
+        return RedirectResponse(url="/login", status_code=303)
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                f"{BACKEND_API}/api/chat/sessions/new",
+                headers=await get_headers(access_token),
+                params={"analysis_id": analysis_id} if analysis_id else {}
+            )
+        
+        if response.status_code == 200:
+            session_data = response.json()
+            session_id = session_data.get("id")
+            # Redirect to chat with new session_id
+            redirect_url = f"/chat?session_id={session_id}"
+            if analysis_id:
+                redirect_url += f"&analysis_id={analysis_id}"
+            return RedirectResponse(url=redirect_url, status_code=303)
+        else:
+            error = response.json().get("detail", "Failed to create session")
+            return RedirectResponse(url=f"/chat?error={error}", status_code=303)
+    except Exception as e:
+        return RedirectResponse(url=f"/chat?error={str(e)}", status_code=303)
 
 
 @app.post("/api/chat/send", response_class=HTMLResponse)
 async def send_chat_message(
     request: Request,
     message: str = Form(...),
-    analysis_id: int = Form(None),
+    session_id: int = Form(...),
+    analysis_id: Optional[int] = Form(None),
     access_token: str = Cookie(None)
 ):
-    """Send a chat message and return updated messages."""
+    """Send a chat message and return updated messages in the same session."""
     if not access_token:
         return RedirectResponse(url="/login", status_code=303)
     
     try:
-        # Send message to backend
         async with httpx.AsyncClient() as client:
+            # 🚀 STEP 1: Send message to backend
             response = await client.post(
                 f"{BACKEND_API}/api/chat/message",
-                json={"message": message, "analysis_id": analysis_id},
+                json={
+                    "message": message,
+                    "session_id": session_id,
+                    "analysis_id": analysis_id
+                },
                 headers=await get_headers(access_token)
             )
         
         if response.status_code == 200:
-            # Fetch updated history
+            # 🔄 STEP 2: Fetch updated messages from THIS session
             async with httpx.AsyncClient() as client:
                 history_response = await client.get(
-                    f"{BACKEND_API}/api/chat/history",
-                    headers=await get_headers(access_token),
-                    params={"analysis_id": analysis_id, "limit": 50}
+                    f"{BACKEND_API}/api/chat/sessions/{session_id}/messages",
+                    headers=await get_headers(access_token)
                 )
             
             messages = history_response.json() if history_response.status_code == 200 else []
-            user = json.loads(request.cookies.get("user", "{}"))  #  ADDED
+            
+            # 🔄 STEP 3: Also fetch all sessions (for sidebar update)
+            async with httpx.AsyncClient() as client:
+                sessions_response = await client.get(
+                    f"{BACKEND_API}/api/chat/sessions",
+                    headers=await get_headers(access_token),
+                    params={"analysis_id": analysis_id} if analysis_id else {}
+                )
+            
+            sessions = sessions_response.json() if sessions_response.status_code == 200 else []
+            current_session = next((s for s in sessions if s["id"] == session_id), None)
+            
+            user = json.loads(request.cookies.get("user", "{}"))
             
             return templates.TemplateResponse(
                 request,
                 "chat.html",
-                {"messages": messages, "analysis_id": analysis_id, "user": user}  #  ADDED user
+                {
+                    "sessions": sessions,
+                    "current_session": current_session,
+                    "messages": messages,
+                    "analysis_id": analysis_id,
+                    "user": user
+                }
             )
         else:
             error = response.json().get("detail", "Failed to send message")
-            user = json.loads(request.cookies.get("user", "{}"))  #  ADDED
+            user = json.loads(request.cookies.get("user", "{}"))
             return templates.TemplateResponse(
                 request,
                 "chat.html",
-                {"error": error, "analysis_id": analysis_id, "user": user}  #  ADDED user
+                {
+                    "error": error,
+                    "session_id": session_id,
+                    "analysis_id": analysis_id,
+                    "user": user
+                }
             )
     except Exception as e:
-        user = json.loads(request.cookies.get("user", "{}"))  #  ADDED
+        logger.error(f"Chat send error: {e}", exc_info=True)
+        user = json.loads(request.cookies.get("user", "{}"))
         return templates.TemplateResponse(
             request,
             "chat.html",
-            {"error": str(e), "analysis_id": analysis_id, "user": user}  # ADDED user
+            {
+                "error": str(e),
+                "session_id": session_id,
+                "analysis_id": analysis_id,
+                "user": user
+            }
         )
+
+
+@app.delete("/api/chat/sessions/{session_id}")
+async def delete_chat_session(
+    request: Request,
+    session_id: int,
+    access_token: str = Cookie(None)
+):
+    """Delete a chat session via API."""
+    if not access_token:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.delete(
+                f"{BACKEND_API}/api/chat/sessions/{session_id}",
+                headers=await get_headers(access_token)
+            )
+        
+        if response.status_code == 200:
+            return {"message": "Session deleted"}
+        else:
+            raise HTTPException(status_code=400, detail="Failed to delete session")
+    except Exception as e:
+        logger.error(f"Delete session error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/logout")
