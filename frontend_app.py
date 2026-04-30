@@ -275,12 +275,9 @@ async def chat_page(
     try:
         async with httpx.AsyncClient() as client:
             # 🔄 STEP 1: Fetch all sessions (for sidebar)
-            # ✅ FIX: Don't filter by analysis_id when fetching sessions
-            # This way sidebar shows ALL sessions, not just filtered ones
             sessions_response = await client.get(
                 f"{BACKEND_API}/api/chat/sessions",
                 headers=await get_headers(access_token)
-                # Removed: params={"analysis_id": analysis_id}
             )
             
             sessions = sessions_response.json() if sessions_response.status_code == 200 else []
@@ -292,13 +289,12 @@ async def chat_page(
             # If explicit session_id provided, use it (user clicked a session)
             if session_id:
                 current_session = next((s for s in sessions if s["id"] == session_id), None)
-                # ✅ FIX: Update analysis_id based on the selected session
-                # If session is universal, clear analysis_id; if specific, use it
                 if current_session:
                     analysis_id = current_session.get("analysis_id")
             
-            # If no sessions exist, auto-create one
-            if not sessions:
+            # ✅ FIX: Only auto-create session if it's a fresh visit (no session_id in URL)
+            # Don't auto-create on every page load/refresh
+            if not sessions and not session_id:
                 async with httpx.AsyncClient() as client:
                     create_response = await client.post(
                         f"{BACKEND_API}/api/chat/sessions/new",
@@ -310,9 +306,14 @@ async def chat_page(
                     session_data = create_response.json()
                     current_session = session_data
                     sessions = [session_data]
+                    # ✅ Redirect to include session_id so next refresh uses the same session
+                    redirect_url = f"/chat?session_id={session_data['id']}"
+                    if analysis_id:
+                        redirect_url += f"&analysis_id={analysis_id}"
+                    return RedirectResponse(url=redirect_url, status_code=303)
             else:
-                # Fallback to latest if not set
-                if not current_session:
+                # Fallback to latest if no session_id specified but sessions exist
+                if not current_session and sessions:
                     current_session = sessions[0]
                 
                 # Fetch messages from current session
@@ -333,21 +334,6 @@ async def chat_page(
                 "sessions": sessions,
                 "current_session": current_session,
                 "messages": messages,
-                "analysis_id": analysis_id,  # ✅ Now reflects selected session's analysis_id
-                "user": user
-            }
-        )
-    except Exception as e:
-        logger.error(f"Chat page error: {e}", exc_info=True)
-        user = json.loads(request.cookies.get("user", "{}"))
-        return templates.TemplateResponse(
-            request,
-            "chat.html",
-            {
-                "sessions": [],
-                "current_session": None,
-                "messages": [],
-                "error": str(e),
                 "analysis_id": analysis_id,
                 "user": user
             }

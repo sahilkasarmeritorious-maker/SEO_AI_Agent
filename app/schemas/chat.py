@@ -6,6 +6,7 @@ class ChatMessageRequest(BaseModel):
     """User's question for RAG chatbot."""
     message: str = Field(..., min_length=1, max_length=1000)
     analysis_id: Optional[int] = Field(None, description="Optional: filter to specific analysis")
+    session_id: Optional[int] = Field(None)
 
 class SourceAnalysis(BaseModel):
     """Source analysis used in RAG response."""

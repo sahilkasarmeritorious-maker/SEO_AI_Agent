@@ -65,7 +65,7 @@ async def create_new_session(
             db=db,
             user_id=current_user,
             analysis_id=analysis_id,
-            title=f"Analysis #{analysis_id}" if analysis_id else "New Chat"
+            #title=f"Analysis #{analysis_id}" if analysis_id else "New Chat"
         )
         
         return {
