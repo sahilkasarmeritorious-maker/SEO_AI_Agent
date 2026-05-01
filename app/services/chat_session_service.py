@@ -111,19 +111,23 @@ class ChatSessionService:
                         ChatSession.user_id == user_id,
                         ChatSession.analysis_id == analysis_id
                     )
-                    .options(selectinload(ChatSession.messages))  # ✅ Eagerly load messages
+                    .options(selectinload(ChatSession.messages))
                     .order_by(ChatSession.updated_at.desc())
                 )
             else:
+                # ✅ FIX: Explicitly filter for universal sessions (analysis_id IS NULL)
                 result = await db.execute(
                     select(ChatSession)
-                    .where(ChatSession.user_id == user_id)
-                    .options(selectinload(ChatSession.messages))  # ✅ Eagerly load messages
+                    .where(
+                        ChatSession.user_id == user_id,
+                        ChatSession.analysis_id.is_(None)  # ✅ Only universal sessions
+                    )
+                    .options(selectinload(ChatSession.messages))
                     .order_by(ChatSession.updated_at.desc())
                 )
             
-            sessions = result.scalars().unique().all()  # ✅ Use .unique() to avoid duplicates from join
-            logger.info(f"📚 Retrieved {len(sessions)} sessions for user {user_id}")
+            sessions = result.scalars().unique().all()
+            logger.info(f"📚 Retrieved {len(sessions)} sessions for user {user_id} (analysis_id={analysis_id})")
             return sessions
             
         except Exception as e:

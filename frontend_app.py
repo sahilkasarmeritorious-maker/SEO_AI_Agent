@@ -268,16 +268,23 @@ async def chat_page(
     session_id: Optional[int] = None,
     access_token: str = Cookie(None)
 ):
-    """Chat interface with sidebar showing all sessions."""
+    """Chat interface with sidebar showing sessions filtered by analysis."""
     if not access_token:
         return RedirectResponse(url="/login", status_code=303)
     
     try:
         async with httpx.AsyncClient() as client:
-            # 🔄 STEP 1: Fetch all sessions (for sidebar)
+            # 🔄 STEP 1: Fetch sessions FILTERED by analysis_id
+            # ✅ If analysis_id=2, show only Analysis #2 sessions
+            # ✅ If analysis_id=None, show only universal sessions
+            params = {}
+            if analysis_id is not None:
+                params["analysis_id"] = analysis_id
+            
             sessions_response = await client.get(
                 f"{BACKEND_API}/api/chat/sessions",
-                headers=await get_headers(access_token)
+                headers=await get_headers(access_token),
+                params=params
             )
             
             sessions = sessions_response.json() if sessions_response.status_code == 200 else []
@@ -289,12 +296,9 @@ async def chat_page(
             # If explicit session_id provided, use it (user clicked a session)
             if session_id:
                 current_session = next((s for s in sessions if s["id"] == session_id), None)
-                if current_session:
-                    analysis_id = current_session.get("analysis_id")
             
-            # ✅ FIX: Only auto-create session if it's a fresh visit (no session_id in URL)
-            # Don't auto-create on every page load/refresh
-            if not sessions and not session_id:
+            # If no sessions exist, auto-create one
+            if not sessions:
                 async with httpx.AsyncClient() as client:
                     create_response = await client.post(
                         f"{BACKEND_API}/api/chat/sessions/new",
@@ -306,14 +310,9 @@ async def chat_page(
                     session_data = create_response.json()
                     current_session = session_data
                     sessions = [session_data]
-                    # ✅ Redirect to include session_id so next refresh uses the same session
-                    redirect_url = f"/chat?session_id={session_data['id']}"
-                    if analysis_id:
-                        redirect_url += f"&analysis_id={analysis_id}"
-                    return RedirectResponse(url=redirect_url, status_code=303)
             else:
-                # Fallback to latest if no session_id specified but sessions exist
-                if not current_session and sessions:
+                # Use selected session or fallback to latest
+                if not current_session:
                     current_session = sessions[0]
                 
                 # Fetch messages from current session

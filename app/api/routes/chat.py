@@ -86,16 +86,16 @@ async def create_new_session(
 @router.get("/sessions")
 async def get_sessions(
     request: Request,
-    analysis_id: Optional[int] = Query(None),
+    analysis_id: Optional[int] = Query(None),  # ✅ Default is None
     current_user: int = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
-    """Get all sessions for current user (optionally filtered by analysis_id)."""
+    """Get all sessions for current user (filtered by analysis_id)."""
     try:
         sessions = await ChatSessionService.get_user_sessions(
             db=db,
             user_id=current_user,
-            analysis_id=analysis_id
+            analysis_id=analysis_id  # ✅ Passes None for universal, or specific ID
         )
         
         return [
@@ -114,7 +114,7 @@ async def get_sessions(
         logger.error(f"Error fetching sessions: {e}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to fetch sessions: {str(e)}"  # ✅ Include error details for debugging
+            detail=f"Failed to fetch sessions: {str(e)}"
         )
 
 

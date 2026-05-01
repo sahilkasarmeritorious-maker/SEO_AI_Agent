@@ -6,6 +6,8 @@ from datetime import datetime
 from langchain_google_genai import ChatGoogleGenerativeAI
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc
+from sqlalchemy import update
+from app.db.models import ChatSession
 
 from app.core.logging import logger
 from app.db.models import ChatMessage, Analysis
@@ -98,6 +100,20 @@ class ChatService:
 
                 # Update session.updated_at timestamp for sidebar sorting
                 await ChatSessionService.update_session_timestamp(db, session_id, user_id)
+
+            # After storing the message:
+            if db and chat_message:
+                # ✅ Update session title if it's still the default
+                if session.title in ("Chat", f"Analysis #{analysis_id}"):
+                    new_title = ChatSessionService._generate_session_title(message)
+                    session.title = new_title
+                    await db.execute(
+                        update(ChatSession).where(
+                            ChatSession.id == session_id
+                        ).values(title=new_title)
+                    )
+                    await db.commit()
+                    logger.info(f"✅ Updated session {session_id} title to: '{new_title}'")
 
             # ─────────────────────────────────────────────────────────────
             # STEP 5: Save to Chroma in background (fire-and-forget)
