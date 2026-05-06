@@ -721,7 +721,7 @@ h2 {
     margin-bottom: 1.5rem;
     padding: 1rem;
     border-radius: 0.5rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .user-message {
@@ -730,8 +730,137 @@ h2 {
 }
 
 .assistant-message {
-    background: #f0fdf4;
+    background: white;
+    border: 1px solid #e5e7eb;
     border-left: 4px solid #10b981;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.assistant-header {
+    font-weight: 600;
+    color: #10b981;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.assistant-response {
+    color: #374151;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ═════════════════════════════════════════════════════════ */
+/* MARKDOWN CONTENT STYLING */
+/* ═════════════════════════════════════════════════════════ */
+
+.assistant-content {
+    color: #374151;
+}
+
+.assistant-content p {
+    margin: 0.75rem 0;
+    line-height: 1.7;
+}
+
+.assistant-content h1,
+.assistant-content h2,
+.assistant-content h3,
+.assistant-content h4,
+.assistant-content h5,
+.assistant-content h6 {
+    margin: 1.25rem 0 0.75rem 0;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+.assistant-content h1 { font-size: 1.5rem; }
+.assistant-content h2 { font-size: 1.3rem; }
+.assistant-content h3 { font-size: 1.15rem; }
+
+.assistant-content ul,
+.assistant-content ol {
+    margin: 0.75rem 0;
+    padding-left: 1.75rem;
+}
+
+.assistant-content li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.assistant-content code {
+    background: #f3f4f6;
+    color: #d97706;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+.assistant-content pre {
+    background: #1f2937;
+    color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.assistant-content pre code {
+    background: none;
+    color: #f3f4f6;
+    padding: 0;
+}
+
+.assistant-content blockquote {
+    border-left: 4px solid #2563eb;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.assistant-content strong {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.assistant-content a {
+    color: #2563eb;
+    text-decoration: none;
+    border-bottom: 1px solid #dbeafe;
+    transition: all 0.2s;
+}
+
+.assistant-content a:hover {
+    color: #1d4ed8;
+    border-bottom-color: #2563eb;
+}
+
+.assistant-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.assistant-content table th,
+.assistant-content table td {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.assistant-content table th {
+    background: #f3f4f6;
+    font-weight: 600;
+    color: #1f2937;
 }
 
 .message p {

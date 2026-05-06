@@ -27,8 +27,8 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 # Backend API URL
 
-BACKEND_API = "http://localhost:8000"
-#BACKEND_API = "http://192.168.1.15:8000"
+#BACKEND_API = "http://localhost:8000"
+BACKEND_API = "http://192.168.1.15:8000"
 
 print(f"✅ Templates directory: {TEMPLATES_DIR}")
 print(f"✅ Static directory: {STATIC_DIR}")
@@ -435,6 +435,10 @@ async def send_chat_message(
             
             user = json.loads(request.cookies.get("user", "{}"))
             
+            redirect_url = f"/chat?session_id={session_id}"
+            if analysis_id:
+                redirect_url += f"&analysis_id={analysis_id}"
+
             return templates.TemplateResponse(
                 request,
                 "chat.html",

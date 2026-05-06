@@ -73,7 +73,10 @@
                 </div>
 
                 <div class="message assistant-message">
-                    <p><strong>Assistant:</strong> {{ msg.assistant_response }}</p>
+                    <div class="assistant-header">🤖 Assistant</div>
+                    <div class="assistant-response">
+                        {{ msg.assistant_response }}
+                    </div>
                     
                     {% if msg.sources %}
                     <div class="sources">
@@ -130,5 +133,90 @@
         <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a>
     {% endif %}
 </div>
+
+<!-- ✅ Markdown & Syntax Highlighting Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+<!-- ✅ AJAX Form Submission (prevent page reload) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.chat-input-form');
+    if (!form) return;
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent traditional form submit
+        
+        const formData = new FormData(form);
+        const sessionId = formData.get('session_id');
+        const analysisId = formData.get('analysis_id');
+        
+        try {
+            // Send message via AJAX with credentials (cookies)
+            const response = await fetch('/api/chat/send', {
+                method: 'POST',
+                body: formData,
+                credentials: 'include'  // ✅ CRITICAL: Include cookies!
+            });
+            
+            console.log('Response status:', response.status);
+            
+            if (response.ok) {
+                // Update URL with session_id
+                const url = analysisId ? 
+                    `/chat?session_id=${sessionId}&analysis_id=${analysisId}` :
+                    `/chat?session_id=${sessionId}`;
+                window.history.pushState({}, '', url);
+                
+                // Reload page to show new message
+                location.reload();
+            } else {
+                console.error('Request failed:', response.status, response.statusText);
+                const text = await response.text();
+                console.error('Response:', text);
+                alert('Failed to send message: ' + response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error sending message: ' + error.message);
+        }
+    });
+});
+</script>
+
+<!-- ✅ Render Markdown on Frontend -->
+<script>
+// Wait for libraries to load, then render
+setTimeout(function() {
+    if (typeof marked === 'undefined') {
+        console.warn('⚠️ Marked library not loaded');
+        return;
+    }
+    
+    // Configure marked options
+    marked.setOptions({
+        breaks: true,
+        gfm: true
+    });
+    
+    // Render all assistant responses
+    document.querySelectorAll('.assistant-response').forEach(el => {
+        const text = el.textContent.trim();
+        if (text && text.length > 0) {
+            try {
+                el.innerHTML = marked.parse(text);
+                
+                // Highlight code blocks
+                el.querySelectorAll('pre code').forEach(code => {
+                    hljs.highlightElement(code);
+                });
+            } catch (e) {
+                console.error('Markdown render error:', e);
+            }
+        }
+    });
+}, 300);
+</script>
 
 {% endblock %}

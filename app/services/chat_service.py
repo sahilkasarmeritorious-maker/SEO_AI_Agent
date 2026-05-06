@@ -2,6 +2,7 @@ import json
 import asyncio
 from typing import Dict, List, Any, Optional
 from datetime import datetime
+import html
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -13,6 +14,11 @@ from app.core.logging import logger
 from app.db.models import ChatMessage, Analysis
 from app.services.chroma_service import chroma_service
 from app.core.config import get_settings
+
+try:
+    import markdown2
+except ImportError:
+    markdown2 = None
 
 settings = get_settings()
 
@@ -27,6 +33,25 @@ class ChatService:
             top_p=0.9,
         )
         logger.info(" Chat service initialized with Gemini 2.5 Flash")
+
+    @staticmethod
+    def _render_markdown_response(response: str) -> str:
+        """Convert markdown response to professional HTML."""
+        if not markdown2:
+            # Fallback: basic HTML escaping if markdown2 not available
+            return html.escape(response).replace('\n\n', '</p><p>').replace('\n', '<br>')
+        
+        try:
+            # Convert markdown to HTML with extensions
+            html_response = markdown2.markdown(
+                response,
+                extras=['fenced-code-blocks', 'tables', 'highlight']
+            )
+            # Wrap in professional styling divs
+            return f'<div class="assistant-content">{html_response}</div>'
+        except Exception as e:
+            logger.warning(f"Markdown rendering failed: {e}, using plain text")
+            return f'<div class="assistant-content"><p>{html.escape(response)}</p></div>'
 
     async def chat(
         self,
@@ -134,11 +159,14 @@ class ChatService:
                 f"({len(sources)} sources)"
             )
 
+            # ✅ Render markdown response to professional HTML
+            html_response = response
+
             return {
                 "id": chat_message.id if chat_message else None,
                 "session_id": session_id,
                 "user_message": message,
-                "assistant_response": response,
+                "assistant_response": html_response,  # ✅ Now HTML formatted
                 "sources": sources,
                 "created_at": (
                     chat_message.created_at.isoformat() 

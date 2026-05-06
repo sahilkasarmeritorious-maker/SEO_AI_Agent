@@ -12,3 +12,5 @@ textstat>=0.7
 python-dotenv>=1.0
 pillow>=10.0
 requests>=2.31
+markdown2>=2.4.9
+pygments>=2.16.1
