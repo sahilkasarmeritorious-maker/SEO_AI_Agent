@@ -59,9 +59,12 @@ class ChatSession(Base):
     user_id = Column(Integer, ForeignKey("users.id"), index=True)
     analysis_id = Column(Integer, ForeignKey("analyses.id"), nullable=True, index=True)
     
-    # Auto-generated title from first message
     title = Column(String(255), nullable=True)
-    session_type = Column(String(50), default="universal")  # 'specific' or 'universal'
+    session_type = Column(String(50), default="universal")
+    
+    # ✅ Soft Delete
+    is_deleted = Column(Boolean, default=False, index=True)
+    deleted_at = Column(DateTime, nullable=True, index=True)
     
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, index=True)
@@ -69,13 +72,13 @@ class ChatSession(Base):
     # Relationships
     user = relationship("User", back_populates="chat_sessions")
     analysis = relationship("Analysis")
-    messages = relationship("ChatMessage", back_populates="session", cascade="all, delete-orphan")
+    messages = relationship("ChatMessage", back_populates="session") 
 class ChatMessage(Base):
     __tablename__ = "chat_messages"
     
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), index=True)
-    session_id = Column(Integer, ForeignKey("chat_sessions.id"), index=True)  # NEW
+    session_id = Column(Integer, ForeignKey("chat_sessions.id"), index=True)
     analysis_id = Column(Integer, ForeignKey("analyses.id"), nullable=True, index=True)
     
     user_message = Column(Text, nullable=False)
@@ -83,9 +86,13 @@ class ChatMessage(Base):
     source_analyses = Column(Text, nullable=True)
     relevance_scores = Column(Text, nullable=True)
     
+    # Soft Delete
+    is_deleted = Column(Boolean, default=False, index=True)
+    deleted_at = Column(DateTime, nullable=True, index=True)
+    
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
     
     # Relationships
     user = relationship("User", back_populates="chat_messages")
-    session = relationship("ChatSession", back_populates="messages")  # NEW
+    session = relationship("ChatSession", back_populates="messages")
     analysis = relationship("Analysis")

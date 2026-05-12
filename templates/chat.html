@@ -140,45 +140,90 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 
 <!-- ✅ AJAX Form Submission (prevent page reload) -->
+<!-- ✅ AJAX Form Submission with Loader -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.chat-input-form');
     if (!form) return;
     
     form.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Prevent traditional form submit
+        e.preventDefault();
         
         const formData = new FormData(form);
         const sessionId = formData.get('session_id');
         const analysisId = formData.get('analysis_id');
+        const messageInput = form.querySelector('input[name="message"]');
+        const sendBtn = form.querySelector('button[type="submit"]');
+        
+        // ✅ Check if already processing
+        if (sendBtn.disabled) {
+            console.log('⏳ Already processing, please wait...');
+            return;
+        }
+        
+        // ✅ Show loading state
+        const originalBtnText = sendBtn.innerHTML;
+        const originalBtnClass = sendBtn.className;
+        
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = '⏳ Processing...';
+        sendBtn.classList.add('btn-loading');
+        messageInput.disabled = true;
+        
+        console.log('📤 Sending message...');
         
         try {
-            // Send message via AJAX with credentials (cookies)
             const response = await fetch('/api/chat/send', {
                 method: 'POST',
                 body: formData,
-                credentials: 'include'  // ✅ CRITICAL: Include cookies!
+                credentials: 'include'
             });
             
-            console.log('Response status:', response.status);
+            console.log('📨 Response:', response.status);
             
             if (response.ok) {
+                console.log('✅ Message sent successfully!');
+                
+                // Clear input
+                messageInput.value = '';
+                
                 // Update URL with session_id
                 const url = analysisId ? 
                     `/chat?session_id=${sessionId}&analysis_id=${analysisId}` :
                     `/chat?session_id=${sessionId}`;
+                
                 window.history.pushState({}, '', url);
                 
-                // Reload page to show new message
-                location.reload();
+                // Show final processing message
+                sendBtn.innerHTML = '✅ Refreshing...';
+                
+                // Wait a moment then reload
+                setTimeout(() => {
+                    console.log('🔄 Reloading page...');
+                    location.reload();
+                }, 1000);
             } else {
-                console.error('Request failed:', response.status, response.statusText);
+                console.error('❌ Request failed:', response.status);
                 const text = await response.text();
                 console.error('Response:', text);
+                
+                // Reset button on error
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = originalBtnText;
+                sendBtn.className = originalBtnClass;
+                messageInput.disabled = false;
+                
                 alert('Failed to send message: ' + response.statusText);
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('❌ Network error:', error);
+            
+            // Reset button on error
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = originalBtnText;
+            sendBtn.className = originalBtnClass;
+            messageInput.disabled = false;
+            
             alert('Error sending message: ' + error.message);
         }
     });

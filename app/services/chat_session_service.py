@@ -82,15 +82,16 @@ class ChatSessionService:
         session_id: int,
         user_id: int
     ) -> list[ChatMessage]:
-        """Get all messages in a session (with ownership check)."""
+        """Get all active messages in a session (excludes soft-deleted)."""
         result = await db.execute(
             select(ChatMessage).where(
                 ChatMessage.session_id == session_id,
-                ChatMessage.user_id == user_id
+                ChatMessage.user_id == user_id,
+                ChatMessage.is_deleted == False  # ✅ Exclude soft-deleted
             ).order_by(ChatMessage.created_at)
         )
         messages = result.scalars().all()
-        logger.info(f"📨 Retrieved {len(messages)} messages from session {session_id}")
+        logger.info(f"📨 Retrieved {len(messages)} active messages from session {session_id}")
         return messages
     
     @staticmethod
@@ -158,15 +159,33 @@ class ChatSessionService:
         session_id: int,
         user_id: int
     ) -> bool:
-        """Delete a session (cascade deletes messages)."""
+        """Soft-delete a session AND all its messages."""
         session = await ChatSessionService.get_session(db, session_id, user_id)
-        
+
         if not session:
-            logger.warning(f"Session {session_id} not found for user {user_id}")
+            logger.warning(f"Session {session_id} not found or already deleted for user {user_id}")
             return False
-        
-        await db.delete(session)
+
+        now = datetime.utcnow()
+
+        #  Soft-delete all messages in this session
+        await db.execute(
+            update(ChatMessage)
+            .where(ChatMessage.session_id == session_id)
+            .values(is_deleted=True, deleted_at=now)
+        )
+
+        #  Soft-delete the session
+        await db.execute(
+            update(ChatSession)
+            .where(
+                ChatSession.id == session_id,
+                ChatSession.user_id == user_id
+            )
+            .values(is_deleted=True, deleted_at=now)
+        )
+
         await db.commit()
-        
-        logger.info(f"🗑️  Deleted session {session_id} for user {user_id}")
+
+        logger.info(f"🗑️  Soft-deleted session {session_id} and all its messages for user {user_id}")
         return True
