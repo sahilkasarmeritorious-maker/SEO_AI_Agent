@@ -3,15 +3,13 @@
 {% block title %}Chat - Website Analysis Platform{% endblock %}
 
 {% block content %}
-
 <div class="chat-layout">
-    <!-- 📌 LEFT SIDEBAR: Session History -->
-    <div class="chat-sidebar">
+    <aside class="chat-sidebar">
         <div class="sidebar-header">
-            <form method="post" action="/chat/new" style="margin: 0;">
+            <form method="post" action="/chat/new">
                 <button type="submit" class="new-chat-btn">➕ New Chat</button>
                 {% if analysis_id %}
-                <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
+                    <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
                 {% endif %}
             </form>
         </div>
@@ -19,249 +17,118 @@
         <div class="sessions-list">
             {% if sessions %}
                 {% for session in sessions %}
-                <a 
-                    href="/chat?session_id={{ session.id }}{% if analysis_id %}&analysis_id={{ analysis_id }}{% endif %}"
-                    class="session-item {% if current_session and current_session.id == session.id %}active{% endif %}"
-                >
-                    <span class="session-title" title="{{ session.title }}">{{ session.title }}</span>
-                    <span class="session-type-badge {{ session.session_type }}">
-                        {% if session.session_type == 'specific' %}📌{% else %}🌐{% endif %}
-                    </span>
-                </a>
+                    <div class="session-item-wrapper">
+                        <a 
+                            href="/chat?session_id={{ session.id }}{% if analysis_id %}&analysis_id={{ analysis_id }}{% endif %}"
+                            class="session-item {% if current_session and current_session.id == session.id %}active{% endif %}"
+                        >
+                            <span class="session-title" title="{{ session.title }}">{{ session.title }}</span>
+                            <span class="session-type-badge {{ session.session_type }}">
+                                {% if session.session_type == 'specific' %}📌{% else %}🌐{% endif %}
+                            </span>
+                        </a>
+                        <button 
+                            class="session-delete-btn"
+                            data-session-id="{{ session.id }}"
+                            data-analysis-id="{{ analysis_id or 'null' }}"
+                            title="Delete this session"
+                        >
+                            🗑️
+                        </button>
+                    </div>
                 {% endfor %}
             {% else %}
-                <p style="text-align: center; color: #999; padding: 1rem; font-size: 0.9rem;">
-                    No sessions yet. Create one! 👆
-                </p>
+                <p class="empty-state">No sessions yet. Create one! 👆</p>
             {% endif %}
         </div>
-    </div>
+    </aside>
 
-    <!-- 💬 MAIN CHAT AREA -->
-    <div class="chat-main">
-        <!-- Header -->
-        <div class="chat-header {% if not analysis_id %}universal{% endif %}">
+    <main class="chat-main">
+        <header class="chat-header {% if not analysis_id %}universal{% endif %}">
             {% if analysis_id %}
                 <h1>💬 Analysis-Specific Chat</h1>
-                <p>📌 Asking about Analysis #{{ analysis_id }} only</p>
+                <p>📌 Questions about Analysis #{{ analysis_id }}</p>
             {% else %}
                 <h1>💬 Universal Chat Assistant</h1>
-                <p>🌐 Asking about all your analyses</p>
+                <p>🌐 Questions about all your analyses</p>
             {% endif %}
+            
             {% if current_session %}
-                <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-                    Current: <strong>{{ current_session.title }}</strong>
-                    ({{ current_session.message_count }} messages)
+                <p class="session-info">
+                    Session: <strong>{{ current_session.title }}</strong>
                 </p>
             {% endif %}
-        </div>
+        </header>
 
-        <!-- Error Alert -->
-        {% if error %}
-        <div class="alert">⚠️ {{ error }}</div>
-        {% endif %}
+        <section class="chat-messages" role="log">
+            {% if error %}
+                <div class="alert alert-error">{{ error }}</div>
+            {% endif %}
 
-        <!-- Messages -->
-        <div class="chat-messages">
             {% if messages %}
                 {% for msg in messages %}
-                <div class="message user-message">
-                    <p><strong>You:</strong> {{ msg.user_message }}</p>
-                    {% if msg.analysis_id %}
-                    <small style="opacity: 0.7;">📌 Analysis #{{ msg.analysis_id }}</small>
-                    {% endif %}
-                </div>
+                    <div class="message user-message">
+                        <p><strong>You:</strong> {{ msg.user_message }}</p>
+                        {% if msg.analysis_id %}
+                            <small class="message-meta">📌 Analysis #{{ msg.analysis_id }}</small>
+                        {% endif %}
+                    </div>
 
-                <div class="message assistant-message">
-                    <div class="assistant-header">🤖 Assistant</div>
-                    <div class="assistant-response">
-                        {{ msg.assistant_response }}
+                    <div class="message assistant-message">
+                        <div class="assistant-header">🤖 Assistant</div>
+                        <div class="assistant-response">{{ msg.assistant_response }}</div>
+                        
+                        {% if msg.sources %}
+                            <div class="sources">
+                                <strong>📌 Sources ({{ msg.sources|length }}):</strong>
+                                {% for source in msg.sources %}
+                                    <div class="source-item">
+                                        <p><strong>Analysis #{{ source.analysis_id }}</strong></p>
+                                        <p class="source-url">{{ source.url }}</p>
+                                        <small>SEO: {{ source.seo_score }}/100 | UX: {{ source.ux_score }}/100 | {{ (source.relevance_score * 100)|int }}% match</small>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
-                    
-                    {% if msg.sources %}
-                    <div class="sources">
-                        <strong>📌 Sources ({{ msg.sources|length }}):</strong>
-                        {% for source in msg.sources %}
-                        <div class="source-item">
-                            <p><strong>Analysis #{{ source.analysis_id }}</strong></p>
-                            <p style="margin: 0.25rem 0; font-size: 0.85rem;">{{ source.url }}</p>
-                            <small>SEO: {{ source.seo_score }}/100 | UX: {{ source.ux_score }}/100 | {{ (source.relevance_score * 100)|int }}% match</small>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
                 {% endfor %}
             {% else %}
                 <p class="no-messages">No messages yet. Start a conversation below... 👇</p>
             {% endif %}
-        </div>
+        </section>
 
-        <!-- Input Form -->
-        <div class="chat-input-section">
+        <footer class="chat-input-section">
             {% if current_session %}
-            <form method="post" action="/api/chat/send" class="chat-input-form">
-                <input 
-                    type="text" 
-                    name="message" 
-                    placeholder="Ask a question..." 
-                    required 
-                    autofocus
-                >
-                <!-- ✅ CRITICAL: Always send session_id -->
-                <input type="hidden" name="session_id" value="{{ current_session.id }}">
-                {% if analysis_id %}
-                <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
-                {% endif %}
-                <button type="submit">Send 🚀</button>
-            </form>
+                <form method="post" action="/api/chat/send" class="chat-input-form">
+                    <input 
+                        type="text" 
+                        name="message" 
+                        class="form-input" 
+                        placeholder="Ask a question..." 
+                        required
+                        autocomplete="off"
+                    >
+                    <input type="hidden" name="session_id" value="{{ current_session.id }}">
+                    {% if analysis_id %}
+                        <input type="hidden" name="analysis_id" value="{{ analysis_id }}">
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary">Send 🚀</button>
+                </form>
             {% else %}
-            <div style="text-align: center; color: #999;">
-                <p>Create a new chat to get started! ➕</p>
-            </div>
+                <div class="empty-input">
+                    <p>Create a new chat to get started! ➕</p>
+                </div>
             {% endif %}
-        </div>
-    </div>
+        </footer>
+    </main>
 </div>
 
-<!-- Navigation -->
-<div style="text-align: center; padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6;">
+<div class="chat-nav">
     {% if analysis_id %}
-        <a href="/dashboard" style="color: #2563eb; text-decoration: none; margin-right: 1rem;">← Back to Dashboard</a>
-        <a href="/chat" style="color: #2563eb; text-decoration: none;">🌐 Ask About All Analyses →</a>
+        <a href="/dashboard" class="nav-link">← Back to Dashboard</a>
+        <a href="/chat" class="nav-link">🌐 Ask About All Analyses →</a>
     {% else %}
-        <a href="/dashboard" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a>
+        <a href="/dashboard" class="nav-link">← Back to Dashboard</a>
     {% endif %}
 </div>
-
-<!-- ✅ Markdown & Syntax Highlighting Libraries -->
-<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-
-<!-- ✅ AJAX Form Submission (prevent page reload) -->
-<!-- ✅ AJAX Form Submission with Loader -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.chat-input-form');
-    if (!form) return;
-    
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(form);
-        const sessionId = formData.get('session_id');
-        const analysisId = formData.get('analysis_id');
-        const messageInput = form.querySelector('input[name="message"]');
-        const sendBtn = form.querySelector('button[type="submit"]');
-        
-        // ✅ Check if already processing
-        if (sendBtn.disabled) {
-            console.log('⏳ Already processing, please wait...');
-            return;
-        }
-        
-        // ✅ Show loading state
-        const originalBtnText = sendBtn.innerHTML;
-        const originalBtnClass = sendBtn.className;
-        
-        sendBtn.disabled = true;
-        sendBtn.innerHTML = '⏳ Processing...';
-        sendBtn.classList.add('btn-loading');
-        messageInput.disabled = true;
-        
-        console.log('📤 Sending message...');
-        
-        try {
-            const response = await fetch('/api/chat/send', {
-                method: 'POST',
-                body: formData,
-                credentials: 'include'
-            });
-            
-            console.log('📨 Response:', response.status);
-            
-            if (response.ok) {
-                console.log('✅ Message sent successfully!');
-                
-                // Clear input
-                messageInput.value = '';
-                
-                // Update URL with session_id
-                const url = analysisId ? 
-                    `/chat?session_id=${sessionId}&analysis_id=${analysisId}` :
-                    `/chat?session_id=${sessionId}`;
-                
-                window.history.pushState({}, '', url);
-                
-                // Show final processing message
-                sendBtn.innerHTML = '✅ Refreshing...';
-                
-                // Wait a moment then reload
-                setTimeout(() => {
-                    console.log('🔄 Reloading page...');
-                    location.reload();
-                }, 1000);
-            } else {
-                console.error('❌ Request failed:', response.status);
-                const text = await response.text();
-                console.error('Response:', text);
-                
-                // Reset button on error
-                sendBtn.disabled = false;
-                sendBtn.innerHTML = originalBtnText;
-                sendBtn.className = originalBtnClass;
-                messageInput.disabled = false;
-                
-                alert('Failed to send message: ' + response.statusText);
-            }
-        } catch (error) {
-            console.error('❌ Network error:', error);
-            
-            // Reset button on error
-            sendBtn.disabled = false;
-            sendBtn.innerHTML = originalBtnText;
-            sendBtn.className = originalBtnClass;
-            messageInput.disabled = false;
-            
-            alert('Error sending message: ' + error.message);
-        }
-    });
-});
-</script>
-
-<!-- ✅ Render Markdown on Frontend -->
-<script>
-// Wait for libraries to load, then render
-setTimeout(function() {
-    if (typeof marked === 'undefined') {
-        console.warn('⚠️ Marked library not loaded');
-        return;
-    }
-    
-    // Configure marked options
-    marked.setOptions({
-        breaks: true,
-        gfm: true
-    });
-    
-    // Render all assistant responses
-    document.querySelectorAll('.assistant-response').forEach(el => {
-        const text = el.textContent.trim();
-        if (text && text.length > 0) {
-            try {
-                el.innerHTML = marked.parse(text);
-                
-                // Highlight code blocks
-                el.querySelectorAll('pre code').forEach(code => {
-                    hljs.highlightElement(code);
-                });
-            } catch (e) {
-                console.error('Markdown render error:', e);
-            }
-        }
-    });
-}, 300);
-</script>
-
 {% endblock %}

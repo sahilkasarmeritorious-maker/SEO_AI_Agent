@@ -260,6 +260,30 @@ async def analysis_detail(
             {"error": str(e)}
         )
 
+@app.get("/api/analysis/{analysis_id}")
+async def get_analysis_api(
+    request: Request,
+    analysis_id: int,
+    access_token: str = Cookie(None)
+):
+    """API endpoint to get single analysis (for polling/auto-update)."""
+    if not access_token:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{BACKEND_API}/api/analysis/results/{analysis_id}",
+                headers=await get_headers(access_token)
+            )
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            raise HTTPException(status_code=response.status_code, detail="Analysis not found")
+    except Exception as e:
+        logger.error(f"Error fetching analysis: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/chat", response_class=HTMLResponse)
 async def chat_page(
@@ -275,8 +299,6 @@ async def chat_page(
     try:
         async with httpx.AsyncClient() as client:
             # 🔄 STEP 1: Fetch sessions FILTERED by analysis_id
-            # ✅ If analysis_id=2, show only Analysis #2 sessions
-            # ✅ If analysis_id=None, show only universal sessions
             params = {}
             if analysis_id is not None:
                 params["analysis_id"] = analysis_id
@@ -308,12 +330,23 @@ async def chat_page(
                 
                 if create_response.status_code == 200:
                     session_data = create_response.json()
-                    current_session = session_data
-                    sessions = [session_data]
+                    redirect_url = f"/chat?session_id={session_data['id']}"
+                    if analysis_id:
+                        redirect_url += f"&analysis_id={analysis_id}"
+                    return RedirectResponse(url=redirect_url, status_code=303)
+                else:
+                    raise Exception("Failed to create session")
             else:
                 # Use selected session or fallback to latest
                 if not current_session:
                     current_session = sessions[0]
+                
+                # ✅ NEW: If session_id is not in URL but we have current_session, redirect!
+                if not session_id and current_session:
+                    redirect_url = f"/chat?session_id={current_session['id']}"
+                    if analysis_id:
+                        redirect_url += f"&analysis_id={analysis_id}"
+                    return RedirectResponse(url=redirect_url, status_code=303)
                 
                 # Fetch messages from current session
                 if current_session:
@@ -353,6 +386,33 @@ async def chat_page(
             }
         )
 
+@app.get("/api/chat/sessions/{session_id}/messages")
+async def get_session_messages(
+    request: Request,
+    session_id: int,
+    access_token: str = Cookie(None)
+):
+    """Proxy endpoint: Forward message request to backend."""
+    if not access_token:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{BACKEND_API}/api/chat/sessions/{session_id}/messages",
+                headers=await get_headers(access_token)
+            )
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            raise HTTPException(
+                status_code=response.status_code,
+                detail="Failed to fetch messages from backend"
+            )
+    except Exception as e:
+        logger.error(f"Error fetching messages: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/chat/new", response_class=HTMLResponse)
 async def create_new_chat(
@@ -476,6 +536,35 @@ async def send_chat_message(
                 "user": user
             }
         )
+
+#ADD THIS NEW ENDPOINT HERE
+@app.get("/api/chat/sessions/{session_id}/messages")
+async def get_session_messages(
+    request: Request,
+    session_id: int,
+    access_token: str = Cookie(None)
+):
+    """Proxy endpoint: Forward message request to backend."""
+    if not access_token:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{BACKEND_API}/api/chat/sessions/{session_id}/messages",
+                headers=await get_headers(access_token)
+            )
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            raise HTTPException(
+                status_code=response.status_code,
+                detail="Failed to fetch messages from backend"
+            )
+    except Exception as e:
+        logger.error(f"Error fetching messages: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.delete("/api/chat/sessions/{session_id}")

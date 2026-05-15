@@ -1,19 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Analysis Platform</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
-</head>
-<body class="hero-page">
+{% extends "base.html" %}
+
+{% block title %}Website Analyzer - AI-Powered SEO & UX Analysis{% endblock %}
+
+{% block content %}
+<div class="hero-container">
     <div class="hero">
-        <h1>Website Analysis Platform</h1>
-        <p>Get comprehensive AI-powered SEO and UX insights for your website</p>
-        <div class="hero-buttons">
-            <a href="/login" class="btn btn-primary">Login</a>
-            <a href="/register" class="btn btn-secondary">Register</a>
+        
+        <!-- Main Heading -->
+        <h1>Website Analyzer</h1>
+        
+        <!-- Subheading -->
+        <p class="hero-subtitle">Get comprehensive AI-powered SEO & UX insights for your website</p>
+        
+        <!-- Features List -->
+        <div class="hero-features">
+            <div class="feature-item">
+                <span class="feature-icon">📊</span>
+                <span class="feature-text">SEO Analysis</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✨</span>
+                <span class="feature-text">UX Scoring</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💬</span>
+                <span class="feature-text">AI Chat</span>
+            </div>
         </div>
+        
+        <!-- CTA Buttons -->
+        <div class="hero-buttons">
+            <a href="/login" class="btn btn-login">
+                <span>Sign In</span>
+            </a>
+            <a href="/register" class="btn btn-register">
+                <span>Get Started</span>
+            </a>
+        </div>
+        
+        <!-- Footer Text -->
+        <p class="hero-footer">
+            🔒 Secure • 📱 Fast • 🤖 Intelligent
+        </p>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}

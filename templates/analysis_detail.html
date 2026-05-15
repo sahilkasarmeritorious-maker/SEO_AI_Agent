@@ -3,101 +3,106 @@
 {% block title %}Analysis Details - Website Analysis Platform{% endblock %}
 
 {% block content %}
-<div class="sidebar">
-    <nav class="sidebar-nav">
-        <a href="/dashboard" class="nav-item">📊 Dashboard</a>
-        <a href="/chat" class="nav-item active">💬 Chat Assistant</a>
-    </nav>
-</div>
+<div class="dashboard-layout">
+    <aside class="sidebar-menu">
+        <nav class="sidebar-nav">
+            <a href="/dashboard" class="nav-item">📊 Dashboard</a>
+            <a href="/chat" class="nav-item active">💬 Chat Assistant</a>
+        </nav>
+    </aside>
 
-<div class="main-content">
-    {% if analysis %}
-    <div class="header-card">
-        <h1>{{ analysis.url }}</h1>
-        <p>Analyzed on {{ analysis.created_at[:10] }}</p>
-    </div>
+    <main class="main-content">
+        {% if analysis %}
+            <header class="header-card">
+                <h1>{{ analysis.url }}</h1>
+                <p>Analyzed on {{ analysis.created_at[:10] }}</p>
+            </header>
 
-    <div class="scores-container">
-        <div class="white-card">
-            <h3>SEO Score</h3>
-            {% set seo_score = analysis.seo_overall_score or 0 %}
-            {% if seo_score >= 80 %}
-                {% set seo_color = "green" %}
-            {% elif seo_score >= 60 %}
-                {% set seo_color = "orange" %}
-            {% else %}
-                {% set seo_color = "red" %}
-            {% endif %}
-            <div class="score-bar">
-                <div class="score-fill" style="width: {{ seo_score }}%; background-color: {{ seo_color }};"></div>
-            </div>
-            <p class="score-text">{{ seo_score }}/100</p>
-        </div>
+            <div class="scores-container">
+                <div class="card card-primary">
+                    <h3>SEO Score</h3>
+                    {% set seo_score = analysis.seo_overall_score or 0 %}
+                    <div class="progress">
+                        <div 
+                            class="progress-bar {{ 'success' if seo_score >= 80 else 'warning' if seo_score >= 60 else 'danger' }}"
+                            data-score-type="seo"
+                            data-score="{{ seo_score }}"
+                        >
+                            {{ seo_score }}
+                        </div>
+                    </div>
+                </div>
 
-        <div class="white-card">
-            <h3>UX Score</h3>
-            {% set ux_score = analysis.ux_overall_score or 0 %}
-            {% if ux_score >= 80 %}
-                {% set ux_color = "green" %}
-            {% elif ux_score >= 60 %}
-                {% set ux_color = "orange" %}
-            {% else %}
-                {% set ux_color = "red" %}
-            {% endif %}
-            <div class="score-bar">
-                <div class="score-fill" style="width: {{ ux_score }}%; background-color: {{ ux_color }};"></div>
-            </div>
-            <p class="score-text">{{ ux_score }}/100</p>
-        </div>
-    </div>
-
-    <div class="white-card">
-        <h2>Analysis Details</h2>
-
-        <div class="details-grid">
-            <div class="detail-section">
-                <h3>✅ SEO Strengths</h3>
-                <ul>
-                    {% for item in analysis.seo_strengths %}
-                    <li>{{ item.finding or item }}</li>
-                    {% endfor %}
-                </ul>
+                <div class="card card-primary">
+                    <h3>UX Score</h3>
+                    {% set ux_score = analysis.ux_overall_score or 0 %}
+                    <div class="progress">
+                        <div 
+                            class="progress-bar {{ 'success' if ux_score >= 80 else 'warning' if ux_score >= 60 else 'danger' }}"
+                            data-score-type="ux"
+                            data-score="{{ ux_score }}"
+                        >
+                            {{ ux_score }}
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="detail-section">
-                <h3>⚠️ SEO Weaknesses</h3>
-                <ul>
-                    {% for item in analysis.seo_weaknesses %}
-                    <li>{{ item.finding or item }}</li>
-                    {% endfor %}
-                </ul>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Analysis Details</h2>
+                </div>
+
+                <div class="details-grid">
+                    <section>
+                        <h3>✅ SEO Strengths</h3>
+                        <ul class="findings-list">
+                            {% for item in analysis.seo_strengths %}
+                                <li>{{ item.finding or item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>⚠️ SEO Weaknesses</h3>
+                        <ul class="findings-list">
+                            {% for item in analysis.seo_weaknesses %}
+                                <li>{{ item.finding or item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>✅ UX Strengths</h3>
+                        <ul class="findings-list">
+                            {% for item in analysis.ux_strengths %}
+                                <li>{{ item.finding or item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>⚠️ UX Weaknesses</h3>
+                        <ul class="findings-list">
+                            {% for item in analysis.ux_weaknesses %}
+                                <li>{{ item.finding or item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                </div>
             </div>
 
-            <div class="detail-section">
-                <h3>✅ UX Strengths</h3>
-                <ul>
-                    {% for item in analysis.ux_strengths %}
-                    <li>{{ item.finding or item }}</li>
-                    {% endfor %}
-                </ul>
+            <div class="button-center">
+                <a href="/chat?analysis_id={{ analysis.id }}" class="btn btn-primary btn-lg">
+                    💬 Ask Questions About This Analysis
+                </a>
             </div>
 
-            <div class="detail-section">
-                <h3>⚠️ UX Weaknesses</h3>
-                <ul>
-                    {% for item in analysis.ux_weaknesses %}
-                    <li>{{ item.finding or item }}</li>
-                    {% endfor %}
-                </ul>
+        {% else %}
+            <div class="alert alert-error">
+                {% if error %}{{ error }}{% else %}Analysis not found{% endif %}
             </div>
-        </div>
-    </div>
-
-    <div class="button-center">
-        <a href="/chat?analysis_id={{ analysis.id }}" class="btn btn-primary">💬 Ask Questions About This Analysis</a>
-    </div>
-    {% else %}
-    <p class="error">{% if error %}{{ error }}{% else %}Analysis not found{% endif %}</p>
-    {% endif %}
+        {% endif %}
+    </main>
 </div>
 {% endblock %}
