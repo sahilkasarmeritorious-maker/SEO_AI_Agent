@@ -10,6 +10,7 @@ from app.schemas.chat import (
     ChatMessageResponse,
     ChatHistoryResponse
 )
+from fastapi.responses import StreamingResponse
 from app.services.chat_service import chat_service
 from app.services.chat_session_service import ChatSessionService
 import json
@@ -51,6 +52,46 @@ async def send_message(
             detail="Failed to process message"
         )
 
+@router.post("/message/stream")
+async def send_message_streaming(
+    request: Request,
+    req: ChatMessageRequest,
+    current_user: int = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Send a message with streaming response."""
+    logger.info(f"🔄 STREAM ENDPOINT HIT - user {current_user}, message: {req.message[:30]}")  # ← ADD THIS
+    
+    try:
+        session_id = getattr(req, 'session_id', None)
+        
+        logger.info(f"📡 Calling chat_streaming...")  # ← ADD THIS
+        
+        response_generator = await chat_service.chat_streaming(
+            user_id=current_user,
+            message=req.message,
+            analysis_id=req.analysis_id,
+            db=db,
+            session_id=session_id
+        )
+        
+        logger.info(f"✅ STREAMING - returning response")  # ← ADD THIS
+        
+        return StreamingResponse(
+            response_generator,
+            media_type="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "X-Accel-Buffering": "no"
+            }
+        )
+
+    except Exception as e:
+        logger.error(f"💥 STREAMING ERROR: {str(e)}", exc_info=True)  # ← THIS LOGS THE REAL ERROR
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Streaming failed: {str(e)}"
+        )
 
 @router.post("/sessions/new")
 async def create_new_session(

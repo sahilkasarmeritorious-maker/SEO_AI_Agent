@@ -182,6 +182,115 @@ class ChatService:
             logger.error(f"❌ Chat error for user {user_id}: {e}", exc_info=True)
             raise
     
+    async def chat_streaming(
+        self,
+        user_id: int,
+        message: str,
+        analysis_id: Optional[int] = None,
+        db: Optional[AsyncSession] = None,
+        session_id: Optional[int] = None
+    ):
+        """Chat with streaming response (for ChatGPT-style word-by-word display)."""
+        
+        user_id = int(user_id)
+        logger.info(f"💬 Processing streaming chat for user {user_id}: {message[:50]}...")
+    
+        try:
+            from app.services.chat_session_service import ChatSessionService
+    
+            # Create/get session (same as before)
+            if session_id:
+                session = await ChatSessionService.get_session(db, session_id, user_id)
+                if not session:
+                    raise ValueError(f"Session {session_id} not found")
+            else:
+                session = await ChatSessionService.create_session(
+                    db=db,
+                    user_id=user_id,
+                    analysis_id=analysis_id,
+                    first_message=message
+                )
+                session_id = session.id
+    
+            # Retrieve context from Chroma
+            retrieved = await self._retrieve_context(
+                user_id=user_id,
+                question=message,
+                analysis_id=analysis_id
+            )
+    
+            context = self._build_context(retrieved)
+            sources = self._parse_sources(retrieved)
+    
+            # Generate streaming response
+            async def response_generator():
+                full_response = ""
+                
+                try:
+                    system_prompt = """You are an expert website analysis assistant helping users understand their website's SEO and UX performance.
+    
+    Use the provided analysis data to answer questions accurately and helpfully.
+    - Be specific and reference metrics from the data
+    - Provide actionable insights
+    - If data is insufficient, be honest about limitations
+    - Keep responses concise but thorough"""
+    
+                    user_prompt = f"""Based on the following website analysis data, please answer this question:
+    
+    QUESTION: {message}
+    
+    ANALYSIS DATA:
+    {context}
+    
+    Please provide a clear, helpful answer that references the relevant metrics."""
+    
+                    loop = asyncio.get_running_loop()
+    
+                    # Get response from Gemini
+                    response = await asyncio.wait_for(
+                        loop.run_in_executor(
+                            None,
+                            lambda: self.llm.invoke([
+                                {"role": "system", "content": system_prompt},
+                                {"role": "user", "content": user_prompt}
+                            ]).content
+                        ),
+                        timeout=60.0
+                    )
+    
+                    full_response = response
+    
+                    # Stream word by word
+                    words = response.split(' ')
+                    for i, word in enumerate(words):
+                        # Yield word with space (except last word)
+                        chunk = word if i == len(words) - 1 else word + ' '
+                        yield f"data: {chunk}\n\n"
+                        await asyncio.sleep(0.05)  # 50ms between words for natural speed
+    
+                    # Store in DB after streaming completes
+                    if db:
+                        await self._store_message(
+                            db=db,
+                            user_id=user_id,
+                            user_message=message,
+                            assistant_response=full_response,
+                            sources=sources,
+                            analysis_id=analysis_id,
+                            session_id=session_id
+                        )
+                        await ChatSessionService.update_session_timestamp(db, session_id, user_id)
+    
+                except Exception as e:
+                    logger.error(f"Streaming error: {e}", exc_info=True)
+                    yield f"data: [Error: {str(e)}]\n\n"
+    
+            return response_generator()
+    
+        except Exception as e:
+            logger.error(f"❌ Streaming chat error for user {user_id}: {e}", exc_info=True)
+            raise
+
     async def _save_to_chroma_background(
         self,
         user_id: int,

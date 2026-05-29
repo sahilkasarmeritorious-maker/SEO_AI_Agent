@@ -100,8 +100,7 @@ class ChatSessionService:
         user_id: int,
         analysis_id: Optional[int] = None
     ) -> list[ChatSession]:
-        """Get all sessions for user, optionally filtered by analysis_id.
-        Ordered by updated_at DESC (most recent first)."""
+        """Get all sessions for user, optionally filtered by analysis_id."""
         from sqlalchemy.orm import selectinload
         
         try:
@@ -110,18 +109,19 @@ class ChatSessionService:
                     select(ChatSession)
                     .where(
                         ChatSession.user_id == user_id,
-                        ChatSession.analysis_id == analysis_id
+                        ChatSession.analysis_id == analysis_id,
+                        ChatSession.is_deleted == False  # ✅ ADD THIS
                     )
                     .options(selectinload(ChatSession.messages))
                     .order_by(ChatSession.updated_at.desc())
                 )
             else:
-                # ✅ FIX: Explicitly filter for universal sessions (analysis_id IS NULL)
                 result = await db.execute(
                     select(ChatSession)
                     .where(
                         ChatSession.user_id == user_id,
-                        ChatSession.analysis_id.is_(None)  # ✅ Only universal sessions
+                        ChatSession.analysis_id.is_(None),
+                        ChatSession.is_deleted == False  # ✅ ADD THIS
                     )
                     .options(selectinload(ChatSession.messages))
                     .order_by(ChatSession.updated_at.desc())
